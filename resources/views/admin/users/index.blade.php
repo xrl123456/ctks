@@ -6,7 +6,7 @@
                     </div>
                     <div class="mws-panel-body no-padding">
                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
-                        	<form action="/users/index" method="get">
+                        	<form action="/admins/users" method="get">
                         	<div id="DataTables_Table_0_length" class="dataTables_length">
                         		<label>搜索显示
                         				<select size="1" name="count">
@@ -40,14 +40,13 @@
                         			@foreach($users as $k=>$v)
 	                       	 		<tr class="">
 	                                    <td class="  sorting_1">{{ $v->id }}</td>
-	                                    <td class=" ">{{$v->name }}</td>
+	                                    <td class=" ">{{ $v->name }}</td>
 	                                    <td class=" ">{{ $v->phone }}</td>
-	                                    <td class=" ">{{$v->email }}</td>
-	                                    <td class=" ">{{$v->created_at }}</td>
+	                                    <td class=" ">{{ $v->email }}</td>
+	                                    <td class=" ">{{ $v->created_at }}</td>
 	                                     <td class=" ">
-		                                     <a href="/users/index/{{$v->id}}/edit" class="btn btn-danger">编辑</a>　
-		                                     
-                                             <form style="" action="/users/index/{{$v->id}}" method="post">
+		                                     <a href="/admins/users/{{ $v->id }}/edit" class="btn btn-danger"><i class="icon-pencil"></i></a>　
+                                             <form style="" action="/admins/users/{{ $v->id }}" method="post">
                                              {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                              <input type="submit" value="删除" class="btn btn-warning" >

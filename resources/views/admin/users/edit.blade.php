@@ -17,7 +17,7 @@
                     	<span>编辑用户</span>
                     </div>
                     <div class="mws-panel-body no-padding">
-                    	<form class="mws-form" action="/users/index/{{ $users->id}}" method="post">
+                    	<form class="mws-form" action="/admins/users/{{ $users->id }}" method="post">
                     	{{ csrf_field() }}
                         {{ method_field('PUT') }}
                     		<div class="mws-form-inline">

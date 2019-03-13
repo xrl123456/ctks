@@ -25,7 +25,7 @@ class UptableStoreRequest extends FormRequest
     {
         return [
               //姓名需要以a字母开头以数字结尾
-                'name' => 'required|unique:users|regex:/^[a-zA-Z]{1}[\w]{7,15}$/',
+                'name' => 'required|regex:/^[a-zA-Z]{1}[\w]{7,15}$/',
            
                'email' => 'required|email',
                'phone' => 'required|regex:/^[1]{1}[3-9]{1}[\d]{9}$/',
@@ -38,7 +38,7 @@ class UptableStoreRequest extends FormRequest
         return [
            'name.required' => '用户名不能为空',
                 'name.regex' => 'a字母开头以数字结尾',
-                'name.unique'=>'用户名已存在',
+                
          
             'phone.required' => '手机号不能为空',
                 'phone.regex' => '手机号格式不正确',

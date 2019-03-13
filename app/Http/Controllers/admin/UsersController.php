@@ -71,10 +71,10 @@ class UsersController extends Controller
        $res2 = $info->save();
        if($res && $res2){
             DB::commit();
-        return redirect('/users/index')->with('success','添加成功');
+        return redirect('/admins/users/')->with('success','添加成功');
      }else{
         DB::rollBack();
-        return redirect('/users/index')->with('error','添加失败');
+        return redirect('/admins/users/')->with('error','添加失败');
      }
 
     }
@@ -128,10 +128,10 @@ class UsersController extends Controller
         $res = $users->save();
         if($res){
             DB::commit();
-        return redirect('/users/index')->with('success','修改成功');
+        return redirect('/admins/users')->with('success','修改成功');
      }else{
         DB::rollBack();
-        return redirect('/users/index')->with('error','修改失败');
+        return redirect('/admins/users')->with('error','修改失败');
      }
 
     }
@@ -146,15 +146,16 @@ class UsersController extends Controller
     {
         //
         // echo '21';
+        // dump($id);
          DB::beginTransaction();
         $res = Users::destroy($id); 
         $res2 = Userinfo::where('uid',$id)->delete();
         if($res && $res2){
             DB::commit();
-            return redirect('/users/index')->with('success','删除成功');
+            return redirect('/admins/users')->with('success','删除成功');
          }else{
             DB::rollBack();
-            return redirect('/users/index')->with('error','删除失败');
+            return redirect('/admins/users')->with('error','删除失败');
          }
 
     }

@@ -17,7 +17,7 @@
                     	<span>添加用户</span>
                     </div>
                     <div class="mws-panel-body no-padding">
-                    	<form class="mws-form" action="/users/index" method="post">
+                    	<form class="mws-form" action="/admins/users" method="post">
                     	{{ csrf_field() }}
                     		<div class="mws-form-inline">
                     			<div class="mws-form-row">
