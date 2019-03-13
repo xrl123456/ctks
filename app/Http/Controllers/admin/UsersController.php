@@ -146,6 +146,7 @@ class UsersController extends Controller
     {
         //
         // echo '21';
+        // dd(11);
          DB::beginTransaction();
         $res = Users::destroy($id); 
         $res2 = Userinfo::where('uid',$id)->delete();
