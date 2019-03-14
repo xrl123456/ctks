@@ -161,11 +161,56 @@
                             <li><a href="form_elements.html">用户列表</a></li>
                         </ul>
                     </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <li class="active">
                         <a href="#"><i class="icon-IE"></i>友情链接</a>
                         <ul>
                             <li><a href="/admins/links">链接管理</a></li>
                             <li><a href="/admins/links/create">添加链接</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="icon-IE"></i>轮播图管理</a>
+                        <ul>
+                            <li><a href="/admins/links">图片管理</a></li>
+                            <li><a href="/admins/links">图片管理</a></li>
+                            <li><a href="/admins/links/create">添加图片</a></li>
                         </ul>
                     </li>
                 </ul>
