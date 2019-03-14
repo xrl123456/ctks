@@ -15,7 +15,7 @@
 <!-- 表格 列表 -->
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">
-        <span><i class="icon-table"></i> 友情链接管理 --- 列表</span>
+        <span><i class="icon-IE"></i> 友情链接管理 --- 列表</span>
     </div>
     <div class="mws-panel-body no-padding">
         <table class="mws-datatable-fn mws-table" >
@@ -41,7 +41,7 @@
                         <form action="/admins/links/{{ $val->id }}" method="post" style="display: inline;">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                 <input type="submit" value="删除" class="btn btn-danger " >
+                                 <input type="submit" value="删除"  onclick="return confirm('数据无价谨慎操作')" class="btn btn-danger " >
                             </form>
                     </th>
                 </tr>

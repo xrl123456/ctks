@@ -170,7 +170,14 @@
                             <li><a href="/admins/links/create">添加链接</a></li>
                         </ul>
                     </li>
-                    
+                    <li>
+                        <a href="#"><i class="icon-bullhorn"></i>公告管理</a>
+                        <ul>
+                            <li><a href="/admins/bbs">公告列表</a></li>
+                            <li><a href="/admins/bbs/create">公告添加</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
         </div>
