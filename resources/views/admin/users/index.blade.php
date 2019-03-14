@@ -39,7 +39,7 @@
 	                       	 		<tr class="">
 
 	                                    
-	                                    <td class=" ">{{ $v->id }}</td>
+	                                    <td class=" " style="swidth:50px;">{{ $v->id }}</td>
 	                                    <td class=" ">{{ $v->name }}</td>
 	                                    <td class=" ">{{ $v->phone }}</td>
 	                                    <td class=" ">{{ $v->email }}</td>
@@ -47,9 +47,9 @@
 
 	                                   
 	                                    <td class=" ">
-		                                    <a href="/users/index/{{ $v->id }}/edit" class="btn btn-danger">编辑</a>　
+		                                    <a href="/admins/users/{{ $v->id }}/edit" class="btn btn-danger">编辑</a>　
 		                                     
-                                            <form action="/users/index/{{ $v->id }}" method="post">
+                                            <form action="/admins/users/{{ $v->id }}" method="post" style="display: inline;">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                  <input type="submit" value="删除" class="btn btn-warning" >

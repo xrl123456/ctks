@@ -20,3 +20,31 @@ Route::get('/index','admin\IndexController@index');
 
 //定义后台用户管理
 Route::resource('/admins/users','admin\UsersController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 友情链接
+Route::resource('/admins/links','admin\LinksController');
