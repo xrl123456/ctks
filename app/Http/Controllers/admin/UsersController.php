@@ -17,15 +17,20 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+        //显示页面
     public function index(Request $request)
     {
         //
-        // echo '111';
+        //分页条数
         $count = $request->input('count',5);
         // dump($request->all());
+        //搜索的关键字
         $search = $request->input('search',''); 
         $users = Users::where('name','like','%'.$search.'%')->paginate($count);
-        return view('admin.users.index',['users'=>$users,'request'=>$request->all()]);
+        //获取总条数
+        $count = Users::count();
+        //进入显示页面
+        return view('admin.users.index',['count'=>$count,'users'=>$users,'request'=>$request->all()]);
         
     }
 
@@ -34,6 +39,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //添加页面
     public function create()
     {
         //
@@ -46,6 +52,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+        //添加值插入数据库
     public function store(UsersStoreRequest $request)
     {
       
@@ -55,20 +62,22 @@ class UsersController extends Controller
             回滚事务   DB::rollBack()
          */
         DB::beginTransaction();
-        // dump($request->all());
+        //初始化
         $users = new Users;
         $users->name = $request->input('name','');
         $users->email =$request->input('email','');
         $users->phone =$request->input('phone','');
         $users->password=Hash::make($request->input('password',''));
         $users->status = $request->input('status','');
+        //插入数据库
         $res = $users->save();
         //关联用户详情表
         $uid = $users->id;
-
+        //初始化详情表
         $info = new  Userinfo;
         $info->uid= $uid;
        $res2 = $info->save();
+       //判断是否成功
        if($res && $res2){
             DB::commit();
         return redirect('/admins/users/')->with('success','添加成功');
@@ -97,6 +106,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //进入编辑
     public function edit($id)
     {
         //
@@ -114,6 +124,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //修改数据
     public function update(UptableStoreRequest $request, $id)
     {
         //
@@ -142,15 +153,12 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //删除操作
     public function destroy($id)
     {
         //
         // echo '21';
-<<<<<<< HEAD
-        // dump($id);
-=======
-        // dd(11);
->>>>>>> origin/wangwu
+
          DB::beginTransaction();
         $res = Users::destroy($id); 
         $res2 = Userinfo::where('uid',$id)->delete();

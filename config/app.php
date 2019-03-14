@@ -64,9 +64,8 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
-
-    'timezone' => 'UTC',
-
+        // 'date_default_timezone_set'=>'PRC',
+    'timezone' => 'PRC',
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
