@@ -155,10 +155,12 @@
                     </li>
 
                     <li class="active">
-                        <a href="#"><i class="icon-list"></i>用户管理</a>
+                        <a href="#"><i class="icon-list"></i>分类管理</a>
                         <ul>
-                            <li><a href="form_layouts.html">用户添加</a></li>
-                            <li><a href="form_elements.html">用户列表</a></li>
+                           
+                            <li><a href="/admins/goods">分类列表</a></li>
+                             <li><a href="/admins/goods/create">添加分类</a></li>
+                           
                         </ul>
                     </li>
                     <li class="active">
@@ -168,6 +170,7 @@
                             <li><a href="/admins/links/create">添加链接</a></li>
                         </ul>
                     </li>
+                    
                 </ul>
             </div>
         </div>
@@ -238,9 +241,21 @@
 
     <!-- Themer Script (Remove if not needed) -->
     <script src="/admin/js/core/themer.js"></script>
+    <script src="/admin/js/core/jquery-1.7.2.min.js"></script>
 
     <!-- Demo Scripts (remove if not needed) -->
-
+    <script>
+        //获取对象
+        $('button').click(function(){
+        //获取input里面的值
+        var keyword =$('#keyword').val();
+        // console.log(keyword);
+        //将搜索的内容重置为原来的颜色
+        $('td').css('color','black').parent().css('backgroundColor','white');
+        //将搜索的内容显示出来
+        $('td:contains('+keyword+')').css('color','red').parent().css('backgroundColor','#ccc');
+        });
+    </script> 
 </body>
     <script>
 

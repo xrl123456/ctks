@@ -22,29 +22,8 @@ Route::get('/index','admin\IndexController@index');
 Route::resource('/admins/users','admin\UsersController');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//定义分类商品管理
+Route::resource('/admins/goods','admin\GoodsController');
 
 // 友情链接
 Route::resource('/admins/links','admin\LinksController');
