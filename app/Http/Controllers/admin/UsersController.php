@@ -132,8 +132,8 @@ class UsersController extends Controller
         DB::beginTransaction();
         $users = Users::find($id);
         $users->name = $request->input('name','');
-        $users->email =$request->input('email','');
-        $users->phone =$request->input('phone','');
+        $users->email = $request->input('email','');
+        $users->phone = $request->input('phone','');
       
         $users->status = $request->input('status','');
         $res = $users->save();
@@ -158,17 +158,16 @@ class UsersController extends Controller
     {
         //
         // echo '21';
-
-         DB::beginTransaction();
+        DB::beginTransaction();
         $res = Users::destroy($id); 
         $res2 = Userinfo::where('uid',$id)->delete();
         if($res && $res2){
             DB::commit();
             return redirect('/admins/users')->with('success','删除成功');
-         }else{
+        }else{
             DB::rollBack();
             return redirect('/admins/users')->with('error','删除失败');
-         }
+        }
 
     }
 }

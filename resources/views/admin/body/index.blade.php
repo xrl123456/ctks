@@ -149,12 +149,11 @@
                     <li class="active">
                         <a href="#"><i class="icon-users"></i>用户管理</a>
                         <ul>
-                            
                             <li><a href="/admins/users">用户列表</a></li>
                             <li><a href="/admins/users/create">用户添加</a></li>
-                           
                         </ul>
                     </li>
+
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>分类管理</a>
                         <ul>
@@ -165,13 +164,22 @@
                         </ul>
                     </li>
                     <li class="active">
+                        <a href="#"><i class="icon-IE"></i>友情链接</a>
+                        <ul>
+                            <li><a href="/admins/links">链接管理</a></li>
+                            <li><a href="/admins/links/create">添加链接</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
                         <a href="#"><i class="icon-list"></i>用户管理</a>
                         <ul>
                             <li><a href="form_layouts.html">用户添加</a></li>
                             <li><a href="form_elements.html">用户列表</a></li>
-                           
                         </ul>
                     </li>
+
+
+
                 </ul>
             </div>
         </div>
@@ -200,6 +208,8 @@
 
             <!-- 开始 -->
             @section('content')
+
+            
             @show
             <!-- 结束 -->
                 
@@ -256,4 +266,7 @@
         });
     </script> 
 </body>
+    <script>
+
+    </script>
 </html>
