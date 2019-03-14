@@ -27,3 +27,5 @@ Route::resource('/admins/goods','admin\GoodsController');
 
 // 友情链接
 Route::resource('/admins/links','admin\LinksController');
+//公告
+Route::resource('/admins/bbs','admin\BbsController');
