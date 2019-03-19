@@ -8,4 +8,6 @@ class Goods extends Model
 {
     //分类表
     public $table = 'goods_type';
+    //一对多
+    
 }

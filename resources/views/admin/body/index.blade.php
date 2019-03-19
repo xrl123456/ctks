@@ -164,6 +164,14 @@
                         </ul>
                     </li>
                     <li class="active">
+                        <a href="#"><i class="icon-shopping-cart"></i>商品管理</a>
+                        <ul>
+                            <li><a href="/admins/goodsgo">商品列表</a></li>
+                            <li><a href="/admins/goodsgo/create">商品添加</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="active">
                         <a href="#"><i class="icon-IE"></i>友情链接</a>
                         <ul>
                             <li><a href="/admins/links">链接管理</a></li>
@@ -177,6 +185,7 @@
                             <li><a href="/admins/bbs/create">公告添加</a></li>
                         </ul>
                     </li>
+                    
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>用户管理</a>
                         <ul>
