@@ -33,13 +33,18 @@ Route::resource('/admins/goods','admin\GoodsController');
 
 // 友情链接
 Route::resource('/admins/links','admin\LinksController');
-//公告
+
+//公告路由
 Route::resource('/admins/bbs','admin\BbsController');
-
-
-
+//商品添加路由
+Route::resource('/admins/goodsgo','admin\GoodsgoController');
+//前台首页路由
+Route::resource('/home/index','home\IndexController');
+//注册路由
+Route::resource('/home/register','home\RegisterController');
 
 // 管理员模块
 Route::post('/admins/super/showup/{id}','admin\SuperController@showup');
 Route::post('/admins/super/imgup/{id}','admin\SuperController@imgup');
 Route::resource('/admins/super','admin\SuperController');
+

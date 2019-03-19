@@ -36,7 +36,7 @@
 
                                 </tr>
                         			@foreach($users as $k=>$v)
-	                       	 		<tr class="">
+	                       	 		<tr class="odd">
 
 	                                    
 	                                    <td class=" " style="swidth:50px;">{{ $v->id }}</td>

@@ -25,7 +25,7 @@
                             </thead>
                             @foreach($data as $k=>$v)
                             <tbody>
-                                <tr>
+                                <tr  align="center">
 
                                     <td>{{ $v->id }}</td>
                                     <td>{{ $v->cname }}</td>
