@@ -44,6 +44,7 @@ Route::resource('/home/index','home\IndexController');
 Route::resource('/home/register','home\RegisterController');
 
 // 管理员模块
+Route::post('/admins/super/status/{id}','admin\SuperController@status');
 Route::post('/admins/super/showup/{id}','admin\SuperController@showup');
 Route::post('/admins/super/imgup/{id}','admin\SuperController@imgup');
 Route::resource('/admins/super','admin\SuperController');
