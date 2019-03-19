@@ -17,7 +17,7 @@
 
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">
-        <span><i class="icon-bullhorn"></i> 管理员 -- 列表</span>
+        <span><i class="icon-official"></i> 管理员 -- 列表</span>
     </div>
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
