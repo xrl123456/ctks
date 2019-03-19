@@ -29,7 +29,6 @@
             <form class="mws-form" action="/admins/links/{{ $links->id }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
-
                 <div class="mws-form-inline">
                     <div class="mws-form-row">
                         <label class="mws-form-label">链接名：</label>

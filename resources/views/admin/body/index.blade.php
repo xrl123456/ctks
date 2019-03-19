@@ -33,6 +33,7 @@
 <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admin/css/page_page.css" media="screen" >
 <title>MWS Admin - Form Layouts</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
@@ -177,6 +178,13 @@
                             <li><a href="/admins/bbs/create">公告添加</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="icon-official"></i>管理员页</a>
+                        <ul>
+                            <li><a href="/admins/super">人员列表</a></li>
+                            <li><a href="/admins/super/create">人员添加</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </div>
@@ -189,7 +197,7 @@
             <div class="container">
               <!-- 显示跳转信息 开始 -->
                 @if (session('success'))
-                    <div class="mws-form-message success">
+                    <div class="mws-form-message success" style="height:30px;">
                         {{ session('success') }}
                     </div>
                 @endif  
