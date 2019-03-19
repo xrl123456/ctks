@@ -23,6 +23,7 @@ class SuperController extends Controller
    
         $supers = Supers::all();
         $info=Super_info::all();
+        // dd($info);
         
         return view('admin.super.index',['supers'=>$supers,'info'=>$info]);
     }

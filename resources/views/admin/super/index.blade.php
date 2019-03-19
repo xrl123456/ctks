@@ -41,7 +41,7 @@
             <tr class="odd">
                     <td class="  sorting_1" style="text-align:center">{{ $value->id }}</td>
                     <td class="  sorting_1" style="text-align:center">{{ $value->name }}</td>
-                    <td class="  sorting_1" style="text-align:center"><img src="/uploads/faces/1.jpg" alt="" style="width:50px;border-radius:70%;"></td>
+                    <td class="  sorting_1" style="text-align:center"><img src="/uploads/" alt="" style="width:50px;border-radius:70%;"></td>
                     <td class="  sorting_1" style="text-align:center">{{ $value->email }}</td>
                     <td class="  sorting_1" style="text-align:center">
                         {{ ($value->grade == 0 ? '管理员' : '超级管理员') }}                    
