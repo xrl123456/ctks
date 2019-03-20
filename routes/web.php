@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/index','admin\IndexController@index');
 
 //定义后台用户管理
+Route::get('admin/users/xiangqing/{id}','admin\UserController@xiangqing');
 Route::resource('/admins/users','admin\UsersController');
 
 

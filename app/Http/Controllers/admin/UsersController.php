@@ -9,6 +9,7 @@ use App\Http\Requests\UptableStoreRequest;
 use App\Models\Users;
 use Hash;
 use App\Models\Userinfo;
+use App\Models\Users_infos;
 use DB;
 class UsersController extends Controller
 {
@@ -154,6 +155,20 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     //删除操作
+    public function xiangqing(Request $request,$id)
+    {
+
+        //echo $id;
+        $xiangqing=Users_infos::find($id);
+        //var_dump($xiangqing);
+        //dd($xiangqing);
+        //$xiang=Users::find($id);
+        //$d=$id;
+        //var_dump($userlist);
+        //return view('admin.users.index',['userlist'=>$userlist,'request'=>$request->all(),]);
+        return view('admin/users/xiangqing',['xiangqing'=>$xiangqing ]);
+        //return view('admin.users.create');
+    }
     public function destroy($id)
     {
         //
