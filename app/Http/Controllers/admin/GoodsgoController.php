@@ -18,6 +18,7 @@ class GoodsgoController extends Controller
     public function index()
     {
         //初始化
+     
         $goodsgo = Goodsgo::all();
         return view('admin.goodsgo.index',['goodsgo'=>$goodsgo]);
        

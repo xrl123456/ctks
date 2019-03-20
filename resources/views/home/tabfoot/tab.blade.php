@@ -27,7 +27,7 @@
 				<a href="temp_article/udai_article4.html">帮助中心</a>
 			</div>
 			<div class="pull-right">
-				<a href="/home/register"><span class="cr">登录</span></a>
+				<a href="/home/denlu"><span class="cr">登录</span></a>
 				<a href="/home/register?p=register">注册</a>
 				<a href="udai_welcome.html">我的U袋</a>
 				<a href="udai_order.html">我的订单</a>

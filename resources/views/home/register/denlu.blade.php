@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
@@ -18,7 +17,6 @@
 </head>
 
 <body>
-
 	<div class="public-head-layout container">
 		<a class="logo" href="/home/index"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
 	</div>
@@ -30,7 +28,37 @@
 				</div>
 				<div class="tabs_container">
 					<form class="tabs_form" action="" method="post" id="login_form">
-						
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+								</div>
+								<input class="form-control phone" name="phone" id="login_phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+								</div>
+								<input class="form-control password" name="password" id="login_pwd" placeholder="请输入密码" autocomplete="off" type="password">
+								<div class="input-group-addon pwd-toggle" title="显示密码"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
+							</div>
+						</div>
+						<div class="checkbox">
+	                        <label>
+	                        	<input checked="" id="login_checkbox" type="checkbox"><i></i> 30天内免登录
+	                        </label>
+	                        <a href="javascript:;" class="pull-right" id="resetpwd">忘记密码？</a>
+	                    </div>
+	                    <!-- 错误信息 -->
+						<div class="form-group">
+							<div class="error_msg" id="login_error">
+							
+							</div>
+						</div>
+	                    <button class="btn btn-large btn-primary btn-lg btn-block submit" id="login_submit" type="button">登录</button><br>
+	                    <p class="text-center">没有账号？<a href="/home/register?p=register" id="register">免费注册</a></p>
                     </form>
                     <div class="tabs_div">
 	                    <div class="success-box">
@@ -51,27 +79,26 @@
                     </div>
                 </div>
 			</div>
-			<div class="form-box register">
-  				<div class="tabs-nav">
-  					<h2>欢迎注册<a href="/home/denlu" class="pull-right fz16" id="reglogin">返回登录</a></h2>
+			
+			<div class="form-box resetpwd">
+  				<div class="tabs-nav clearfix">
+  					<h2>找回密码<a href="javascript:;" class="pull-right fz16" id="pwdlogin">返回登录</a></h2>
   				</div>
-
   				<div class="tabs_container">
-					<form class="tabs_form" action="/home/rest" method="post" id="register_form">
-					  {{ csrf_field() }}
+					<form class="tabs_form" action="https://rpg.blue/member.php?mod=logging&action=login" method="post" id="resetpwd_form">
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
 								</div>
-								<input class="form-control phone" name="phone" id="register_phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
+								<input class="form-control phone" name="phone" id="resetpwd_phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<input class="form-control" name="smscode" id="register_sms" placeholder="输入验证码" type="text">
+								<input class="form-control" name="sms" id="resetpwd_sms" placeholder="输入验证码" type="text">
 								<span class="input-group-btn">
-									<button class="btn btn-primary getsms"  onclick="zhuchen();" type="button">发送短信验证码</button>
+									<button class="btn btn-primary getsms" type="button">发送短信验证码</button>
 								</span>
 							</div>
 						</div>
@@ -80,25 +107,17 @@
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 								</div>
-								<input class="form-control password" name="password" id="register_pwd" placeholder="请输入密码" autocomplete="off" type="password">
+								<input class="form-control password" name="password" id="resetpwd_pwd" placeholder="新的密码" autocomplete="off" type="password">
 								<div class="input-group-addon pwd-toggle" title="显示密码"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
 							</div>
 						</div>
-						<div class="checkbox">
-	                        <label>
-	                        	<input checked="" name="agree" id="register_checkbox"  value="1" type="checkbox"><i></i> 同意<a href="temp_article/udai_article3.html">U袋网用户协议</a>
-	                        </label>
-	                    </div>
 	                    <!-- 错误信息 -->
 						<div class="form-group">
-							<div class="error_msg" id="register_error"></div>
+							<div class="error_msg" id="resetpwd_error"></div>
 						</div>
-							<input  style="background-color:#cb2126;width:100%;font-size:20px;border-radius:25px;border:2px solid #a1a1a1;padding:10px 40px; " value="注册"  type="submit" >
-	                    <!-- <button onclick='doSubmitForm()' class="btn btn-large btn-primary btn-lg btn-block submit" id="register_submit" type="submit">注册</button> -->
+	                    <button class="btn btn-large btn-primary btn-lg btn-block submit" id="resetpwd_submit" type="button">重置密码</button>
                     </form>
-                 
-                   
-                 <!--    <div class="tabs_div">
+                    <div class="tabs_div">
 	                    <div class="success-box">
 	                    	<div class="success-msg">
 								<i class="success-icon"></i>
@@ -114,7 +133,7 @@
 								<a role="button" href="login.html" class="btn btn-block btn-lg btn-info">返回登陆</a>
 	                    	</div>
 	                    </div>
-                    </div> -->
+                    </div>
                 </div>
 			</div>
 			<script>
@@ -174,28 +193,6 @@
 						// });
 					})
 				});
-			</script>
-			
-			<script type="text/javascript">
-			function zhuchen(){
-				//获取手机
-				var phone = $('#register_phone').val();
-
-				//第一个参数是跳转的地址,
-				$.get('/home/yanzhen',{phone:phone},function(data){
-					if(rand_cond == '0'){
-						alert('发送成功');
-					}else{
-						alert('发送失败');
-					}
-				});
-			}
-
-
-
-
-
-
 			</script>
 		</div>
 	</div>
