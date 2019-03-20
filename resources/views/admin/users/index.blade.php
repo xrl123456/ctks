@@ -48,6 +48,7 @@
 	                                   
 	                                    <td class=" ">
 		                                    <a href="/admins/users/{{ $v->id }}/edit" class="btn btn-danger">编辑</a>
+                                             |<a href="/admin/users/xiangqing/{{ $v->id }}" class="btn btn-warning">用户详情</a>
                                             <form action="/admins/users/{{ $v->id }}" method="post" style="display: inline;">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}

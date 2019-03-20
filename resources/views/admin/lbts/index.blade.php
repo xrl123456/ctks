@@ -3,7 +3,7 @@
 
 <div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span><i class="icon-bullhorn"></i> 公告列表</span>
+                    	<span><i class="icon-bullhorn"></i> 轮播图列表</span>
                     </div>
                     <div class="mws-panel-body no-padding">
                         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
@@ -28,34 +28,32 @@
                             <thead>
                                 <tr role="row">
                                 	<th>ID</th>
-									<th>标题</th>
-									<th>内容</th>
-									<th>写入时间</th>
+									<th>轮播图名称</th>
+									<th>轮播图地址</th>
+                                    <th>轮播图图片</th>
+									<th>轮播图状态</th>
+									<th>轮播图创建时间</th>
 									<th>操作</th>
                                 </tr>
 
                             </thead>
                             
                         <tbody role="alert" aria-live="polite" aria-relevant="all">
-                        @foreach($bbslist as $k =>$v)
+                        @foreach($lbtslist as $k =>$v)
                         <tr class="odd">
                         		<td class="  sorting_1" style="text-align:center">{{ $v->id }}</td>
-                                <td class="  sorting_1" style="text-align:center">{{ $v->title }}</td>
-                                <td style="text-align:center">
-                                    <abbr title="{{ $v->content }}" style="text-align:center">
-                                        <p style="width:50px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                                           {{ $v->content }}
-                                        </p>
-                                    </abbr>
-                                </td>
+                                <td class="  sorting_1" style="text-align:center">{{ $v->simg }}</td>
+                                <td class="  sorting_1" style="text-align:center">{{ $v->surl }}</td>
+                                <td class="  sorting_1" style="text-align:center"><img src="/uploads/{{ $v->pic }}" style="width:100px;height:100px;"></td>
+                                <td class="  sorting_1" style="text-align:center">{{ $v->status == 1 ? '显示':'隐藏' }}</td>
                                 <td class="  sorting_1" style="text-align:center">{{ $v->created_at }}</td>
                                 <td class="  sorting_1" style="text-align:center">
-                                <form action="/admins/bbs/{{ $v->id }}" method="post"  style="display: inline;">
+                                <form action="/admins/lbts/{{ $v->id }}" method="post"  style="display: inline;">
                                 {{  csrf_field() }}
                                 {{ method_field('DELETE')}}
                                 <input type="submit" value="删除"  class="btn btn-danger"   onclick="return confirm('数据无价谨慎操作')">
                                 </form>
-                                <a href="/admins/bbs/{{ $v->id }}/edit" class="btn btn-warning">修改
+                                <a href="/admins/lbts/{{ $v->id }}/edit" class="btn btn-warning">修改
                                 </td>
                      	</tr>
                      	@endforeach
@@ -65,7 +63,7 @@
                         Showing 1 to 10 of 57 entries
                         </div>
                         <div class="dataTables_paginate paging_full_numbers" id="page_pageqw">
-                        	{{ $bbslist->appends($request)->links() }}
+                        	{{ $lbtslist->appends($request)->links() }}
                         </div>
                         </div>
                     </div>

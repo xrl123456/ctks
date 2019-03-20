@@ -186,9 +186,20 @@
                             <li><a href="/admins/bbs/create">公告添加</a></li>
                         </ul>
                     </li>
-                        <li>
+                    <li>
                         <a href="#"><i class="icon-official"></i>管理员页</a>
                      
+
+                    <li class="active">
+                        <a href="#"><i class="icon-list"></i>轮播图管理</a>
+                        <ul>
+                            <li><a href="admins/lbts">轮播图列表</a></li>
+                            <li><a href="admins/lbts/create">轮播图添加</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="icon-list"></i>用户管理</a>
+
                         <ul>
                             <li><a href="/admins/super">人员列表</a></li>
                             <li><a href="/admins/super/create">人员添加</a></li>

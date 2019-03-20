@@ -18,7 +18,6 @@ Route::get('/', function () {
 	// 登录页面控制
 	Route::get('/admins');
 
-	// 中间件
 
 
 	//定义后台首页
@@ -55,3 +54,6 @@ Route::get('/', function () {
 	Route::post('/admins/super/imgup/{id}','admin\SuperController@imgup');
 	Route::resource('/admins/super','admin\SuperController');
 
+	//定义后台用户管理
+	Route::get('admin/users/xiangqing/{id}','admin\UserController@xiangqing');
+	Route::resource('/admins/users','admin\UsersController');
