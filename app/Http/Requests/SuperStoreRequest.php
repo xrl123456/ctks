@@ -24,8 +24,8 @@ class SuperStoreRequest extends FormRequest
     public function rules()
     {
         return [
-              //姓名需要以a字母开头以数字结尾
-                'name' => 'required|unique:supers|regex:/^[a-zA-Z]{1}[\w]{7,15}$/',
+              //姓名需要以字母开头数字
+                'name' => 'required|unique:supers|regex:/^[a-zA-Z]{1}[\w]{5,15}$/',
             'password' => 'required|regex:/^[\w]{6,8}$/',
             'password2'=> 'required|same:password',
                'email' => 'required|email',
@@ -37,7 +37,7 @@ class SuperStoreRequest extends FormRequest
     {
         return [
            'name.required' => '用户名不能为空',
-                'name.regex' => '字母开头以数字结尾',
+                'name.regex' => '字母开头可以混合数字 6-15位',
                 'name.unique'=>'用户名已存在',
          'password.required' => '密码不能为空',
          'password.regex' => '密码格式不正确',

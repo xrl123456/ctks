@@ -12,10 +12,16 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function Admin_user()
+    {
+        return $admin_user;
+    }
     public function index()
     {
         //
-        return view('admin.index.index');
+        $admin_user = (session('admin_user'));
+        // dd($admin_user);
+        return view('admin.index.index',['admin_user'=>$admin_user]);
     }
 
     /**

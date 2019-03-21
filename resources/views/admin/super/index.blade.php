@@ -37,7 +37,7 @@
             <tbody role="alert" aria-live="polite" aria-relevant="all">
             @foreach($supers as $key =>$value)
             <tr class="odd">
-                <td class="  sorting_1" style="text-align:center">{{ $value->id }}</td>
+                <td class="  sorting_1" style="text-align:center">{{ $i++ }}</td>
                 <td class="  sorting_1" style="text-align:center">{{ $value->name }}</td>
                 <td class="  sorting_1" style="text-align:center"><img src="/uploads/{{ ($value->superlist->face == 'faces/1.jpg') ? 'faces/1.jpg' : $value->superlist->face }}" alt="" style="width:50px;height:50px;border-radius:70%;"></td>
                 <td class="  sorting_1" style="text-align:center">{{ $value->email }}</td>

@@ -14,12 +14,26 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// 这个是登录的
+Route::resource('admins/login','admin\LoginController');
 
-// 登录页面控制
-Route::get('/admins');
+// 邮箱验证 找回密码
+Route::get('/admins/seek/email/{id}/{token}','admin\SeekController@email');
+Route::resource('admins/seek','admin\SeekController');
 
-// 中间件
 
+// 销毁 后台登录的 session
+Route::get('/admins/loginout', function () {
+	session()->forget('admin_user');
+    return '<script>alert("退出成功,");location.href="/admins/login";</script>';
+
+});
+
+
+
+
+// 这个中间件 判断session ->admin_user
+Route::group(['middleware'=>'admin_login'],function(){
 
 //定义后台首页
 Route::get('/admins','admin\IndexController@index');
@@ -49,3 +63,6 @@ Route::post('/admins/super/showup/{id}','admin\SuperController@showup');
 Route::post('/admins/super/imgup/{id}','admin\SuperController@imgup');
 Route::resource('/admins/super','admin\SuperController');
 
+
+// 这个结尾是中间件组的结尾
+});

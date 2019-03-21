@@ -22,10 +22,11 @@ class SuperController extends Controller
     public function index()
     {
         $supers = Supers::all();
+        $i=1;
         // dump($supers->superlist);
         // dd($supers);
         
-        return view('admin.super.index',['supers'=>$supers]);
+        return view('admin.super.index',['supers'=>$supers,'i'=>$i]);
     }
         
     public function status($id)
@@ -87,7 +88,7 @@ class SuperController extends Controller
             ?????   DB::beginTransaction();
             ?????   DB::commit()
             ?ع???   DB::rollBack()
-         */
+        */
         DB::beginTransaction();
 
         $supers = new Supers;
@@ -97,6 +98,8 @@ class SuperController extends Controller
         $supers->phone =$request->input('phone','');
         $supers->password=Hash::make($request->input('password',''));
         $supers->grade = $request->input('grade','');
+        $supers->token = str_random(60);
+        
         $res = $supers->save();
         // dd($res);
         $uid = $supers->id;
