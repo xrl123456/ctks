@@ -80,10 +80,11 @@ CREATE TABLE `supers` (
   `email` varchar(30) NOT NULL,
   `grade` int(10) unsigned DEFAULT '0',
   `status` int(10) unsigned NOT NULL DEFAULT '0',
+  `token` char(60) CHARACTER SET utf8mb4 DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 
 --  公告 表

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index.index');
 });
 // 这个是登录的
 Route::resource('admins/login','admin\LoginController');
@@ -52,10 +52,6 @@ Route::resource('/admins/links','admin\LinksController');
 Route::resource('/admins/bbs','admin\BbsController');
 //商品添加路由
 Route::resource('/admins/goodsgo','admin\GoodsgoController');
-//前台首页路由
-Route::resource('/home/index','home\IndexController');
-//注册路由
-Route::resource('/home/register','home\RegisterController');
 
 // 管理员模块
 Route::post('/admins/super/status/{id}','admin\SuperController@status');
@@ -66,3 +62,20 @@ Route::resource('/admins/super','admin\SuperController');
 
 // 这个结尾是中间件组的结尾
 });
+
+
+
+//  实验用 路由
+//  
+//  remember_token
+Route::get('/test', function () {
+
+
+
+});
+
+//前台首页路由
+Route::resource('/home/index','home\IndexController');
+// 前台 登录 注册 路由
+Route::resource('/home/register','home\RegisterController');
+
