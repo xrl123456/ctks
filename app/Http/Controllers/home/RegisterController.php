@@ -8,7 +8,7 @@ use App\Models\Userinfo;
 use App\Models\Users;
 use Hash;
 use DB;
-
+use App\Models\Goodsgo;
 
 class RegisterController extends Controller
 	{
@@ -124,7 +124,7 @@ class RegisterController extends Controller
 			//用户中心
 			public function welcome()
 			{
-					session(['id'=>'79']);
+				
 				return view('home.udai.udai_welcome');
 			}
 			//个人资料
@@ -173,5 +173,6 @@ class RegisterController extends Controller
 	        			}
 
 			}
+		
 
-	 }
+	}

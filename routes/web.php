@@ -56,8 +56,10 @@ Route::get('/', function () {
 	Route::get('/home/setting','home\RegisterController@setting');
 	//跳转前台个人资料存储
 	Route::post('/home/datum','home\RegisterController@datum');
-	
-
+	//跳转前台图片详情
+	Route::get('/home/item_show/{id}','home\GoodsController@itemShow');
+	//加入购物车
+	Route::get('/home/shopcart/{id}','home\GoodsController@shopcart');
 
 
 

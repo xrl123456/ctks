@@ -22,7 +22,7 @@
 	<div class="tab-header">
 		<div class="inner">
 			<div class="pull-left">
-				<div class="pull-left">嗨，欢迎来到<span class="cr">U袋网</span></div>
+				<div class="pull-left">来到<span class="cr">U袋网</span></div>
 				<a href="agent_level.html">网店代销</a>
 				<a href="temp_article/udai_article4.html">帮助中心</a>
 			</div>

@@ -283,7 +283,7 @@
 				<div class="right-box">
 				@foreach($goods as $key=>$value)
 					@if($vv->pid == $value->tid)
-					<a href="item_show.html" class="floor-item">
+					<a href="/home/item_show/{{ $value->id }}" class="floor-item">
 						<div class="item-img hot-img">
 							<img src="/uploads/Goods/{{ $value->pic }}" alt="纯色圆领短袖T恤活a动衫弹力柔软" class="cover">
 						</div>
