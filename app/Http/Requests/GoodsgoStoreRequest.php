@@ -25,7 +25,7 @@ class GoodsgoStoreRequest extends FormRequest
     {
         return [
             //
-             'gname'=>'required|unique:goods_go',
+             'gname'=>'required',
             'price'=>'required',
             'goodsNum'=>'required',
             'tid'=>'required',
@@ -37,7 +37,7 @@ class GoodsgoStoreRequest extends FormRequest
     {
         return [
         'gname.required'=>'商品名不能为空',
-        'gname.unique'=>'该商品已存在',
+        
         'price.required'=>'商品价格不能为空',
         'tid.required'=>'商品分类不能为空',
         'goodsNum.required'=>'商品库存不能为空',

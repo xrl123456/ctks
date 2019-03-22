@@ -18,6 +18,7 @@ class GoodsgoController extends Controller
     public function index()
     {
         //初始化
+     
         $goodsgo = Goodsgo::all();
         return view('admin.goodsgo.index',['goodsgo'=>$goodsgo]);
        
@@ -78,7 +79,7 @@ class GoodsgoController extends Controller
         $res = $goods->save();
         //判断是否成功
             if($res) {    DB::commit();
-                        return redirect('/admins/goodsgo')->with('success','添加成功');  
+                        return redirect('/admins/goodsgo/create')->with('success','添加成功');  
                     }else{
                         DB::rollBack();
                         return redirect('/admins/goodsgo')->with('error','添加失败');

@@ -13,6 +13,11 @@ class Goodsgo extends Model
     {
     	return $this->belongsTo('App\Models\Goods','tid');
     }
+
+    // public function letwo()
+    // {
+    // 	return $this->hasMany('App\Models\Goods','pid');
+    // }
     
 }
 	

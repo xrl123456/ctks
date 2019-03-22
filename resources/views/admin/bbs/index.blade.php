@@ -41,7 +41,13 @@
                         <tr class="odd">
                         		<td class="  sorting_1" style="text-align:center">{{ $v->id }}</td>
                                 <td class="  sorting_1" style="text-align:center">{{ $v->title }}</td>
-                                <td class="  sorting_1" style="text-align:center">{{ $v->content }}</td>
+                                <td style="text-align:center">
+                                    <abbr title="{{ $v->content }}" style="text-align:center">
+                                        <p style="width:50px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                                           {{ $v->content }}
+                                        </p>
+                                    </abbr>
+                                </td>
                                 <td class="  sorting_1" style="text-align:center">{{ $v->created_at }}</td>
                                 <td class="  sorting_1" style="text-align:center">
                                 <form action="/admins/bbs/{{ $v->id }}" method="post"  style="display: inline;">
@@ -58,7 +64,7 @@
                         <div class="dataTables_info" id="DataTables_Table_1_info">
                         Showing 1 to 10 of 57 entries
                         </div>
-                        <div class="dataTables_paginate paging_full_numbers" id="page_page">
+                        <div class="dataTables_paginate paging_full_numbers" id="page_pageqw">
                         	{{ $bbslist->appends($request)->links() }}
                         </div>
                         </div>

@@ -53,7 +53,7 @@
                                          <option>---请选择---</option>
                                           @foreach($goods as $k=>$v)
 
-                                            <option value="{{$v->id }}">{{ $v->cname }}</option>
+                                            <option value="{{$v->pid }}">{{ $v->cname }}</option>
                                           @endforeach
                                         </select>
                                     </div>

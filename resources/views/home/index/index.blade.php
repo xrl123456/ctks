@@ -270,6 +270,8 @@
 				<div class="case-list fz0 pull-right">
 					@foreach($v['sub'] as $kk=>$vv)
 					<a href="item_category.html">{{ $vv->cname }}</a>
+					<a href="item_category.html">{{ $vv->id }}</a>
+					
 					@endforeach
 				</div>
 			</div>
@@ -277,18 +279,26 @@
 				<a class="left-img hot-img" href="">
 					<img src="images/floor_2.jpg" alt="" class="cover">
 				</a>
+				
 				<div class="right-box">
+				@foreach($goods as $key=>$value)
+					@if($vv->pid == $value->tid)
 					<a href="item_show.html" class="floor-item">
 						<div class="item-img hot-img">
-							<img src="images/temp/S-001.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+							<img src="/uploads/Goods/{{ $value->pic }}" alt="纯色圆领短袖T恤活a动衫弹力柔软" class="cover">
 						</div>
 						<div class="price clearfix">
-							<span class="pull-left cr fz16">￥18.0</span>
-							<span class="pull-right c6">进货价</span>
+							<span class="pull-left cr fz16">￥{{ $value->price }}</span>
+							<span class="pull-right c6">价格</span>
 						</div>
-						<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
+						<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">{{ $value->gname }}</div>
+
 					</a>
+						@endif
+					@endforeach
+					
 				</div>
+				
 			</div>
 		</section>
 		@endforeach
@@ -323,9 +333,9 @@
 	<div class="right-nav">
 		<ul class="r-with-gotop">
 			<li class="r-toolbar-item">
-				<a href="udai_welcome.html" class="r-item-hd">
+				<a href="/home/udai" class="r-item-hd">
 					<i class="iconfont icon-user"></i>
-					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
+					<div class="r-tip__box"><span class="r-tip-text"></span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
