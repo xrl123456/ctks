@@ -79,28 +79,26 @@ Route::get('/test', function () {
 
 
 
-	//前台首页路由
-	Route::resource('/','home\IndexController');
-	//前台首页路由
-	Route::resource('/home/index','home\IndexController');
-	//跳转注册页面路由
-	Route::get('/home/register','home\RegisterController@index');
-	//跳转注册方法路由
-	Route::post('/home/rest','home\RegisterController@show');
-	//跳转验证路由
-	Route::get('/home/yanzhen','home\RegisterController@yanzhen');
-	/// 前台 登录 路由
-	Route::resource('/home/login','home\LoginController');
-
-	//跳转前台用户中心
-	Route::get('/home/udai','home\RegisterController@welcome');
-	//跳转前台个人资料区
-	Route::get('/home/setting','home\RegisterController@setting');
-	//跳转前台个人资料存储
-	Route::post('/home/datum','home\RegisterController@datum');
-	//跳转前台图片详情
-	Route::get('/home/item_show/{id}','home\GoodsController@itemShow');
-	//加入购物车
-	Route::get('/home/shopcart/{id}','home\GoodsController@shopcart');
+//前台首页路由
+Route::resource('/','home\IndexController');
+//跳转注册页面路由
+Route::get('/home/register','home\RegisterController@index');
+//跳转注册方法路由
+Route::post('/home/rest','home\RegisterController@show');
+//跳转验证路由
+Route::get('/home/yanzhen','home\RegisterController@yanzhen');
+/// 前台 登录 路由
+Route::resource('/home/login','home\LoginController');
+Route::get('/home/denlu','home\RegisterController@denlu');
+//跳转前台用户中心
+Route::get('/home/udai','home\RegisterController@welcome');
+//跳转前台个人资料区
+Route::get('/home/setting','home\RegisterController@setting');
+//跳转前台个人资料存储
+Route::post('/home/datum','home\RegisterController@datum');
+//跳转前台图片详情
+Route::get('/home/item_show/{id}','home\GoodsController@itemShow');
+//加入购物车
+Route::get('/home/shopcart/{id}','home\GoodsController@shopcart');
 
 
