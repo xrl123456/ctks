@@ -81,8 +81,8 @@ Route::get('/test', function () {
 
 	//前台首页路由
 	Route::resource('/','home\IndexController');
-	//前台首页路由
-	Route::resource('/home/index','home\IndexController');
+	// //前台首页路由
+	// Route::resource('/home/index','home\IndexController');
 	//跳转注册页面路由
 	Route::get('/home/register','home\RegisterController@index');
 	//跳转注册方法路由
@@ -91,6 +91,8 @@ Route::get('/test', function () {
 	Route::get('/home/yanzhen','home\RegisterController@yanzhen');
 	/// 前台 登录 路由
 	Route::resource('/home/login','home\LoginController');
+	Route::get('/home/denlu','home\RegisterController@denlu');
+
 
 	//跳转前台用户中心
 	Route::get('/home/udai','home\RegisterController@welcome');

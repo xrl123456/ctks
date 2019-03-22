@@ -1,4 +1,4 @@
-@extends('home.udai.udai');
+@extends('home.udai.udai')
  @section('content')
 	
 			<div class="pull-right">

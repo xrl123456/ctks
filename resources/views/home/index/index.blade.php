@@ -39,7 +39,7 @@
 
 			</div>
 			<ul class="nva-list">
-				<a href="index.html"><li class="active">首页</li></a>
+				<a href="/"><li class="active">首页</li></a>
 				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
 				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
 				<a href="class_room.html"><li>U袋学堂</li></a>
@@ -50,7 +50,7 @@
 			<div class="user-info__box">
 				<div class="login-box">
 					<div class="avt-port">
-						<img src="images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
+						<img src="/home/images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
 					</div>
 					<!-- 已登录 -->
 					<div class="name c6">Hi~ <span class="cr">18759808122</span></div>
@@ -111,11 +111,11 @@
 	<!-- 顶部轮播 -->
     <div class="swiper-container banner-box">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="item_show.html"><img src="images/temp/banner_1.jpg" class="cover"></a></div>
-            <div class="swiper-slide"><a href="item_show.html"><img src="images/temp/banner_2.jpg" class="cover"></a></div>
-            <div class="swiper-slide"><a href="item_category.html"><img src="images/temp/banner_3.jpg" class="cover"></a></div>
-            <div class="swiper-slide"><a href="item_show.html"><img src="images/temp/banner_4.jpg" class="cover"></a></div>
-            <div class="swiper-slide"><a href="item_sale_page.html"><img src="images/temp/banner_5.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_1.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_2.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_category.html"><img src="/home/images/temp/banner_3.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_4.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_sale_page.html"><img src="/home/images/temp/banner_5.jpg" class="cover"></a></div>
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -140,12 +140,12 @@
 				</div>
 				<div class="con-box">
 					<a class="left-img hot-img" href="">
-						<img src="images/floor_1.jpg" alt="" class="cover">
+						<img src="/home/images/floor_1.jpg" alt="" class="cover">
 					</a>
 					<div class="right-box hot-box">
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-001.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-001.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -155,7 +155,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-002.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-002.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -165,7 +165,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-003.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-003.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -175,7 +175,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-004.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-004.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -185,7 +185,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-005.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-005.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -195,7 +195,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-006.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-006.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -277,7 +277,7 @@
 			</div>
 			<div class="con-box">
 				<a class="left-img hot-img" href="">
-					<img src="images/floor_2.jpg" alt="" class="cover">
+					<img src="/home/images/floor_2.jpg" alt="" class="cover">
 				</a>
 				
 				<div class="right-box">
@@ -373,16 +373,16 @@
 		<div class="footer-tags">
 			<div class="tags-box inner">
 				<div class="tag-div">
-					<img src="images/icons/footer_1.gif" alt="厂家直供">
+					<img src="/home/images/icons/footer_1.gif" alt="厂家直供">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_2.gif" alt="一件代发">
+					<img src="/home/images/icons/footer_2.gif" alt="一件代发">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_3.gif" alt="美工活动支持">
+					<img src="/home/images/icons/footer_3.gif" alt="美工活动支持">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_4.gif" alt="信誉认证">
+					<img src="/home/images/icons/footer_4.gif" alt="信誉认证">
 				</div>
 			</div>
 		</div>

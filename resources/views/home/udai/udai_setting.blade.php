@@ -24,7 +24,7 @@
 							
 						<div class="user-form-group">
 							<label for="user-id">用户名：</label>
-							<input type="text" id="user-id" name="name"  value="{{ $users->name }}" placeholder="请输入您的昵称">
+							<input type="text" id="user-id" name="name"  value="" placeholder="请输入您的昵称">
 						</div>
 						<div class="user-form-group">
 							<label name="status">等级：</label>
@@ -36,13 +36,13 @@
 						</div>
 						<div class="user-form-group">
 							<label>性别：</label>
-							<label><input type="radio" name="sex" value="0"{{ $users->info[0]->sex == 0 ? 'checked': '' }} ><i class="iconfont icon-radio"></i> 男士</label>
-							<label><input type="radio" name="sex" value="1"{{ $users->info[0]->sex == 1 ? 'checked': '' }}><i class="iconfont icon-radio"></i> 女士</label>
-							<label><input type="radio" name="sex" value="2"{{ $users->info[0]->sex == 2 ? 'checked': '' }}><i class="iconfont icon-radio"></i> 保密</label>
+							<label><input type="radio" name="sex" value="0" ><i class="iconfont icon-radio"></i> 男士</label>
+							<label><input type="radio" name="sex" value="1"><i class="iconfont icon-radio"></i> 女士</label>
+							<label><input type="radio" name="sex" value="2"><i class="iconfont icon-radio"></i> 保密</label>
 						</div>
 						<div class="user-form-group">
 							<label>生日：</label>
-							<label><input type="text" class="datepicker" name="birth"  value="{{ $users->info[0]->birth }}" placeholder="请选择您的出生日期"></label>
+							<label><input type="text" class="datepicker" name="birth"  value="" placeholder="请选择您的出生日期"></label>
 						</div>
 						<div class="user-form-group">
 							<input  style="background-color:#cb2126;width:120px;font-size:15px;border-radius:25px;border:1px solid #a1a1a1;padding:10px 20px; " value="确认"  type="submit" >

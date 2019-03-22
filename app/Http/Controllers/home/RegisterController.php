@@ -130,10 +130,9 @@ class RegisterController extends Controller
 			}
 			//个人资料
 			public function setting()
-			{	$id=79;
-				$users = Users::find($id);
+			{	
 				// dump($users->info[0]['pic']);exit;
-				return view('home.udai.udai_setting',['users'=>$users]);
+				return view('home.udai.udai_setting');
 			}
 			//个人资料存储
 			public function datum(Request $request)

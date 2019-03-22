@@ -22,13 +22,11 @@
 	<div class="tab-header">
 		<div class="inner">
 			<div class="pull-left">
-				<div class="pull-left">嗨，欢迎来到<span class="cr">U袋网</span></div>
-				<a href="agent_level.html">网店代销</a>
+				<div class="pull-left">嗨，<font color="#f0c">{{ (Session::get('home_user')['name']) ? Session::get('home_user')['name'] : "" }}</font> 欢迎来到 <span class="cr"> U袋网 </span></div>
 				<a href="temp_article/udai_article4.html">帮助中心</a>
 			</div>
 			<div class="pull-right">
-				<a href="/home/denlu"><span class="cr">登录</span></a>
-				<a href="/home/register?p=register">注册</a>
+				
 				<a href="/home/udai">我的U袋</a>
 				<a href="udai_order.html">我的订单</a>
 				<a href="udai_integral.html">积分平台</a>
@@ -39,7 +37,7 @@
 	<div class="bgf5 clearfix">
 		<div class="top-user">
 			<div class="inner">
-				<a class="logo" href="/home/index"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+				<a class="logo" href="/"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
 				<div class="title">个人中心</div>
 			</div>
 		</div>
