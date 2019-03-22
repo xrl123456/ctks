@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Supers extends Model
 {
     //
-    public function superinfo()
+    public $table ="supers";
+
+    public function superlist ()
     {
-        return $this->hasOne('App\Models\Super_info','sid');
+ 		return $this->belongsTo('App\Models\Super_info','id');
+
     }
 
+    
 }
+
+

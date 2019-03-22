@@ -99,21 +99,22 @@
             <!-- User Information and functions section -->
             <div id="mws-user-info" class="mws-inset">
             
-            	<!-- User Photo -->
-            	<div id="mws-user-photo">
-                	<img src="/admin/example/profile.jpg" alt="User Photo">
+
+                @if( Session::get('admin_user'))    
+                <div id="mws-user-photo">
+                    <img src="/uploads/{{ Session::get('admin_user')['face'] }}" alt="User Photo" style="width:30px;height:30px;">
                 </div>
                 
                 <!-- Username and Functions -->
-                <div id="mws-user-functions">
+                <div id="mws-user-functions" style="width:120px;">
                     <div id="mws-username">
-                        Hello, 管理员
+                        Hello, {{ Session::get('admin_user')['name'] }}
                     </div>
                     <ul>
-                    	<li><a href="#">头像</a></li>
-                        <li><a href="#">修改密码</a></li>
-                        <li><a href="index.html">退出</a></li>
+                        <li><a href="/admins/seek/{{ Session::get('admin_user')['id'] }}/edit">修改密码</a></li>
+                        <li><a href="/admins/login/{{ Session::get('admin_user')['id'] }}" onclick="alert('确定要退出？')">退出</a></li>
                     </ul>
+                @endif
                 </div>
             </div>
         </div>
@@ -136,13 +137,13 @@
                 <span></span>
             </div>
             
-        	<!-- Searchbox -->
-        	<div id="mws-searchbox" class="mws-inset">
+        	<!-- 搜索栏 -->
+        	<!-- <div id="mws-searchbox" class="mws-inset">
             	<form action="typography.html">
                 	<input type="text" class="mws-search-input" placeholder="Search...">
                     <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
                 </form>
-            </div>
+            </div> -->
             
             <!-- Main Navigation -->
             <div id="mws-navigation">

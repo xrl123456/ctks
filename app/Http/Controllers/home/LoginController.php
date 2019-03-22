@@ -1,27 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-class IndexController extends Controller
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\home\loginStoreRequest;
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function Admin_user()
-    {
-        return $admin_user;
-    }
     public function index()
     {
         //
-        $admin_user = (session('admin_user'));
-        // dd($admin_user);
-        return view('admin.index.index',['admin_user'=>$admin_user]);
     }
 
     /**
@@ -40,9 +34,27 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(loginStoreRequest $request)
     {
-        //
+        //  这不是添加  这里是接受登录 
+        // dump($_POST);
+
+         if (Auth::attempt(['name' => $request->name,  'password' => $request->password])) {
+            // 认证通过...
+            
+            // 获取当前已认证的用户...
+            $user = Auth::user();
+            // 压入session 
+            session(['home_user' => $user]);
+            return '<script>alert("登录成功");location.href="/"</script>';
+            
+        }else{
+
+            return '<script>alert("账号名或密码错误");location.href="/home/denlu"</script>';
+            
+        }
+
+        
     }
 
     /**
