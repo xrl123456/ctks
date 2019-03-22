@@ -4,9 +4,11 @@ namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Userinfo;
 use App\Models\Users;
 use Hash;
 use DB;
+
 
 class RegisterController extends Controller
 	{
@@ -31,7 +33,11 @@ class RegisterController extends Controller
 	  			 $user->phone =  $request->phone;
 	  			 $user->password = Hash::make($request->password);
 	  			 $res = $user->save();
-	  			 if($res){
+	  			  $uid = $user->id;
+	  			  $usersinfo = new Userinfo;
+	  			  $usersinfo->uid = $uid;
+	  			  $res2 = $usersinfo->save(); 
+	  			 if($res && $res2 ){
 	  			 		 DB::commit();
 	  			 		  echo "<script>alert('注册成功');location.href='/home/denlu';</script>";
 	  			 	}else{
@@ -110,10 +116,62 @@ class RegisterController extends Controller
 			    curl_close($ch);
 			    return $response;
 			} 
-
+			//登录
 			public function denlu()
 			{
 				return view('home.register.denlu');
+			}
+			//用户中心
+			public function welcome()
+			{
+					session(['id'=>'79']);
+				return view('home.udai.udai_welcome');
+			}
+			//个人资料
+			public function setting()
+			{	$id=79;
+				$users = Users::find($id);
+				// dump($users->info[0]['pic']);exit;
+				return view('home.udai.udai_setting',['users'=>$users]);
+			}
+			//个人资料存储
+			public function datum(Request $request)
+			{
+
+							//ajx传递过来的键值
+						 $file = $request->file('abc');
+						 if($file){
+							 	//图片保存的路径
+							 $name = $file->store('photo');
+							 $info = new  Userinfo();
+							 $info->pic = $name;
+							 if($info->save()){
+							 	//返回到显示页面
+							 	return $name;
+							 }
+						}else{
+
+        				 //初始化数据库
+        				 $user = new Users;
+        				 //获取值
+        				 $user->name = $request->input('name','');
+        				 $user->status = $request->input('status','');
+        				 $res = $user->save();
+        				 $uid = $user->id;
+        				 //初始化数据库
+        				 $info = new  Userinfo;
+        				   $info->uid= $uid;
+        				   $info->sex = $request->input('sex','');
+        				   $info->pic = $name;
+        				   $info->birth = $request->input('birth','');
+        				   $res2 = $info->save();
+	        				  if($res && $res2){
+	        				  	 echo "<script>alert('添加成功');location.href='/home/udai';</script>";
+	        				  	}else{
+	        				  		echo "<script>alert('添加失败');location.href='/home/setting';</script>";
+	        				  	}
+	        			}
+
 			}
 
 	 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Goods;
-
+use App\Models\Goodsgo;
 class IndexController extends Controller
 {
 
@@ -34,7 +34,11 @@ class IndexController extends Controller
     public function index()
     {
 
-        return view('home.index.index');
+            //查询所有商品信息
+            $goods = Goodsgo::all();
+            // dump($goods);exit;
+            
+        return view('home.index.index',['goods'=>$goods]);
 
     }
 

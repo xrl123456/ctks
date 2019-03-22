@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Users_infos extends Model
 {
     //
-    public $table="Users_info";
+    public $table="user_info";
 }

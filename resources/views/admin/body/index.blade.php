@@ -151,7 +151,7 @@
                         <a href="#"><i class="icon-users"></i>用户管理</a>
                         <ul>
                             <li><a href="/admins/users">用户列表</a></li>
-                            <li><a href="/admins/users/create">用户添加</a></li>
+                         
                         </ul>
                     </li>
 
@@ -193,8 +193,8 @@
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>轮播图管理</a>
                         <ul>
-                            <li><a href="admins/lbts">轮播图列表</a></li>
-                            <li><a href="admins/lbts/create">轮播图添加</a></li>
+                            <li><a href="/admins/lbts">轮播图列表</a></li>
+                            <li><a href="/admins/lbts/create">轮播图添加</a></li>
                         </ul>
                     </li>
                     <li class="active">

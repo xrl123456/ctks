@@ -29,7 +29,7 @@
 			<div class="pull-right">
 				<a href="/home/denlu"><span class="cr">登录</span></a>
 				<a href="/home/register?p=register">注册</a>
-				<a href="udai_welcome.html">我的U袋</a>
+				<a href="/home/udai">我的U袋</a>
 				<a href="udai_order.html">我的订单</a>
 				<a href="udai_integral.html">积分平台</a>
 			</div>

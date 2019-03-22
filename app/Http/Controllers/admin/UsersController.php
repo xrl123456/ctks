@@ -28,10 +28,11 @@ class UsersController extends Controller
         //搜索的关键字
         $search = $request->input('search',''); 
         $users = Users::where('name','like','%'.$search.'%')->paginate($count);
+        $users2 = Users::all();
         //获取总条数
         $count = Users::count();
         //进入显示页面
-        return view('admin.users.index',['count'=>$count,'users'=>$users,'request'=>$request->all()]);
+        return view('admin.users.index',['count'=>$count,'users'=>$users,'request'=>$request->all(),'users2'=>$users2 ]);
         
     }
 
@@ -43,8 +44,7 @@ class UsersController extends Controller
     //添加页面
     public function create()
     {
-        //
-        return view('admin.users.create');
+        
     }
 
     /**
@@ -57,35 +57,35 @@ class UsersController extends Controller
     public function store(UsersStoreRequest $request)
     {
       
-         /*
-            开启事务   DB::beginTransaction();
-            提交事务   DB::commit()
-            回滚事务   DB::rollBack()
-         */
-        DB::beginTransaction();
-        //初始化
-        $users = new Users;
-        $users->name = $request->input('name','');
-        $users->email =$request->input('email','');
-        $users->phone =$request->input('phone','');
-        $users->password=Hash::make($request->input('password',''));
-        $users->status = $request->input('status','');
-        //插入数据库
-        $res = $users->save();
-        //关联用户详情表
-        $uid = $users->id;
-        //初始化详情表
-        $info = new  Userinfo;
-        $info->uid= $uid;
-       $res2 = $info->save();
-       //判断是否成功
-       if($res && $res2){
-            DB::commit();
-        return redirect('/admins/users/')->with('success','添加成功');
-     }else{
-        DB::rollBack();
-        return redirect('/admins/users/')->with('error','添加失败');
-     }
+     //     /*
+     //        开启事务   DB::beginTransaction();
+     //        提交事务   DB::commit()
+     //        回滚事务   DB::rollBack()
+     //     */
+     //    DB::beginTransaction();
+     //    //初始化
+     //    $users = new Users;
+     //    $users->name = $request->input('name','');
+     //    $users->email =$request->input('email','');
+     //    $users->phone =$request->input('phone','');
+     //    $users->password=Hash::make($request->input('password',''));
+     //    $users->status = $request->input('status','');
+     //    //插入数据库
+     //    $res = $users->save();
+     //    //关联用户详情表
+     //    $uid = $users->id;
+     //    //初始化详情表
+     //    $info = new  Userinfo;
+     //    $info->uid= $uid;
+     //   $res2 = $info->save();
+     //   //判断是否成功
+     //   if($res && $res2){
+     //        DB::commit();
+     //    return redirect('/admins/users/')->with('success','添加成功');
+     // }else{
+     //    DB::rollBack();
+     //    return redirect('/admins/users/')->with('error','添加失败');
+     // }
 
     }
 
@@ -154,31 +154,24 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    //删除操作
+    //用户详情
     public function xiangqing(Request $request,$id)
     {
+         $users = Users::find($id);
 
-        //echo $id;
-        $xiangqing=Users_infos::find($id);
-        //var_dump($xiangqing);
-        //dd($xiangqing);
-        //$xiang=Users::find($id);
-        //$d=$id;
-        //var_dump($userlist);
-        //return view('admin.users.index',['userlist'=>$userlist,'request'=>$request->all(),]);
-        return view('admin/users/xiangqing',['xiangqing'=>$xiangqing ]);
-        //return view('admin.users.create');
+      return view('admin.users.xiangqing',['users'=>$users]);
     }
+    //删除操作
     public function destroy($id)
     {
         //
-        // echo '21';
+    
         DB::beginTransaction();
         $res = Users::destroy($id); 
         $res2 = Userinfo::where('uid',$id)->delete();
         if($res && $res2){
             DB::commit();
-            return redirect('/admins/users')->with('success','删除成功');
+            return redirect('/admins/users/')->with('success','删除成功');
         }else{
             DB::rollBack();
             return redirect('/admins/users')->with('error','删除失败');
