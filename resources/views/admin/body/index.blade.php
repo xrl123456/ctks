@@ -112,7 +112,7 @@
                     </div>
                     <ul>
                         <li><a href="/admins/seek/{{ Session::get('admin_user')['id'] }}/edit">修改密码</a></li>
-                        <li><a href="/admins/loginout" onclick="alert('确定要退出？')">退出</a></li>
+                        <li><a href="/admins/login/{{ Session::get('admin_user')['id'] }}" onclick="alert('确定要退出？')">退出</a></li>
                     </ul>
                 @endif
                 </div>

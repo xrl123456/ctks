@@ -24,17 +24,6 @@ Route::resource('admins/seek','admin\SeekController');
 // Route::get('/admins');
 
 
-
-// 销毁 后台登录的 session
-Route::get('/admins/loginout', function () {
-	session()->forget('admin_user');
-    return '<script>alert("退出成功,");location.href="/admins/login";</script>';
-
-});
-
-
-
-
 // 这个中间件 判断session ->admin_user
 Route::group(['middleware'=>'admin_login'],function(){
 
