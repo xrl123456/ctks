@@ -92,9 +92,9 @@ Route::get('/test', function () {
 
 
 
-Route::get('/', function () {
-    return view('home.index.index');
-});
+// Route::get('/', function () {
+//     return view('home.index.index');
+// });
 
 
 //前台首页路由
@@ -102,10 +102,11 @@ Route::resource('/home/index','home\IndexController');
 // 前台 登录 注册 路由
 Route::resource('/home/register','home\RegisterController');
 
-
+// 前台 登录 路由
+Route::resource('/home/login','home\LoginController');
 
 //前台首页路由
-Route::resource('/home/index','home\IndexController');
+Route::resource('/','home\IndexController');
 //跳转注册页面路由
 Route::get('/home/register','home\RegisterController@index');
 //跳转注册方法路由

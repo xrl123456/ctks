@@ -30,6 +30,7 @@ class RegisterController extends Controller
 	  	 
 	  			if($request->has('agree')){
 	  			$user = new Users;
+	  			$user->name = $request->name;
 	  			 $user->phone =  $request->phone;
 	  			 $user->password = Hash::make($request->password);
 	  			 $res = $user->save();
