@@ -101,4 +101,16 @@ class LoginController extends Controller
     {
         //
     }
+    //退出登录
+    public function dropOut(Request $request)
+    {
+       
+        $request->session()->forget('home_user');
+      
+        return '<script>alert("退出成功");location.href="/"</script>';
+            
+     
+
+
+    }
 }

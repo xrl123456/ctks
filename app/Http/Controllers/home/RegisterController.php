@@ -34,11 +34,8 @@ class RegisterController extends Controller
 	  			 $user->phone =  $request->phone;
 	  			 $user->password = Hash::make($request->password);
 	  			 $res = $user->save();
-	  			  $uid = $user->id;
-	  			  $usersinfo = new Userinfo;
-	  			  $usersinfo->uid = $uid;
-	  			  $res2 = $usersinfo->save(); 
-	  			 if($res && $res2 ){
+	  			 
+	  			 if($res){
 	  			 		 DB::commit();
 	  			 		  echo "<script>alert('注册成功');location.href='/home/denlu';</script>";
 	  			 	}else{
@@ -131,20 +128,22 @@ class RegisterController extends Controller
 			//个人资料
 			public function setting()
 			{	
-				// dump($users->info[0]['pic']);exit;
-				return view('home.udai.udai_setting');
+				$id =(Session('home_user')['id']);
+				 $info = Users::find($id);
+				return view('home.udai.udai_setting',['info'=>$info]);
 			}
 			//个人资料存储
 			public function datum(Request $request)
 			{
-
+							$id =(Session('home_user')['id']);
+							 $info = Users::find($id);
 							//ajx传递过来的键值
 						 $file = $request->file('abc');
 						 if($file){
 							 	//图片保存的路径
 							 $name = $file->store('photo');
-							 $info = new  Userinfo();
-							 $info->pic = $name;
+							 $aa = '/uploads/'.$name;
+							 $info->pic= $aa;
 							 if($info->save()){
 							 	//返回到显示页面
 							 	return $name;
@@ -152,20 +151,15 @@ class RegisterController extends Controller
 						}else{
 
         				 //初始化数据库
-        				 $user = new Users;
+        				
         				 //获取值
-        				 $user->name = $request->input('name','');
-        				 $user->status = $request->input('status','');
-        				 $res = $user->save();
-        				 $uid = $user->id;
-        				 //初始化数据库
-        				 $info = new  Userinfo;
-        				   $info->uid= $uid;
-        				   $info->sex = $request->input('sex','');
-        				   $info->pic = $name;
-        				   $info->birth = $request->input('birth','');
-        				   $res2 = $info->save();
-	        				  if($res && $res2){
+        				 $info ->name = $request->input('name','');
+        				 $info ->status = $request->input('status','');
+        				 $info->sex = $request->input('sex','');
+        				 $info->birth = $request->input('birth','');
+        				 $res = $info ->save();
+        				 
+	        				  if($res){
 	        				  	 echo "<script>alert('添加成功');location.href='/home/udai';</script>";
 	        				  	}else{
 	        				  		echo "<script>alert('添加失败');location.href='/home/setting';</script>";

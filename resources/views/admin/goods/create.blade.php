@@ -35,8 +35,9 @@
                             <div class="formControls col-xs-8 col-sm-9"> 
                             <span class="select-box" style="width:150px;">
                                 <select class="select" name="status" size="1" style="width:100px;">
-                                    <option value="0">关闭</option>
+                                   
                                     <option value="1">开启</option>
+                                     <option value="0">关闭</option>
                                        
                                 </select>
                                 </span> 

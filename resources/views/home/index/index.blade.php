@@ -21,6 +21,7 @@
 								<div class="genre-box clearfix">
 								@foreach($v['sub'] as $kk=>$vv)
 									<span class="title">{{ $vv->cname }}：</span>
+
 									<div class="genre-list">
 										@foreach($vv['sub'] as $kkk=>$vvv)
 										<a href="">{{ $vvv->cname }}</a>
@@ -269,7 +270,8 @@
 				<i class="iconfont icon-skirt fz16">{{ $v->cname }}</i>
 				<div class="case-list fz0 pull-right">
 					@foreach($v['sub'] as $kk=>$vv)
-					<a href="item_category.html">{{ $vv->cname }}</a>
+					<a href="/home/item_categoryl/{{ $vv->id }}">{{ $vv->cname }}</a>
+
 					<a href="item_category.html">{{ $vv->id }}</a>
 					
 					@endforeach

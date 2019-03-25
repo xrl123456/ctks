@@ -180,17 +180,14 @@
                             <li><a href="/admins/links/create">添加链接</a></li>
                         </ul>
                     </li>
-                    <li>
+                   <li class="active">
                         <a href="#"><i class="icon-bullhorn"></i>公告管理</a>
                         <ul>
                             <li><a href="/admins/bbs">公告列表</a></li>
                             <li><a href="/admins/bbs/create">公告添加</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#"><i class="icon-official"></i>管理员页</a>
-                     
-
+                    
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>轮播图管理</a>
                         <ul>
