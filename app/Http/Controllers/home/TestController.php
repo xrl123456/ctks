@@ -4,28 +4,13 @@ namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Goods;
 use App\Models\Goodsgo;
-class IndexController extends Controller
+use App\Models\Orders;
+use App\Models\Order_info;
+
+use DB;
+class TestController extends Controller
 {
-
-
-    public static function getFlei($pid = 0)
-    {
-        $data = [];
-        //获取一级分类
-        $yiji_data = Goods::where('pid',$pid)->get();
-        //通过一级分类 获取二级分类
-        foreach($yiji_data as $key => $value) {
-           $temp = self::getFlei($value->id);
-            $value['sub'] = $temp;
-            $data[] = $value;
-        }
-        return $data;
-
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -33,11 +18,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-
-        //查询所有商品信息
-        $goods = Goodsgo::all();
-
-        return view('home.index.index',['goods'=>$goods]);
+        dump(session('goodsnumber'));
+         // session('home_user')->pull('home_user','id');
+        // dump(session('home_user'));
 
     }
 
@@ -49,7 +32,6 @@ class IndexController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**
@@ -71,9 +53,7 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        // 这里目前是退出的
-        session()->forget('home_user');
-        return '<script>alert("退出成功,");location.href="/";</script>';
+        //
     }
 
     /**

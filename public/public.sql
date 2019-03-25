@@ -63,11 +63,12 @@ DROP TABLE IF EXISTS `super_info`;
 CREATE TABLE `super_info` (
   `sid` int(11) unsigned NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `face` varchar(255) DEFAULT '',
+  `face` varchar(255) DEFAULT '/faces/1.jpg',
   `sex` int(11) DEFAULT '0',
   `desc` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 --  管理员 表

@@ -42,7 +42,7 @@ class SeekController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminSeekStroeRequest $request)
+    public function store(Request $request)
     {
         // 接受表单传值 
         // dd($_POST);

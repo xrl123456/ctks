@@ -4,28 +4,10 @@ namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Goods;
 use App\Models\Goodsgo;
-class IndexController extends Controller
+use DB;
+class OrdersController extends Controller
 {
-
-
-    public static function getFlei($pid = 0)
-    {
-        $data = [];
-        //获取一级分类
-        $yiji_data = Goods::where('pid',$pid)->get();
-        //通过一级分类 获取二级分类
-        foreach($yiji_data as $key => $value) {
-           $temp = self::getFlei($value->id);
-            $value['sub'] = $temp;
-            $data[] = $value;
-        }
-        return $data;
-
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -33,11 +15,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-
-        //查询所有商品信息
-        $goods = Goodsgo::all();
-
-        return view('home.index.index',['goods'=>$goods]);
 
     }
 
@@ -49,7 +26,6 @@ class IndexController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**
@@ -71,10 +47,23 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        // 这里目前是退出的
-        session()->forget('home_user');
-        return '<script>alert("退出成功,");location.href="/";</script>';
+        // 从商品详情-》立即购买-》结算页 
+        // echo '1';
+        // 查询过来的商品的id 的信息
+        $goods_info = Goodsgo::find($id);
+        dump(session('goodsnumber'));
+        
+
+        return view('home.order.order',['goods_info'=>$goods_info]);
     }
+
+
+    public function number($num)
+    {   
+        // 将数量 押送session
+        session(['goodsnumber' => $num]);
+        return $num;
+    }    
 
     /**
      * Show the form for editing the specified resource.

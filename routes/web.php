@@ -70,13 +70,14 @@ Route::resource('/admins/lbts','admin\LbtsController');
 //  实验用 路由
 //  
 //  remember_token
-Route::get('/test', function () {
+// Route::get('/test', function () {
+                
+// // dump($list);
 
+// });
+Route::resource('/test','home\TestController');
 
-
-});
-
-
+// ================================
 
 
 
@@ -95,16 +96,24 @@ Route::resource('/home/login','home\LoginController');
 Route::get('/home/denlu','home\RegisterController@denlu');
 
 
+
+
+// 下面的需要中间件 通过进入
+//跳转商品图片详情
+Route::get('/home/item_show/{id}','home\GoodsController@itemShow');
 //跳转前台用户中心
 Route::get('/home/udai','home\RegisterController@welcome');
 //跳转前台个人资料区
 Route::get('/home/setting','home\RegisterController@setting');
 //跳转前台个人资料存储
 Route::post('/home/datum','home\RegisterController@datum');
-//跳转前台图片详情
-Route::get('/home/item_show/{id}','home\GoodsController@itemShow');
 //加入购物车
 Route::get('/home/shopcart/{id}','home\GoodsController@shopcart');
 
+
+Route::get('/home/shop/shopping/{id}/{num}/{uid}','home\ShopController@shopping');
+Route::resource('/home/shop','home\ShopController');
+Route::get('/home/order/number/{num}','home\OrdersController@number');
+Route::resource('/home/order','home\OrdersController');
 
 
