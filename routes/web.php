@@ -56,6 +56,10 @@ Route::get('/', function () {
 	Route::get('/home/setting','home\RegisterController@setting');
 	//跳转前台个人资料存储
 	Route::post('/home/datum','home\RegisterController@datum');
+	// Route::get('/home/bbs','home\BbsController@Bbs');
+	Route::get('/home/bbs/index/{id}','home\BbsController@index');
+	//Route::get('/home/lbts/index','home\LbtsController@index');
+	Route::resource('/admins/guanli','admin\GuanliController');
 	
 
 
@@ -71,8 +75,9 @@ Route::get('/', function () {
 	Route::post('/admins/super/showup/{id}','admin\SuperController@showup');
 	Route::post('/admins/super/imgup/{id}','admin\SuperController@imgup');
 	Route::resource('/admins/super','admin\SuperController');
-
+	
 	
 	Route::resource('/admins/users','admin\UsersController');
-
+	Route::get('/admins/lbts/{id}/{statu}','admin\LbtsController@statu');
 	Route::resource('/admins/lbts','admin\LbtsController');
+	Route::resource('/admins/guanli','admin\GuanliController');

@@ -198,6 +198,14 @@
                         </ul>
                     </li>
                     <li class="active">
+                        <a href="#"><i class="icon-list"></i>网站管理</a>
+
+                        <ul>
+                            <li><a href="/admins/guanli">网站列表</a></li>
+                            <li><a href="/admins/guanli/create">网站管理添加</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
                         <a href="#"><i class="icon-list"></i>用户管理</a>
 
                         <ul>
