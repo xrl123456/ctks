@@ -112,11 +112,11 @@
 	<!-- 顶部轮播 -->
     <div class="swiper-container banner-box">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_1.jpg" class="cover"></a></div>
-            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_2.jpg" class="cover"></a></div>
-            <div class="swiper-slide"><a href="item_category.html"><img src="/home/images/temp/banner_3.jpg" class="cover"></a></div>
-            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_4.jpg" class="cover"></a></div>
-            <div class="swiper-slide"><a href="item_sale_page.html"><img src="/home/images/temp/banner_5.jpg" class="cover"></a></div>
+
+        @foreach($lbts as $k =>$v)
+            <div class="swiper-slide"><a href="item_show.html"><img src="/uploads/{{ $v->pic }}" class="cover"></a></div>
+		@endforeach
+
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -216,24 +216,13 @@
 					<div class="notice-box bgf5">
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
-								<a class="swiper-slide ep" href="udai_notice.html">【公告】U袋网平台已上线，您还在等什么呢？是吧~</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【资讯】P站服务器爆炸啦。国内86%地区IP被限制~</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【公告】六趣公司9月底将彻底关闭66RPG论坛~</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【资讯】Project1站将接盘66RPG，新域名rpg.blue</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】央行决定对普惠金融实施定向降准政策 最高下调1.5个百分点</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】那些年看的剧里十大虐心情节，谁戳中了你的泪点？</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】惨遭魔改？派拉蒙将拍真人版《你的名字。》</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】外媒称中国限制日本跟团游?旅行社:仍正常发团</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】广电总局：电台电视台应在重要法定节日播放国歌</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】高校性教育课成"爆款" 老师都讲哪些"大尺度"内容?</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】vivo X20全面屏手机首销火爆 陈赫欧豪现身助力</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】“拒绝妻子手术”现场医生：病人丈夫被冤枉了</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】游客们注意了！国庆你要避开十大坑</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】他卖了1.5万双假货，现在面临10年牢狱！</a>
-								<a class="swiper-slide ep" href="udai_notice.html">【新闻】10月1日起国家再次提高部分优抚对象抚恤补助标准 烈属抚恤每年23130元</a>
+								@foreach($Bbs as $k =>$v)
+								<a class="swiper-slide ep" href="/home/bbs/index/{{ $v->id }}">{{ $v->title }}</a>
+								@endforeach
 							</div>
 						</div>
 					</div>
+					
 					<div class="buts-box bgf5">
 						<div class="but-div">
 							<a href="">

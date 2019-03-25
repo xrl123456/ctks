@@ -4,13 +4,17 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
-use App\Models\Lbts;
-use App\Http\Requests\LbtsStoreRequest;
+use App\Models\Guanli;
+//use App\Http\admin\Guanli;
+//use App\Http\Requests\GuanliStoreRequest;
+//use App\Http\Requests\GuanliStoreRequest;
+use App\Http\Requests\GuanliStoreRequest;
+
 use Illuminate\Support\Facades\Storage;
 
+use DB;
 
-class LbtsController extends Controller
+class GuanliController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +23,12 @@ class LbtsController extends Controller
      */
     public function index(Request $request)
     {
+        //echo '123';
         $count=$request->input('count',5);
         $search=$request->input('search','');
-        $lbtslist=lbts::where('simg','like','%'.$search.'%')->paginate($count);
+        $guanli=Guanli::where('name','like','%'.$search.'%')->paginate($count);
         //var_dump($userlist);
-        return view('admin.lbts.index',['lbtslist'=>$lbtslist,'request'=>$request->all(),]);
+        return view('admin.guanli.index',['guanli'=>$guanli,'request'=>$request->all(),]);
     }
 
     /**
@@ -33,7 +38,8 @@ class LbtsController extends Controller
      */
     public function create()
     {
-        return view('admin/lbts/create');
+        //echo '456';
+        return view('admin/guanli/guanli');
     }
 
     /**
@@ -42,13 +48,9 @@ class LbtsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LbtsStoreRequest $request)
+    public function store(GuanliStoreRequest $request)
     {
         //dump($request->all());
-        //dd($_FILES);
-        $file = $request->file('pic');
-        //dd($file);
-        
         DB::beginTransaction();
         if ($request->hasFile('pic')) {
             // 接收文件上传对象
@@ -70,21 +72,26 @@ class LbtsController extends Controller
         }else{
             dd('请选择');
         }
-        $lbts = new Lbts;
-        $lbts->pic=$name;
-        $lbts->simg=$request->input('simg','');
-        $lbts->surl=$request->input('surl','');
-        $lbts->status=$request->input('status','');
-        $res1=$lbts->save();
+        $Guanli = new Guanli;
+        $Guanli->logo=$name;
+        $Guanli->name=$request->input('name','');
+        $Guanli->desc=$request->input('desc','');
+        $Guanli->filing=$request->input('filing','');
+        $Guanli->phone=$request->input('phone','');
+        $Guanli->statu=$request->input('statu','');
+        $Guanli->url=$request->input('url','');
+        $Guanli->cright=$request->input('cright','');
+        //$Guanli->filing=$request->input('status','');
+        $res1=$Guanli->save();
         
         if($res1)
         {
             DB::commit();
-            return redirect('admins/lbts')->with('success','添加成功');
+            return redirect('admins/guanli')->with('success','添加成功');
         }else
         {
             DB::rollBack();
-            return redirect('admins/lbts')->with('error','添加失败');
+            return redirect('admins/guanli')->with('error','添加失败');
         }
     }
 
@@ -107,20 +114,8 @@ class LbtsController extends Controller
      */
     public function edit($id)
     {
-        
-        //echo '666';
-        //var_dump($request->all());
-        $lbts = lbts::find($id);
-        return view('admin/lbts/edit',['lbts'=>$lbts]);
-    }
-    public function statu(Request $request,$id,$statu)
-    {   //dd('555');
-        //dump($id);exit;
-        dump($request_all());
-        $lbts = Lbts::find($id);
-        $lbts->statu=$statu;
-        $lbts->save();
-        return view('admin/lbts/index');
+        $guanli = Guanli::find($id);
+        return view('admin/guanli/edit',['guanli'=>$guanli]);
     }
 
     /**
@@ -130,12 +125,10 @@ class LbtsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LbtsStoreRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        //echo '666';
-        //var_dump($request->all());
         DB::beginTransaction();
-        $lbts = lbts::find($id);
+        $guanli = Guanli::find($id);
 
         if ($request->hasFile('pic')) {
             // 接收文件上传对象
@@ -153,40 +146,50 @@ class LbtsController extends Controller
             // 上传文件  并且 自定义名称
             $name = $file->storeAs('we',$filename);
             //dd($name);
-            $lbts->pic=$name;
-            $lbts->simg=$request->input('simg','');
-            $lbts->surl=$request->input('surl','');
-            $lbts->status=$request->input('status','');
-            $res1=$lbts->save();
+            //$Guanli = new Guanli;
+            $guanli->logo=$name;
+            $guanli->name=$request->input('name','');
+            $guanli->desc=$request->input('desc','');
+            $guanli->filing=$request->input('filing','');
+            $guanli->phone=$request->input('phone','');
+            $guanli->statu=$request->input('statu','');
+            $guanli->url=$request->input('url','');
+            $guanli->cright=$request->input('cright','');
+        //$Guanli->filing=$request->input('status','');
+            $res1=$guanli->save();
         
             if($res1)
         {
             DB::commit();
-            return redirect('admins/lbts')->with('success','修改成功');
+            return redirect('admins/guanli')->with('success','修改成功');
         }else
         {
             DB::rollBack();
             return back()->with('error','修改失败');
         }
         
-
-        }else{
+         }else{
             //echo '111';
-            $lbts->simg=$request->input('simg','');
-            $lbts->surl=$request->input('surl','');
-            $lbts->status=$request->input('status','');
-            $res1=$lbts->save();
+            $guanli->name=$request->input('name','');
+            $guanli->desc=$request->input('desc','');
+            $guanli->filing=$request->input('filing','');
+            $guanli->phone=$request->input('phone','');
+            $guanli->statu=$request->input('statu','');
+            $guanli->url=$request->input('url','');
+            $guanli->cright=$request->input('cright','');
+            $res1=$guanli->save();
         
             if($res1)
         {
             DB::commit();
-            return redirect('admins/lbts')->with('success','修改成功');
+            return redirect('admins/guanli')->with('success','修改成功');
         }else
         {
             DB::rollBack();
             return back()->with('error','修改失败');
         }
         }
+        
         
         
     }
@@ -200,12 +203,12 @@ class LbtsController extends Controller
     public function destroy($id)
     {
         DB::beginTransaction();
-        $lbts = Lbts::find($id);
+        $guanli = Guanli::find($id);
         //dd($lbts);
-        $date=$lbts->pic;
+        $date=$guanli->logo;
         $res2 = Storage::delete([$date]);
         //dd($date);
-        $res1=Lbts::destroy($id);
+        $res1=Guanli::destroy($id);
         //$date=$res1['pic'];
         //dd($res1);
         
@@ -215,7 +218,7 @@ class LbtsController extends Controller
          if($res1 && $res2)
         {
             DB::commit();
-            return redirect('admins/lbts')->with('success','删除成功');
+            return redirect('admins/guanli')->with('success','删除成功');
         }else
         {
             DB::rollBack();

@@ -95,6 +95,7 @@
 	Route::get('/home/setting','home\RegisterController@setting');
 	//跳转前台个人资料存储
 	Route::post('/home/datum','home\RegisterController@datum');
+
 	//跳转前台图片详情
 	Route::get('/home/item_show/{id}','home\GoodsController@itemShow');
 	//加入购物车
@@ -103,3 +104,24 @@
 	Route::get('/home/item_categoryl/{id}','home\GoodsController@categoryl');
 	
 
+
+	// Route::get('/home/bbs','home\BbsController@Bbs');
+	Route::get('/home/bbs/index/{id}','home\BbsController@index');
+	//Route::get('/home/lbts/index','home\LbtsController@index');
+	Route::resource('/admins/guanli','admin\GuanliController');
+	
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	Route::resource('/admins/lbts','admin\LbtsController');
+	Route::resource('/admins/guanli','admin\GuanliController');

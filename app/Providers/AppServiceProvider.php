@@ -5,7 +5,12 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use View;
 use App\Http\Controllers\home\IndexController;
-use App\Http\Controllers\admin\LoginController;
+
+
+use App\Http\Controllers\home\BbsController;
+use App\Http\Controllers\home\LbtsController;
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,7 +22,12 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         View::share('data',IndexController::getFlei());
-        View::share('common_admin_user',LoginController::Admin_user());
+
+       
+        View::share('Bbs',BbsController::Bbs());
+        View::share('lbts',LbtsController::index());
+        
+
     }
 
     /**

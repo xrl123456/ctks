@@ -4,9 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
-class Bbs extends Model
+class Guanli extends Model
 {
-    //
-    public $table="bbs";
+    public $table="webs";
 }
