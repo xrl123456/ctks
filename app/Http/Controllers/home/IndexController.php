@@ -37,8 +37,9 @@ class IndexController extends Controller
             //查询所有商品信息
             $goods = Goodsgo::all();
             // dump($goods);exit;
-            
-        return view('home.index.index',['goods'=>$goods]);
+              $i=1;
+              $c=1;
+        return view('home.index.index',['goods'=>$goods,'i'=>$i,'c'=>$c]);
 
     }
 

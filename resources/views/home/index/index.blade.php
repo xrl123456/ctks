@@ -11,7 +11,7 @@
 					@foreach($data as $k=>$v)
 					<div class="cat-box">
 						<div class="title">
-							<i class="iconfont icon-skirt ce"></i>{{ $v->cname }}
+						<i class="iconfont icon-skirt ce"></i>{{ $v->cname }}
 						</div>
 
 						<div class="cat-list__deploy">
@@ -20,7 +20,7 @@
 							
 								<div class="genre-box clearfix">
 								@foreach($v['sub'] as $kk=>$vv)
-									<span class="title">{{ $vv->cname }}：</span>
+									<a href="/home/item_categoryl/{{ $vv->id }}"><span class="title">　 {{ $vv->cname }} ：</span></a>
 
 									<div class="genre-list">
 										@foreach($vv['sub'] as $kkk=>$vvv)
@@ -265,21 +265,19 @@
 		
 		</section>
 		@foreach($data as $k=>$v)
-		<section class="scroll-floor floor-2">
+		<section class="scroll-floor floor-{{ $i++}}">
 			<div class="floor-title">
 				<i class="iconfont icon-skirt fz16">{{ $v->cname }}</i>
 				<div class="case-list fz0 pull-right">
 					@foreach($v['sub'] as $kk=>$vv)
 					<a href="/home/item_categoryl/{{ $vv->id }}">{{ $vv->cname }}</a>
-
-					<a href="item_category.html">{{ $vv->id }}</a>
 					
 					@endforeach
 				</div>
 			</div>
 			<div class="con-box">
 				<a class="left-img hot-img" href="">
-					<img src="/home/images/floor_2.jpg" alt="" class="cover">
+					<img src="/home/images/floor_{{$c++}}.jpg" alt="" class="cover">
 				</a>
 				
 				<div class="right-box">
@@ -300,10 +298,9 @@
 					@endforeach
 					
 				</div>
-				
-			</div>
 		</section>
 		@endforeach
+		</div>
 		
 	</div>
 	
