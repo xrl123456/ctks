@@ -153,10 +153,16 @@
 	<!-- 顶部轮播 -->
     <div class="swiper-container banner-box">
         <div class="swiper-wrapper">
-
         @foreach($lbts as $k =>$v)
             <div class="swiper-slide"><a href="item_show.html"><img src="/uploads/{{ $v->pic }}" class="cover"></a></div>
 		@endforeach
+
+
+           <!--  <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_1.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_2.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_category.html"><img src="/home/images/temp/banner_3.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_4.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_sale_page.html"><img src="/home/images/temp/banner_5.jpg" class="cover"></a></div> -->
 
         </div>
         <div class="swiper-pagination"></div>
@@ -402,6 +408,7 @@
 		<div class="footer-tags">
 			<div class="tags-box inner">
 				<div class="tag-div">
+
 					<img src="/home/images/icons/footer_1.gif" alt="厂家直供">
 				</div>
 				<div class="tag-div">
@@ -412,6 +419,7 @@
 				</div>
 				<div class="tag-div">
 					<img src="/home/images/icons/footer_4.gif" alt="信誉认证">
+
 				</div>
 			</div>
 		</div>

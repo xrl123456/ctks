@@ -17,8 +17,9 @@ class IndexController extends Controller
         $data = [];
         //»ñÈ¡Ò»¼¶·ÖÀà
         $yiji_data = Goods::where('pid',$pid)->get();
-        //Í¨¹ıÒ»¼¶·ÖÀà »ñÈ¡¶ş¼¶·ÖÀà
-       foreach($yiji_data as $key => $value) {
+
+        //é€šè¿‡ä¸€çº§åˆ†ç±» è·å–äºŒçº§åˆ†ç±»
+        foreach($yiji_data as $key => $value) {
            $temp = self::getFlei($value->id);
             $value['sub'] = $temp;
             $data[] = $value;
@@ -48,7 +49,6 @@ class IndexController extends Controller
          
              
         return view('home.index.index',['goods'=>$goods,'i'=>$i,'c'=>$c,'users'=>$users,'infoadd'=>$infoadd]);
-
     }
 
     /**
@@ -81,7 +81,9 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        //
+        // è¿™é‡Œç›®å‰æ˜¯é€€å‡ºçš„
+        session()->forget('home_user');
+        return '<script>alert("é€€å‡ºæˆåŠŸ,");location.href="/";</script>';
     }
 
     /**

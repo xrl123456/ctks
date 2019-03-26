@@ -1,5 +1,6 @@
 @extends('home.tabfoot.tab')
 @section('content')
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- 内页导航栏 -->
 	<div class="top-nav bg3">
 		<div class="nav-box inner">
@@ -36,6 +37,7 @@
 						<div class="thumb-list">
 							<ul class="wrapper clearfix">
 								<li class="item active" data-src="/uploads/Goods/{{ $itemShow->pic }}"><img class="cover" src="/uploads/Goods/{{ $itemShow->pic }}" alt="商品预览图"></li>
+
 								<li class="item" data-src="/uploads/Goods/{{ $itemShow->pic }}"><img class="cover" src="/uploads/Goods/{{ $itemShow->pic }}" alt="商品预览图"></li>
 								<li class="item" data-src="/uploads/Goods/{{ $itemShow->pic }}"><img class="cover" src="/uploads/Goods/{{ $itemShow->pic }}" alt="商品预览图"></li>
 								<li class="item" data-src="/uploads/Goods/{{ $itemShow->pic }}"><img class="cover" src="/uploads/Goods/{{ $itemShow->pic }}" alt="商品预览图"></li>
@@ -45,6 +47,7 @@
 								<li class="item" data-src="/uploads/Goods/{{ $itemShow->pic }}"><img class="cover" src="/uploads/Goods/{{ $itemShow->pic }}" alt="商品预览图"></li>
 								<li class="item" data-src="/uploads/Goods/{{ $itemShow->pic }}"><img class="cover" src="/uploads/Goods/{{ $itemShow->pic }}" alt="商品预览图"></li>
 								<li class="item" data-src="/uploads/Goods/{{ $itemShow->pic }}"><img class="cover" src="/uploads/Goods/{{ $itemShow->pic }}" alt="商品预览图"></li>
+
 							</ul>
 						</div>
 						<a href="javascript:;" class="btn btn-default btn-next"></a>
@@ -140,8 +143,8 @@
 								<div class="amount-widget">
 									<input class="amount-input" value="1" id="input" maxlength="8" title="请输入购买量" type="text">
 									<div class="amount-btn">
-										<a class="amount-but add" ></a>
-										<a class="amount-but sub"></a>
+										<a class="amount-but add" "></a>
+										<a class="amount-but sub" "></a>
 									</div>
 								</div>
 								<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock">{{ $itemShow->goodsNum }}</b> 件</span></div>
@@ -175,9 +178,21 @@
 												$('.amount-input').val(num - 1);
 											}
 											var coumt = $('#input').val();
-												console.log(coumt);
-
-												 
+												$.ajaxSetup({
+							                        headers: {
+							                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							                        }
+							                    })
+							                    $.ajax({
+						                            'url': '/home/order/number/'+coumt,
+						                            'type': 'get',
+						                            'data': '',
+						                            'async': true,
+													success:function(data){
+						        //                   
+						                        			console.log(data);
+						                            }
+						                        })
 										});
 									});
 										
@@ -185,14 +200,47 @@
 							</div>
 						</div>
 						<div class="item-action clearfix bgf5">
-							<a href=""   rel="nofollow" data-addfastbuy="true" title="点击此按钮，到下一步确认购买信息。" role="button" class="item-action__buy">立即购买</a>
-							<a href="/home/shopcart/{{ $itemShow->id }}" rel="nofollow"  data-addfastbuy="true" role="button" class="item-action__basket">
+							<a href="/home/order/{{ $itemShow->id }}"   rel="nofollow" data-addfastbuy="true" title="点击此按钮，到下一步确认购买信息。" role="button" class="item-action__buy">立即购买</a>
+							<a  id="shopadd" rel="nofollow"  data-addfastbuy="true" role="button" class="item-action__basket" onclick="shopping('{{ $itemShow->id }}')">
 								<i class="iconfont icon-shopcart" ></i> 加入购物车
 							</a>
+							
 						</div>
 					</div>
 				</div>
 			</div>
+            <!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> -->
+
+			<script type="text/javascript">
+
+				function shopping(id) {
+					$.ajaxSetup({
+                        headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    })
+                    // 这段是点击隐藏的// $("#shopnone").hide();
+					var num = parseInt($('.amount-input').val());
+					var none = $("#shopadd").text();
+					$.ajax({
+                            'url': '/home/shop/shopping/'+id+'/'+num+'/'+{{ Session::get('home_user')['id'] }},
+                            'type': 'get',
+                            'data': '',
+                            'async': true,
+							success:function(data){
+                                $('#shopcart').text(data);
+                                setTimeout(function(){
+									$("#shopadd").text("已加入该商品");
+									setTimeout(function(){
+									$("#shopadd").text(none);
+										},5000)	
+								},2000)
+                            }
+                           
+                        })
+				}
+
+			</script>
 			
 			<div class="pull-right picked-div">
 				<div class="lace-title">

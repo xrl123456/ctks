@@ -145,7 +145,7 @@ class GoodsgoController extends Controller
         
             //初始化数据库
             $goods = Goodsgo::find($id);
-             $type = DB::table('goods_type')->select('*',DB::raw('concat(path,",",id)as paths'))->orderBy('paths','asc')->get();
+            $type = DB::table('goods_type')->select('*',DB::raw('concat(path,",",id)as paths'))->orderBy('paths','asc')->get();
             //拼接
             foreach($type as $k=>$v ){
                 // echo $v->path.'<br/>';
