@@ -70,7 +70,7 @@
 				</p>
 			</div>
 			<div class="cart-box">
-				<a href="udai_shopcart.html" class="cart-but">
+				<a href="/home/shop" class="cart-but">
 					<i class="iconfont icon-shopcart cr fz16"></i>购物车<font color="red" id="shopcart">{{ (Session::get('shopcart') ? Session::get('shopcart') : '0')  }}</font>件
 				</a>
 			</div>

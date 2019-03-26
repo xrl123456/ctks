@@ -10,4 +10,5 @@ class Order_info extends Model
     protected $primaryKey = 'oid';
     public $timestamps = false;
     
+    
 }

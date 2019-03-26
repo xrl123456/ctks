@@ -111,8 +111,17 @@ Route::post('/home/datum','home\RegisterController@datum');
 Route::get('/home/shopcart/{id}','home\GoodsController@shopcart');
 
 
+
+// 购物车  
 Route::get('/home/shop/shopping/{id}/{num}/{uid}','home\ShopController@shopping');
 Route::resource('/home/shop','home\ShopController');
+
+
+// 收货地址 --------
+Route::resource('/home/addres','home\AddressController');
+
+
+// 订单
 Route::get('/home/order/number/{num}','home\OrdersController@number');
 Route::resource('/home/order','home\OrdersController');
 

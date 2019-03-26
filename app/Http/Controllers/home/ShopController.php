@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Goodsgo;
 use App\Models\Orders;
 use App\Models\Order_info;
+use App\Models\Address;
 use DB;
 class ShopController extends Controller
 {
@@ -17,7 +18,15 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //
+        // 购物车首页  获取当前session中的用户 订单表中 状态为0 (未付款的数据) 排序 重最新的开始显示
+        // 获取地址表 
+        $uid = (session('home_user')['id']);
+        $addres = DB::table('address')->where('uid',$uid)->get();
+       
+        $total = new Orders;
+        $testshop = $total->where('uid','=',$uid)->where('status','=','0')->get();
+        // dump($testshop);
+        return view('home.cart.shopcart',['addres'=>$addres,'testshop'=>$testshop]);
     }
 
     /**
@@ -72,7 +81,7 @@ class ShopController extends Controller
         // 添加数据进数据库
         $order = new Orders;
         // 订单号
-        $order->oid = date('Ymdhis').rand(1000,9999);
+        $order->oid = $oid = date('Ymdhis').rand(1000,9999);
         // 总价
         $order->oprice = $oprice;
         // 数量
@@ -82,11 +91,10 @@ class ShopController extends Controller
         // 添加
         $res = $order->save();  
         // 接受返回id 添加进订单详情表
-        $oid = $order->id;
         
         $info = new Order_info;
         // 订单号
-        $info->oid = $order->oid;
+        $info->oid = $oid;
         // 商品的id
         $info->gid = $id;
         // 时间

@@ -21,15 +21,28 @@
 	<!-- 顶部tab -->
 	<div class="tab-header">
 		<div class="inner">
+			@if( Session::get('home_user')['name'])
 			<div class="pull-left">
-				<div class="pull-left">嗨，<font color="#f0c">{{ (Session::get('home_user')['name']) ? Session::get('home_user')['name'] : "" }}</font> 欢迎来到 <span class="cr"> U袋网 </span></div>
+
+				<div class="pull-left">嗨，<font color="#f0c">{{ Session::get('home_user')['name'] }}</font> 欢迎来到 <span class="cr"> U袋网 </span></div>
+
 				<a href="temp_article/udai_article4.html">帮助中心</a>
+				<a href="/{{ Session::get('home_user')['id'] }}">退出</a>
 			</div>
 			<div class="pull-right">
-				
-				<a href="/home/udai">我的U袋</a>
+
+                <a href="/home/udai">我的U袋</a>
 				<a href="udai_order.html">我的订单</a>
 				<a href="udai_integral.html">积分平台</a>
+			</div>          
+			@else
+			<div class="pull-left">
+				<div class="pull-left">嗨，<font color="#f0c"> </font> 欢迎来到 <span class="cr"> U袋网 </span></div>
+
+				<a href="/home/denlu"><span class="cr">登录</span></a>
+				<a href="/home/register?p=register">注册</a>
+			@endif
+				
 			</div>
 		</div>
 	</div>
@@ -51,7 +64,7 @@
 					<a href="/home/setting"><dd>个人资料</dd></a>
 					<a href="udai_treasurer.html"><dd>资金管理</dd></a>
 					<a href="udai_integral.html"><dd>积分平台</dd></a>
-					<a href="udai_address.html"><dd>收货地址</dd></a>
+					<a href="/home/addres/{{ Session::get('home_user')['id'] }}"><dd>收货地址</dd></a>
 					<a href="udai_coupon.html"><dd>我的优惠券</dd></a>
 					<a href="udai_paypwd_modify.html"><dd>修改支付密码</dd></a>
 					<a href="udai_pwd_modify.html"><dd>修改登录密码</dd></a>

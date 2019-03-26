@@ -15,9 +15,15 @@ class GoodsController extends Controller
 		{
 			// 查询对应的商品 
 			$itemShow = Goodsgo::find($id);
+			$itemShow->shopnum = 1;
+			session(['goodsshow'=>$itemShow]);
+			// dd(session('goodsshow'));
 			$uid = (session('home_user')['id']);
+
+			// 购物车显示数据
 			$shopnum = DB::table('orders')->where('uid',$uid)->where('status','0')->get();
 			$number = (count($shopnum));
+			
 			session(['shopcart' => $number]);
 			return view('home.udai.item_show',['itemShow'=>$itemShow]);
 

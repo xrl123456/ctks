@@ -125,7 +125,9 @@ class RegisterController extends Controller
 			//用户中心
 			public function welcome()
 			{
+				// 个人中心首页显示 订单
 				
+
 				return view('home.udai.udai_welcome');
 			}
 			//个人资料
