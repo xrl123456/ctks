@@ -15,7 +15,7 @@
 	<script src="/home/js/global.js" charset="UTF-8"></script>
 	<script src="/home/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
 	<title>U袋网</title>
-
+ 	<meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 	<!-- 顶部tab -->

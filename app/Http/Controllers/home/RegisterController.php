@@ -34,8 +34,11 @@ class RegisterController extends Controller
 	  			 $user->phone =  $request->phone;
 	  			 $user->password = Hash::make($request->password);
 	  			 $res = $user->save();
-	  			 
-	  			 if($res){
+	  			  $uid = $user->id;
+	  			 $info = new Userinfo;
+	  			 $info->uid=$uid;
+	  			  $res2 = $info->save();
+	  			 if($res && $res2){
 	  			 		 DB::commit();
 	  			 		  echo "<script>alert('注册成功');location.href='/home/denlu';</script>";
 	  			 	}else{
@@ -130,6 +133,7 @@ class RegisterController extends Controller
 			{	
 				$id =(Session('home_user')['id']);
 				 $info = Users::find($id);
+
 				return view('home.udai.udai_setting',['info'=>$info]);
 			}
 			//个人资料存储
@@ -166,6 +170,51 @@ class RegisterController extends Controller
 	        				  	}
 	        			}
 
+			}
+
+			public function userget(Request $request)
+			{	
+				//签到天数
+				$add = $request->add;
+				//总积分
+				$badge = $request->badge;
+				//添加的积分
+				$intr =$request->inte;
+				//用户id
+				$id =(Session('home_user')['id']);
+				//用户数据库
+				$info = new Userinfo;
+				//查询修改时间
+				 $update = $info->where('uid',$id)->get();
+				 //获取修改时间
+				 $at = $update[0]->birth;
+				 //当天时间
+				 $ee = date('Y-m-d');
+				 //连续签到当天的前一天
+				 $previous = date("Y-m-".(date('d')-1));
+				 //总积分
+				 $desc =$badge+$intr;
+				 if($at>=$ee){
+				 	// 修改时间大于或者等于当天时间者不返回
+				 }else{
+				 	//判断是否是连续签到
+				 	if($at == $previous ){
+				 		//连续签到
+				 		$add+=1;
+						$res= $info->where('uid',$id)->update(['addr'=>$add,'desc'=> $desc,'birth'=>$ee]);
+				 			if($res){
+					 		 return $add;
+					 			}
+				 		}else{
+				 			//不是连续签到
+					 		$add=1;
+					 		$res= $info->where('uid',$id)->update(['addr'=>$add,'desc'=> $desc,'birth'=>$ee]);
+					 		if($res){
+					 		 return $add;
+					 			}
+					 	}
+				 }
+			
 			}
 		
 

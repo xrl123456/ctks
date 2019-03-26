@@ -121,7 +121,7 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        //
+        //删除
         session()->forget('admin_user');
         return '<script>alert("退出成功,");location.href="/";</script>';
     }

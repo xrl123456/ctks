@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Goods;
 use App\Models\Goodsgo;
+use App\Models\Userinfo;
+use App\Models\Users;
 class IndexController extends Controller
 {
 
@@ -13,9 +15,9 @@ class IndexController extends Controller
     public static function getFlei($pid = 0)
     {
         $data = [];
-        //èŽ·å–ä¸€çº§åˆ†ç±»
+        //»ñÈ¡Ò»¼¶·ÖÀà
         $yiji_data = Goods::where('pid',$pid)->get();
-        //é€šè¿‡ä¸€çº§åˆ†ç±» èŽ·å–äºŒçº§åˆ†ç±»
+        //Í¨¹ýÒ»¼¶·ÖÀà »ñÈ¡¶þ¼¶·ÖÀà
        foreach($yiji_data as $key => $value) {
            $temp = self::getFlei($value->id);
             $value['sub'] = $temp;
@@ -32,14 +34,20 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {       
 
-            //æŸ¥è¯¢æ‰€æœ‰å•†å“ä¿¡æ¯
+            //²éÑ¯ËùÓÐÉÌÆ·ÐÅÏ¢
             $goods = Goodsgo::all();
-            // dump($goods);exit;
               $i=1;
               $c=1;
-        return view('home.index.index',['goods'=>$goods,'i'=>$i,'c'=>$c]);
+            //Ç©µ½ÌìÊý
+            $id =(Session('home_user')['id']);
+            $infoadd = Userinfo::where('uid',$id)->get();
+            $users = Users::find($id);
+
+         
+             
+        return view('home.index.index',['goods'=>$goods,'i'=>$i,'c'=>$c,'users'=>$users,'infoadd'=>$infoadd]);
 
     }
 

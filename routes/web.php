@@ -65,12 +65,6 @@
 
 
 		// 这个结尾是中间件组的结尾
-	
-
-
-
-
-
 
 	//前台首页路由
 	Route::resource('/','home\IndexController');
@@ -87,6 +81,9 @@
 	/// 前台 登录 路由
 	Route::resource('/home/login','home\LoginController');
 	Route::get('/home/denlu','home\RegisterController@denlu');
+	//前台签到路由
+	Route::get('/home/userget','home\RegisterController@userget');
+
 	
 
 	//跳转前台用户中心
@@ -103,25 +100,10 @@
 	//跳转前台第三级商品
 	Route::get('/home/item_categoryl/{id}','home\GoodsController@categoryl');
 	
-
-
-	// Route::get('/home/bbs','home\BbsController@Bbs');
+	//跳转前台广告
 	Route::get('/home/bbs/index/{id}','home\BbsController@index');
-	//Route::get('/home/lbts/index','home\LbtsController@index');
+	//管理路由
 	Route::resource('/admins/guanli','admin\GuanliController');
-	
-
-
-
-
-
-
-
-
-
-
-	
-
-
+	//前台轮播图路由
 	Route::resource('/admins/lbts','admin\LbtsController');
-	Route::resource('/admins/guanli','admin\GuanliController');
+	

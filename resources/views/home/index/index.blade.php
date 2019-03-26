@@ -50,21 +50,33 @@
 			</ul>
 			<div class="user-info__box">
 				<div class="login-box">
+					
+						
+				@if( Session::get('home_user')['name'])
+				<!-- 已登录 -->
 					<div class="avt-port">
-						<img src="/home/images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
-					</div>
-					<!-- 已登录 -->
-					<div class="name c6">Hi~ <span class="cr">18759808122</span></div>
-					<div class="point c6">积分: 30</div>
-
-					<!-- 未登录 -->
-					<!-- <div class="name c6">Hi~ 你好</div>
-					<div class="point c6"><a href="">点此登录</a>，发现更多精彩</div> -->
-					<div class="report-box">
-						<span class="badge">+30</span>
-						<a class="btn btn-info btn-block disabled" href="#" role="button">已签到1天</a>
+						<img src="{{ $users->pic or '' }}" alt="欢迎来到U袋网" class="cover b-r50">
+				</div>
+				 <div class="name c6">Hi~ <span class="cr"> {{Session::get('home_user')['name']}}</span></div>
+					
+						
+					<div class="point c6" >积分:<span id="badge">{{ $infoadd[0]->desc < 1?'10': $infoadd[0]->desc }}</span></div>
+						<div class="report-box">
+						<span class="badge">{{ $infoadd[0]->addr>6?'20':'10'}}</span>
+						<input type="text" value="{{ $infoadd[0]->addr or '' }}"  id="addr" name="addr" hidden>
+						<button  id="buts" class="btn btn-info btn-block" onclick="block()">已签到第{{ $infoadd[0]->addr or ''}}天</button>
 						<!-- <a class="btn btn-primary btn-block" href="#" role="button">签到领积分</a> -->
 					</div>
+				@else
+				<!-- 未登录 -->
+				<div class="name c6">Hi~ 你好</div>
+				<div class="point c6"><a href="/home/denlu">点此登录</a>，发现更多精彩</div>
+				@endif
+					
+					
+					
+					
+				
 				</div>
 				<div class="agent-box">
 					<a href="#" class="agent">
@@ -88,6 +100,8 @@
 						</span>
 					</form>
 					<script>
+
+						
 						$(function() {
 							$('#verifyqq').click(function() {
 								DJMask.open({
@@ -98,6 +112,33 @@
 							　　});
 							});
 						});
+
+						
+					</script>
+					<script type="text/javascript">
+					$.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+               	 });
+					function block(){
+							var add = $("#addr").val();
+							//总积分
+							var badge = $('#badge').html();
+							//签到的积分
+							var inte= $('.badge').html();
+							//签到后总积分
+							var stor = Number(badge) + Number(inte) 
+							$.get('/home/userget',{add:add,badge:badge,inte:inte},function(res){
+								if(res){
+								$('#addr').attr('value',res);
+								$('#buts').html('已签到第'+res+'天');
+								$('#badge').html(stor);
+								}else{
+									$('#buts').html('已签到');
+								}
+							});
+						}
 					</script>
 				</div>
 				<div class="tags">

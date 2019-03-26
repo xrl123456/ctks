@@ -25,18 +25,18 @@ class LbtsStoreRequest extends FormRequest
     {
         return [
             //
-            'simg'=>'required',
-            'surl'=>'required',
-            'status'=>'required',
+            // 'simg'=>'required',
+            // 'surl'=>'required',
+            // 'status'=>'required',
 
             ];
     }
     public function messages()
     {
         return [
-            'simg.required'=>'标题不能为空',
-            'surl.required'=>'内容不能为空',
-            'status.required'=>'内容不能为空',
+            // 'simg.required'=>'标题不能为空',
+            // 'surl.required'=>'内容不能为空',
+            // 'status.required'=>'内容不能为空',
             ];
     }
 }

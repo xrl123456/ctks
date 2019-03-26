@@ -17,28 +17,19 @@
                         <form class="mws-form" action="/admins/lbts" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="mws-form-inline">
-                                <div class="mws-form-row">
-                                    <label class="mws-form-label">轮播图名称：</label>
-                                    <div class="mws-form-item">
-                                        <input type="text" class="medium" name="simg" placeholder="请输入轮播图名称" value="{{ old('simg') }}">
-                                    </div>
-                                </div>
-                                <div class="mws-form-row">
-                                    <label class="mws-form-label">轮播图目标地址：</label>
-                                    <div class="mws-form-item">
-                                        <input type="text" class="medium" name="surl" placeholder="请输轮播图地址,如:http://www.XDL.com" value="{{ old('surl') }}">
-                                    </div>
-                                </div>
+                                
+                              
+                               
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">选择图片：</label>
-                                    <div class="mws-form-item">
+                                    <div class="mws-form-item"style="width:300px;">
                                         <input type="file" class="small" name="pic">
                                     </div>
                                 </div>
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">轮播图状态：</label>
                                     <div class="mws-form-item">
-                                        显示<input type="radio" class="" name="status" value="1"><br>
+                                        显示<input type="radio" class="" name="status" checked value="1"><br>
                                         隐藏<input type="radio" class="" name="status" value="0">
                                     </div>
                                 </div>

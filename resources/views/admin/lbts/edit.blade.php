@@ -18,31 +18,23 @@
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
                             <div class="mws-form-inline">
-                                <div class="mws-form-row">
-                                    <label class="mws-form-label">轮播图名：</label>
-                                    <div class="mws-form-item">
-                                        <input type="text" class="medium" name="simg" placeholder="请输入轮播图名称" value="{{ $lbts->simg }}">
-                                    </div>
-                                </div>
-                                <div class="mws-form-row">
-                                    <label class="mws-form-label">轮播图地址：</label>
-                                    <div class="mws-form-item">
-                                        <input type="text" class="medium" name="surl" placeholder="请输轮播图地址,如:http://www.XDL.com" value="{{ $lbts->surl }}">
-                                    </div>
-                                </div>
+                                
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">轮播图图片：</label>
                                     &nbsp;&nbsp;&nbsp;&nbsp;<img src="/uploads/{{ $lbts->pic }}" style="width:100px;height:100px;">
-                                    <div class="mws-form-item">
+                                    <div class="mws-form-item"style="width:300px;">
                                     <label class="mws-form-label">可选择新轮播图片替换:</label><br><br>
                                         <input type="file" class="medium" name="pic">
                                     </div>
                                 </div>
                                 <div class="mws-form-row">
+                                    
                                     <label class="mws-form-label">轮播图状态：</label>
                                     <div class="mws-form-item">
-                                        <input type="text" class="medium" name="status" value="{{ $lbts->status }}">
+                                        显示<input type="radio" class="" name="status" value="1"{{ $lbts->status==1?'checked':''}}><br>
+                                        隐藏<input type="radio" class="" name="status" value="0"{{ $lbts->status==0?'checked':''}}>
                                     </div>
+                                </div>
                                 </div>
                                 <div>
                                     <img src="/uploads/images/link.jpg" alt="">
