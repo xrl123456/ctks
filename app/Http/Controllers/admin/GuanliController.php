@@ -74,6 +74,7 @@ class GuanliController extends Controller
         }
         $Guanli = new Guanli;
         $Guanli->logo=$name;
+        $Guanli->email=$request->input('email','');
         $Guanli->name=$request->input('name','');
         $Guanli->desc=$request->input('desc','');
         $Guanli->filing=$request->input('filing','');
@@ -148,6 +149,7 @@ class GuanliController extends Controller
             //dd($name);
             //$Guanli = new Guanli;
             $guanli->logo=$name;
+            $Guanli->email=$request->input('email','');
             $guanli->name=$request->input('name','');
             $guanli->desc=$request->input('desc','');
             $guanli->filing=$request->input('filing','');
@@ -171,6 +173,7 @@ class GuanliController extends Controller
          }else{
             //echo '111';
             $guanli->name=$request->input('name','');
+            $Guanli->email=$request->input('email','');
             $guanli->desc=$request->input('desc','');
             $guanli->filing=$request->input('filing','');
             $guanli->phone=$request->input('phone','');

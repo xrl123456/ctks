@@ -397,17 +397,18 @@
 		</div>
 		<div class="copy-box clearfix">
 			<ul class="copy-links">
-				<a href="agent_level.html"><li>网店代销</li></a>
-				<a href="class_room.html"><li>U袋学堂</li></a>
-				<a href="udai_about.html"><li>联系我们</li></a>
-				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
-				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
+			@foreach($links as $k =>$v)
+				<a href="{{ $v->lurl }}"><li>{{ $v->lname }}</li></a>
+			@endforeach
 			</ul>
 			<!-- 版权 -->
+			@foreach($webs as $v => $k)
 			<p class="copyright">
-				© 2005-2017 U袋网 版权所有，并保留所有权利<br>
-				ICP备案证书号：闽ICP备16015525号-2&nbsp;&nbsp;&nbsp;&nbsp;福建省宁德市福鼎市南下村小区（锦昌阁）1栋1梯602室&nbsp;&nbsp;&nbsp;&nbsp;Tel: 18650406668&nbsp;&nbsp;&nbsp;&nbsp;E-mail: 18650406668@qq.com
+
+				详情：{{ $k->name }}<br>
+				备案号：{{ $k->filing }}&nbsp;&nbsp;&nbsp;&nbsp;地址：{{ $k->url }}&nbsp;&nbsp;&nbsp;&nbsp;Tel: {{ $k->phone }}&nbsp;&nbsp;&nbsp;&nbsp;E-mail: {{ $k->email }}
 			</p>
+			@endforeach
 		</div>
 	</div>
 </body>

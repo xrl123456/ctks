@@ -41,7 +41,8 @@
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">轮播图状态：</label>
                                     <div class="mws-form-item">
-                                        <input type="text" class="medium" name="status" value="{{ $lbts->status }}">
+                                        显示<input type="radio" class="small" name="status" value="1" {{ $lbts->status== 1 ? 'checked':''  }} ><br>
+                                        隐藏<input type="radio" class="small" name="status" value="2" {{ $lbts->status!= 1 ? 'checked':''  }}>
                                     </div>
                                 </div>
                                 <div>

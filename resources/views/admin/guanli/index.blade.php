@@ -31,11 +31,13 @@
 									<th>网站管理名称</th>
 									<th>描述</th>
                                     <th>logo</th>
-									<th>filing</th>
+									<th>备案号</th>
+                                    <th>邮件</th>
 									<th>电话</th>
 									<th>状态</th>
 									<th>地址</th>
-									<th>操作</th>
+									<th>网站开关操作</th>
+                                    <th>操作</th>
                                 </tr>
 
                             </thead>
@@ -48,9 +50,12 @@
                                 <td class="  sorting_1" style="text-align:center">{{ $v->desc }}</td>
                                 <td class="  sorting_1" style="text-align:center"><img src="/uploads/{{ $v->logo }}" style="width:100px;height:100px;"></td>
                                 <td class="  sorting_1" style="text-align:center">{{ $v->filing }}</td>
+                                <td class="  sorting_1" style="text-align:center">{{ $v->email }}</td>
                                 <td class="  sorting_1" style="text-align:center">{{ $v->phone }}</td>
                                 <td class="  sorting_1" style="text-align:center">{{ $v->statu == 1 ? '显示':'隐藏' }}</td>
+
                                	<td class="  sorting_1" style="text-align:center">{{ $v->url }}</td>
+                                <td class="  sorting_1" style="text-align:center">{{ $v->crignt == 1 ? '开':'关' }}</td>
                                 <td class="  sorting_1" style="text-align:center">
                                 <form action="/admins/guanli/{{ $v->id }}" method="post"  style="display: inline;">
                                 {{  csrf_field() }}

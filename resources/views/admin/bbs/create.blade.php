@@ -29,9 +29,9 @@
                     				<label class="mws-form-label">公告内容</label>
                     				<div class="mws-form-item">
                                                         					
-                                        <script id="container" name="content" type="text/plain">
-                                            这里写你的初始化内容
-                                        </script>
+                                        <script id="container" name="content" type="text/plain">{!!这里写你的初始化内容!!}</script>
+                                            
+                                        
                                         <!-- 配置文件 -->
                                         <script type="text/javascript" src="/bianji/utf8-php/ueditor.config.js"></script>
                                         <!-- 编辑器源码文件 -->

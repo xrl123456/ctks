@@ -59,7 +59,9 @@ Route::get('/', function () {
 	// Route::get('/home/bbs','home\BbsController@Bbs');
 	Route::get('/home/bbs/index/{id}','home\BbsController@index');
 	//Route::get('/home/lbts/index','home\LbtsController@index');
+	Route::get('/admins/guanli/index','admin\GuanliController@index');
 	Route::resource('/admins/guanli','admin\GuanliController');
+
 	
 
 
@@ -78,6 +80,6 @@ Route::get('/', function () {
 	
 	
 	Route::resource('/admins/users','admin\UsersController');
-	Route::get('/admins/lbts/{id}/{statu}','admin\LbtsController@statu');
+	//Route::get('/admins/lbts/{id}/{statu}','admin\LbtsController@statu');
 	Route::resource('/admins/lbts','admin\LbtsController');
 	Route::resource('/admins/guanli','admin\GuanliController');

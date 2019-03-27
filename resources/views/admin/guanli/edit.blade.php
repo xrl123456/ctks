@@ -37,6 +37,12 @@
                                     </div>
                                 </div>
                                 <div class="mws-form-row">
+                                    <label class="mws-form-label">邮件：</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" name="email" value="{{ $guanli->email }}">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
                                     <label class="mws-form-label">电话：</label>
                                     <div class="mws-form-item">
                                         <input type="text" class="medium" name="phone" placeholder="请输轮播图地址,如:http://www.XDL.com" value="{{ $guanli->phone }}">
@@ -57,7 +63,7 @@
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">操作：</label>
                                     <div class="mws-form-item">
-                                        <input type="text" class="medium" name="cright" placeholder="请输轮播图地址,如:http://www.XDL.com" value="{{ $guanli->cright }}">
+                                        <input type="text" class="medium" name="cright" placeholder="1为网站开,2为网站关" value="{{ $guanli->cright }}">
                                     </div>
                                 </div>
                                 <div class="mws-form-row">
