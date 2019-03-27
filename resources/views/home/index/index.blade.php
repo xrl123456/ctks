@@ -11,7 +11,7 @@
 					@foreach($data as $k=>$v)
 					<div class="cat-box">
 						<div class="title">
-							<i class="iconfont icon-skirt ce"></i>{{ $v->cname }}
+						<i class="iconfont icon-skirt ce"></i>{{ $v->cname }}
 						</div>
 
 						<div class="cat-list__deploy">
@@ -20,7 +20,8 @@
 							
 								<div class="genre-box clearfix">
 								@foreach($v['sub'] as $kk=>$vv)
-									<span class="title">{{ $vv->cname }}：</span>
+									<a href="/home/item_categoryl/{{ $vv->id }}"><span class="title">　 {{ $vv->cname }} ：</span></a>
+
 									<div class="genre-list">
 										@foreach($vv['sub'] as $kkk=>$vvv)
 										<a href="">{{ $vvv->cname }}</a>
@@ -39,7 +40,7 @@
 
 			</div>
 			<ul class="nva-list">
-				<a href="index.html"><li class="active">首页</li></a>
+				<a href="/"><li class="active">首页</li></a>
 				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
 				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
 				<a href="class_room.html"><li>U袋学堂</li></a>
@@ -49,21 +50,33 @@
 			</ul>
 			<div class="user-info__box">
 				<div class="login-box">
+					
+						
+				@if( Session::get('home_user')['name'])
+				<!-- 已登录 -->
 					<div class="avt-port">
-						<img src="images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
-					</div>
-					<!-- 已登录 -->
-					<div class="name c6">Hi~ <span class="cr">18759808122</span></div>
-					<div class="point c6">积分: 30</div>
-
-					<!-- 未登录 -->
-					<!-- <div class="name c6">Hi~ 你好</div>
-					<div class="point c6"><a href="">点此登录</a>，发现更多精彩</div> -->
-					<div class="report-box">
-						<span class="badge">+30</span>
-						<a class="btn btn-info btn-block disabled" href="#" role="button">已签到1天</a>
+						<img src="{{ $users->pic or '' }}" alt="欢迎来到U袋网" class="cover b-r50">
+				</div>
+				 <div class="name c6">Hi~ <span class="cr"> {{Session::get('home_user')['name']}}</span></div>
+					
+						
+					<div class="point c6" >积分:<span id="badge">{{ $infoadd[0]->desc < 1?'10': $infoadd[0]->desc }}</span></div>
+						<div class="report-box">
+						<span class="badge">{{ $infoadd[0]->addr>6?'20':'10'}}</span>
+						<input type="text" value="{{ $infoadd[0]->addr or '' }}"  id="addr" name="addr" hidden>
+						<button  id="buts" class="btn btn-info btn-block" onclick="block()">已签到第{{ $infoadd[0]->addr or ''}}天</button>
 						<!-- <a class="btn btn-primary btn-block" href="#" role="button">签到领积分</a> -->
 					</div>
+				@else
+				<!-- 未登录 -->
+				<div class="name c6">Hi~ 你好</div>
+				<div class="point c6"><a href="/home/denlu">点此登录</a>，发现更多精彩</div>
+				@endif
+					
+					
+					
+					
+				
 				</div>
 				<div class="agent-box">
 					<a href="#" class="agent">
@@ -87,6 +100,8 @@
 						</span>
 					</form>
 					<script>
+
+						
 						$(function() {
 							$('#verifyqq').click(function() {
 								DJMask.open({
@@ -97,6 +112,33 @@
 							　　});
 							});
 						});
+
+						
+					</script>
+					<script type="text/javascript">
+					$.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+               	 });
+					function block(){
+							var add = $("#addr").val();
+							//总积分
+							var badge = $('#badge').html();
+							//签到的积分
+							var inte= $('.badge').html();
+							//签到后总积分
+							var stor = Number(badge) + Number(inte) 
+							$.get('/home/userget',{add:add,badge:badge,inte:inte},function(res){
+								if(res){
+								$('#addr').attr('value',res);
+								$('#buts').html('已签到第'+res+'天');
+								$('#badge').html(stor);
+								}else{
+									$('#buts').html('已签到');
+								}
+							});
+						}
 					</script>
 				</div>
 				<div class="tags">
@@ -114,6 +156,14 @@
         @foreach($lbts as $k =>$v)
             <div class="swiper-slide"><a href="item_show.html"><img src="/uploads/{{ $v->pic }}" class="cover"></a></div>
 		@endforeach
+
+
+           <!--  <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_1.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_2.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_category.html"><img src="/home/images/temp/banner_3.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="/home/images/temp/banner_4.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_sale_page.html"><img src="/home/images/temp/banner_5.jpg" class="cover"></a></div> -->
+
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -138,12 +188,12 @@
 				</div>
 				<div class="con-box">
 					<a class="left-img hot-img" href="">
-						<img src="images/floor_1.jpg" alt="" class="cover">
+						<img src="/home/images/floor_1.jpg" alt="" class="cover">
 					</a>
 					<div class="right-box hot-box">
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-001.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-001.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -153,7 +203,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-002.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-002.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -163,7 +213,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-003.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-003.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -173,7 +223,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-004.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-004.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -183,7 +233,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-005.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-005.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -193,7 +243,7 @@
 						</a>
 						<a href="item_show.html" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="images/temp/S-006.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/home/images/temp/S-006.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
 								<span class="pull-left cr fz16">￥18.0</span>
@@ -251,26 +301,25 @@
 		
 		</section>
 		@foreach($data as $k=>$v)
-		<section class="scroll-floor floor-2">
+		<section class="scroll-floor floor-{{ $i++}}">
 			<div class="floor-title">
 				<i class="iconfont icon-skirt fz16">{{ $v->cname }}</i>
 				<div class="case-list fz0 pull-right">
 					@foreach($v['sub'] as $kk=>$vv)
-					<a href="item_category.html">{{ $vv->cname }}</a>
-					<a href="item_category.html">{{ $vv->id }}</a>
+					<a href="/home/item_categoryl/{{ $vv->id }}">{{ $vv->cname }}</a>
 					
 					@endforeach
 				</div>
 			</div>
 			<div class="con-box">
 				<a class="left-img hot-img" href="">
-					<img src="images/floor_2.jpg" alt="" class="cover">
+					<img src="/home/images/floor_{{$c++}}.jpg" alt="" class="cover">
 				</a>
 				
 				<div class="right-box">
 				@foreach($goods as $key=>$value)
 					@if($vv->pid == $value->tid)
-					<a href="item_show.html" class="floor-item">
+					<a href="/home/item_show/{{ $value->id }}" class="floor-item">
 						<div class="item-img hot-img">
 							<img src="/uploads/Goods/{{ $value->pic }}" alt="纯色圆领短袖T恤活a动衫弹力柔软" class="cover">
 						</div>
@@ -285,10 +334,9 @@
 					@endforeach
 					
 				</div>
-				
-			</div>
 		</section>
 		@endforeach
+		</div>
 		
 	</div>
 	
@@ -360,16 +408,18 @@
 		<div class="footer-tags">
 			<div class="tags-box inner">
 				<div class="tag-div">
-					<img src="images/icons/footer_1.gif" alt="厂家直供">
+
+					<img src="/home/images/icons/footer_1.gif" alt="厂家直供">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_2.gif" alt="一件代发">
+					<img src="/home/images/icons/footer_2.gif" alt="一件代发">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_3.gif" alt="美工活动支持">
+					<img src="/home/images/icons/footer_3.gif" alt="美工活动支持">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_4.gif" alt="信誉认证">
+					<img src="/home/images/icons/footer_4.gif" alt="信誉认证">
+
 				</div>
 			</div>
 		</div>

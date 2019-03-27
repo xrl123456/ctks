@@ -28,8 +28,7 @@
                             <thead>
                                 <tr role="row">
                                 	<th>ID</th>
-									<th>轮播图名称</th>
-									<th>轮播图地址</th>
+								
                                     <th>轮播图图片</th>
 									<th>轮播图状态</th>
 									<th>轮播图创建时间</th>
@@ -42,8 +41,7 @@
                         @foreach($lbtslist as $k =>$v)
                         <tr class="odd">
                         		<td class="  sorting_1" style="text-align:center">{{ $v->id }}</td>
-                                <td class="  sorting_1" style="text-align:center">{{ $v->simg }}</td>
-                                <td class="  sorting_1" style="text-align:center">{{ $v->surl }}</td>
+                               
                                 <td class="  sorting_1" style="text-align:center"><img src="/uploads/{{ $v->pic }}" style="width:100px;height:100px;"></td>
                                 <td class="  sorting_1" style="text-align:center">{{ $v->status == 1 ? '显示':'隐藏' }}</td>
                                 <td class="  sorting_1" style="text-align:center">{{ $v->created_at }}</td>

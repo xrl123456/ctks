@@ -1,11 +1,11 @@
-@extends('home.udai.udai');
+@extends('home.udai.udai')
  @section('content')
 	
 			<div class="pull-right">
 				<div class="user-center__info bgf">
 					<div class="pull-left clearfix">
 						<div class="port b-r50 pull-left">
-							<img src="images/icons/default_avt.png" alt="用户名" class="cover b-r50">
+							<img src="/home/images/icons/default_avt.png" alt="用户名" class="cover b-r50">
 							<a href="udai_setting.html" class="edit"><i class="iconfont icon-edit"></i></a>
 						</div>
 						<p class="name text-nowrap">您好，18759808122！</p>
@@ -72,7 +72,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -100,7 +100,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -129,7 +129,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -184,7 +184,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -211,7 +211,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -238,7 +238,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -292,7 +292,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -320,7 +320,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -348,7 +348,7 @@
 													2017-03-30 订单号: 2669901385864042
 												</div>
 												<div class="card">
-													<div class="img"><img src="images/temp/item-img_1.jpg" alt="" class="cover"></div>
+													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
 													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
 													<div class="format">颜色分类：深棕色  尺码：均码</div>
 													<div class="favour">使用优惠券：优惠¥2.00</div>
@@ -381,107 +381,107 @@
 						<div class="swiper-wrapper">
 							<div class="swiper-slide">
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-1_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-1_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-2_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-2_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-3_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-3_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-4_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-4_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-5_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-1_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-2_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-3_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-4_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-5_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-5_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 							</div>
 							<div class="swiper-slide">
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-1_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-1_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-2_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-2_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-3_s.jpg" alt="" class="cover">
+									<img src="/home/images/temp/S-001-3_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-4_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-4_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-5_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-1_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-2_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-3_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-4_s.jpg" alt="" class="cover">
-									<div class="look_price">¥134.99</div>
-								</a>
-								<a class="picked-item" href="">
-									<img src="images/temp/S-001-5_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-5_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 							</div>
 							<div class="swiper-slide">
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-3_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-1_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-4_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-2_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-5_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-3_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 								<a class="picked-item" href="">
-									<img src="images/temp/S-001-5_s.jpg" alt="" class="cover">
+									<img  src="/home/images/temp/S-001-4_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-5_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-1_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-2_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-3_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-4_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-5_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-3_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-4_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-5_s.jpg" alt="" class="cover">
+									<div class="look_price">¥134.99</div>
+								</a>
+								<a class="picked-item" href="">
+									<img  src="/home/images/temp/S-001-5_s.jpg" alt="" class="cover">
 									<div class="look_price">¥134.99</div>
 								</a>
 							</div>
@@ -546,16 +546,16 @@
 		<div class="footer-tags">
 			<div class="tags-box inner">
 				<div class="tag-div">
-					<img src="images/icons/footer_1.gif" alt="厂家直供">
+					<img  src="/home/images/icons/footer_1.gif" alt="厂家直供">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_2.gif" alt="一件代发">
+					<img  src="/home/images/icons/footer_2.gif" alt="一件代发">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_3.gif" alt="美工活动支持">
+					<img  src="/home/images/icons/footer_3.gif" alt="美工活动支持">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_4.gif" alt="信誉认证">
+					<img  src="/home/images/icons/footer_4.gif" alt="信誉认证">
 				</div>
 			</div>
 		</div>

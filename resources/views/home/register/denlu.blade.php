@@ -18,7 +18,7 @@
 
 <body>
 	<div class="public-head-layout container">
-		<a class="logo" href="/home/index"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+		<a class="logo" href="/"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
 	</div>
 	<div style="background:url(images/login_bg.jpg) no-repeat center center; ">
 		<div class="login-layout container">
@@ -27,15 +27,24 @@
 					<h2>欢迎登录U袋网平台</h2>
 				</div>
 				<div class="tabs_container">
-					<form class="tabs_form" action="" method="post" id="login_form">
+					<form class="tabs_form" action="/home/login" method="post" id="login_form">
+						{{ csrf_field() }}
 						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								</div>
+								<input class="form-control" name="name" value="{{ old('name') }}"  required placeholder="账号名"  type="text">
+							</div>
+						</div>
+						<!-- <div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
 								</div>
 								<input class="form-control phone" name="phone" id="login_phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
 							</div>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
@@ -46,20 +55,38 @@
 							</div>
 						</div>
 						<div class="checkbox">
-	                        <label>
-	                        	<input checked="" id="login_checkbox" type="checkbox"><i></i> 30天内免登录
-	                        </label>
+	                        <!-- <label>
+	                        	<input checked="" id="login_checkbox" type="checkbox"><i></i> 
+	                        </label> -->
 	                        <a href="javascript:;" class="pull-right" id="resetpwd">忘记密码？</a>
 	                    </div>
+
+	                    <!-- 显示跳转信息 开始 -->
+		                
+		                <!-- 显示跳转信息 开始 -->
+		                @if (count($errors) > 0)
+						    <div class="alert alert-danger">
+						        <ul>
+						            @foreach ($errors->all() as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif  
+                		<!-- 结束 -->
+
 	                    <!-- 错误信息 -->
 						<div class="form-group">
 							<div class="error_msg" id="login_error">
-							
+								
+
+
 							</div>
 						</div>
-	                    <button class="btn btn-large btn-primary btn-lg btn-block submit" id="login_submit" type="button">登录</button><br>
+	                    <input style="background-color:#cb2126;width:100%;font-size:20px;border-radius:25px;border:2px solid #a1a1a1;padding:10px 40px; "  type="submit"><br>
 	                    <p class="text-center">没有账号？<a href="/home/register?p=register" id="register">免费注册</a></p>
                     </form>
+
                     <div class="tabs_div">
 	                    <div class="success-box">
 	                    	<div class="success-msg">
@@ -85,7 +112,16 @@
   					<h2>找回密码<a href="javascript:;" class="pull-right fz16" id="pwdlogin">返回登录</a></h2>
   				</div>
   				<div class="tabs_container">
-					<form class="tabs_form" action="https://rpg.blue/member.php?mod=logging&action=login" method="post" id="resetpwd_form">
+					<form class="tabs_form" action="" method="post" id="resetpwd_form">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								</div>
+								<input class="form-control" name="name" value="{{ old('name') }}"  required placeholder="账号名"  type="text">
+							</div>
+						</div>
+
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
@@ -162,7 +198,7 @@
 					// 以下确定按钮仅供参考
 					$('.submit').click(function() {
 						var form = $(this).parents('form')
-						var phone = form.find('input.phone');
+						// var phone = form.find('input.phone');
 						var pwd = form.find('input.password');
 						var error = form.find('.error_msg');
 						var success = form.siblings('.tabs_div');
@@ -174,12 +210,7 @@
 								console.log(data)
 							}
 						}
-						// 验证手机号参考这个
-						switch(phone.validatemobile()) {
-							case 1: error.html(msgtemp('<strong>手机号码为空</strong> 请输入手机号码',    'alert-warning')); return; break;
-							case 2: error.html(msgtemp('<strong>手机号码错误</strong> 请输入11位数的号码','alert-warning')); return; break;
-							case 3: error.html(msgtemp('<strong>手机号码错误</strong> 请输入正确的号码',  'alert-warning')); return; break;
-						}
+						
 						// 验证密码复杂度参考这个
 						switch(pwd.validatepwd()) {
 							case 1: error.html(msgtemp('<strong>密码不能为空</strong> 请输入密码',    'alert-warning')); return; break;

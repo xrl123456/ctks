@@ -18,7 +18,7 @@ height:280px;
             <form class="mws-form" action="form_layouts.html">
                 <div class="mws-form-inline">
                     <div style="text-align:center;">
-                        <img src="/uploads/faces/h7TNAnxGxBBdUJaBEpc9PGWnTsR3SMkPUb5iwTbn.png" alt="" style="width:150px;height:150px;border-radius:50%;margin:20px;">
+                        <img src="{{$users->pic  or '/uploads/faces/h7TNAnxGxBBdUJaBEpc9PGWnTsR3SMkPUb5iwTbn.png'}}" alt="" style="width:150px;height:150px;border-radius:50%;margin:20px;">
                     </div>
                     <div class="mws-form-row bordered">
                         <label class="mws-form-label">用户名：</label>
@@ -39,41 +39,37 @@ height:280px;
                         <label class="mws-form-label">生日:</label>
                         <div class="mws-form-item">
                         <div>
-                            <h4></h4>
+                            <h4> {{ $users->birth or '' }}</h4>
                         </div>
                         </div>
                     </div>
-                    <div class="mws-form-row bordered">
-                        <label class="mws-form-label">个人简介:</label>
-                        <div class="mws-form-item">
-                        <div>
-                            <h4></h4>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="mws-form-row bordered">
-                        <label class="mws-form-label">邮箱:</label>
-                        <div class="mws-form-item">
-                        <div>
-                            <h4>{{ $users->email or '' }}</h4>
-                        </div>
-                        </div>
-                    </div>
+                   
+                    
                     <div class="mws-form-row bordered">
                         <label class="mws-form-label">创建时间：</label>
                         <div class="mws-form-item clearfix">
-                            <h4>{{ $users->updated_at }}</h4>
+                            <h4>{{ $users->updated_at or '' }}</h4>
                         </div>
                     </div>
                     <div class="mws-form-row bordered">
                         <label class="mws-form-label">性别：</label>
                         <div class="mws-form-item clearfix">
-                            <h3></h3>
+                            <h3>
+                             @if($users->sex =='')
+
+                            @elseif($users->sex == 0)
+                                      男      
+                            @elseif($users->sex== 1)
+                                    女
+                            @elseif($users->sex ==2)
+                                保密      
+                            @endif
+                            </h3>
                         </div>
                     </div>
                 </div>
                 <div class="mws-button-row">
-                    <a class="btn " href="/admins/super">返回</a>
+                    <a class="btn " href="/admins/users">返回</a>
                 </div>
              </form> 
         </div>      

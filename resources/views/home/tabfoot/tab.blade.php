@@ -15,30 +15,45 @@
 	<script src="/home/js/global.js" charset="UTF-8"></script>
 	<script src="/home/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
 	<title>U袋网</title>
-
+ 	<meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 	<!-- 顶部tab -->
 	<div class="tab-header">
 		<div class="inner">
+			@if( Session::get('home_user')['name'])
 			<div class="pull-left">
-				<div class="pull-left">嗨，欢迎来到<span class="cr">U袋网</span></div>
-				<a href="agent_level.html">网店代销</a>
+				<div class="pull-left">嗨，<font color="#f0c">
+				@if( Session::get('home_user')['name'])
+				 {{Session::get('home_user')['name']}}
+				@else
+				
+				@endif
+				</font> 欢迎来到 <span class="cr"> U袋网 </span></div>
 				<a href="temp_article/udai_article4.html">帮助中心</a>
+				<!-- <a href="/{{ Session::get('home_user')['id'] }}">退出</a> -->
 			</div>
 			<div class="pull-right">
-				<a href="/home/denlu"><span class="cr">登录</span></a>
-				<a href="/home/register?p=register">注册</a>
-				<a href="/home/udai">我的U袋</a>
+				@if( Session::get('home_user')['name'])
+				<a href="/home/dropOut"><span class="cr">退出</span></a>
+                <a href="/home/udai">我的U袋</a>
 				<a href="udai_order.html">我的订单</a>
 				<a href="udai_integral.html">积分平台</a>
+			</div>          
+			@else
+			<div class="pull-left">
+				<div class="pull-left">嗨，<font color="#f0c"> </font> 欢迎来到 <span class="cr"> U袋网 </span></div>
+				<a href="/home/denlu"><span class="cr">登录</span></a>
+				<a href="/home/register?p=register">注册</a>
+			@endif
+				
 			</div>
 		</div>
 	</div>
 	<!-- 搜索栏 -->
 	<div class="top-search">
 		<div class="inner">
-			<a class="logo" href="/home/index"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+			<a class="logo" href="/"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
 			<div class="search-box">
 				<form class="input-group">
 					<input placeholder="Ta们都在搜U袋网" type="text">
@@ -59,13 +74,13 @@
 				</p>
 			</div>
 			<div class="cart-box">
-				<a href="udai_shopcart.html" class="cart-but">
-					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 0 件
+				<a href="/home/shop" class="cart-but">
+					<i class="iconfont icon-shopcart cr fz16"></i>购物车<font color="red" id="shopcart">{{ (Session::get('shopcart') ? Session::get('shopcart') : '0')  }}</font>件
 				</a>
 			</div>
 		</div>
 	</div>
-	 @section('content')
+@section('content')
 
             
-            @show
+@show

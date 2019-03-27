@@ -20,7 +20,7 @@
 <body>
 
 	<div class="public-head-layout container">
-		<a class="logo" href="/home/index"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+		<a class="logo" href="/"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
 	</div>
 	<div style="background:url(images/login_bg.jpg) no-repeat center center; ">
 		<div class="login-layout container">
@@ -59,6 +59,14 @@
   				<div class="tabs_container">
 					<form class="tabs_form" action="/home/rest" method="post" id="register_form">
 					  {{ csrf_field() }}
+					  	<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								</div>
+								<input class="form-control" name="name"  required placeholder="账号名"  type="text">
+							</div>
+						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">

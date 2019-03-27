@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Supers;
+
 use App\Models\Super_info;
 use App\Http\Requests\SuperStoreRequest;
 use App\Http\Requests\SuperUpdateStoreRequest;
@@ -20,13 +21,48 @@ class SuperController extends Controller
      */
     public function index()
     {
-   
         $supers = Supers::all();
-        $info=Super_info::all();
+        $i=1;
+        // dump($supers->superlist);
+        // dd($supers);
         
-        return view('admin.super.index',['supers'=>$supers,'info'=>$info]);
+        return view('admin.super.index',['supers'=>$supers,'i'=>$i]);
     }
+        
+    public function status($id)
+    {
+        // echo aaa;
+     
+        $info = Supers::find($id);
+        // 判断 status 是1 还是0 
+        if(($info->status) == 0 ){
+            // 等于0就将他变成一
+            $info->status = '1';
+            $res = $info->save();
+            
+        }else{
+            // 不等于0 就变0
+            $info->status = '0';
+            $res = $info->save();
+        }
 
+        $res = $info->status;
+        return $res;
+        /*if($res) {
+            $arr = [
+                'path'=>$res,
+                'msg'=>'success'
+            ];
+            echo json_encode($arr);
+        }else{
+            $arr = [
+                'path'=>$res,
+                'msg'=>'error'
+            ];
+            echo json_encode($arr);
+        }*/
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -52,7 +88,7 @@ class SuperController extends Controller
             ?????   DB::beginTransaction();
             ?????   DB::commit()
             ?ع???   DB::rollBack()
-         */
+        */
         DB::beginTransaction();
 
         $supers = new Supers;
@@ -62,6 +98,8 @@ class SuperController extends Controller
         $supers->phone =$request->input('phone','');
         $supers->password=Hash::make($request->input('password',''));
         $supers->grade = $request->input('grade','');
+        $supers->token = str_random(60);
+        
         $res = $supers->save();
         // dd($res);
         $uid = $supers->id;
