@@ -93,21 +93,24 @@
 	Route::get('/home/item_categoryl/{id}','home\GoodsController@categoryl');
 	//跳转前台广告
 	Route::get('/home/bbs/index/{id}','home\BbsController@index');
-	//Route::get('/home/lbts/index','home\LbtsController@index');
-	Route::get('/admins/guanli/index','admin\GuanliController@index');
-	Route::resource('/admins/guanli','admin\GuanliController');
+
+	// //Route::get('/home/lbts/index','home\LbtsController@index');
+	// Route::get('/admins/guanli/index','admin\GuanliController@index');
+	// Route::resource('/admins/guanli','admin\GuanliController');
+
+
 
 	//管理路由
 	Route::resource('/admins/guanli','admin\GuanliController');
 	//前台轮播图路由
 	Route::resource('/admins/lbts','admin\LbtsController');
-	
+
 
 	// 订单
 	Route::get('/home/order/number/{num}','home\OrdersController@number');
 	Route::resource('/home/order','home\OrdersController');
+
 	//测试
 	Route::get('/home/bbs/aaa','home\BbsController@aaa');
 
-	// Route::get('/admins/lbts/{id}/{statu}','admin\LbtsController@statu');
-
+	
