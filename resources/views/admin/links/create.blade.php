@@ -31,7 +31,7 @@
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">链接地址：</label>
                                     <div class="mws-form-item">
-                                        <input type="text" class="medium" name="lurl" placeholder="请输入链接地址,如:http://www.XDL.com" value="{{ old('lurl') }}">
+                                        <input type="text" class="medium" name="lurl" placeholder="请输入链接地址,如:https://www.XDL.com" value="{{ old('lurl') }}">
                                     </div>
                                 </div>
                                 <div>

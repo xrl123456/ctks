@@ -27,7 +27,6 @@
 				
 				 {{Session::get('home_user')['name']}}
 				
-				
 
 				</font> 欢迎来到 <span class="cr"> U袋网 </span></div>
 				<a href="temp_article/udai_article4.html">帮助中心</a>

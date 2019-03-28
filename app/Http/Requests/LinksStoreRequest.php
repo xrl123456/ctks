@@ -26,7 +26,7 @@ class LinksStoreRequest extends FormRequest
         return [
               //链接验证
                 'lname' => 'required|unique:links',//|regex:/^\W{2,20}$/',
-                'lurl' => 'required|regex:/^(?=^.{3,255}$)(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+(:\d+)*(\/\w+\.\w+)*$/',
+                'lurl' => 'required|regex:/^https:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$$/',
                 // 'password2'=> 'required', // |same:password',
                 // 'email' => 'required', // |email',
                   // 'phone' => 'required', // |regex:/^[1]{1}[3-9]{1}[\d]{9}$/',

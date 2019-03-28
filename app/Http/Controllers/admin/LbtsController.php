@@ -113,15 +113,7 @@ class LbtsController extends Controller
         $lbts = lbts::find($id);
         return view('admin/lbts/edit',['lbts'=>$lbts]);
     }
-    public function statu(Request $request,$id,$statu)
-    {   //dd('555');
-        //dump($id);exit;
-        dump($request_all());
-        $lbts = Lbts::find($id);
-        $lbts->statu=$statu;
-        $lbts->save();
-        return view('admin/lbts/index');
-    }
+    
 
     /**
      * Update the specified resource in storage.

@@ -42,11 +42,18 @@
                                     </div>
                                 </div>
                                  <div class="mws-form-row">
+                                    <label class="mws-form-label">邮件：</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" name="email"  value="{{ old('email') }}">
+                                    </div>
+                                </div>
+                                 <div class="mws-form-row">
                                     <label class="mws-form-label">电话：</label>
                                     <div class="mws-form-item">
                                         <input type="text" class="medium" name="phone"  value="{{ old('phone') }}">
                                     </div>
                                 </div>
+
                                  <div class="mws-form-row">
                                     <label class="mws-form-label">状态：</label>
                                     <div class="mws-form-item">

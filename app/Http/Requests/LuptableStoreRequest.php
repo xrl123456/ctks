@@ -26,7 +26,7 @@ class LuptableStoreRequest extends FormRequest
         return [
                 //姓名需要以字母开头以数字结尾
                 'lname' => 'required',
-                'lurl' => 'required|regex:/^(?=^.{3,255}$)(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+(:\d+)*(\/\w+\.\w+)*$/',
+                'lurl' => 'required|regex:/^https:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$$/',
         ];
     }
 
