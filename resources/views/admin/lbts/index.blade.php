@@ -60,7 +60,7 @@
                         <div class="dataTables_info" id="DataTables_Table_1_info">
                         Showing 1 to 10 of 57 entries
                         </div>
-                        <div class="dataTables_paginate paging_full_numbers" id="page_pageqw">
+                        <div class="dataTables_paginate paging_full_numbers" id="page_page">
                         	{{ $lbtslist->appends($request)->links() }}
                         </div>
                         </div>

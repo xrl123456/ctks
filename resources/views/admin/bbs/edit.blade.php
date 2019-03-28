@@ -27,11 +27,22 @@
                     				</div>
                     			</div>
                     			<div class="mws-form-row">
-                    				<label class="mws-form-label">公告内容</label>
-                    				<div class="mws-form-item">
-                    					<textarea name="content" class="small">{{ $bbs->content }}</textarea>
-                    				</div>
-                    			</div>
+                                    <label class="mws-form-label">公告内容</label>
+                                    <div class="mws-form-item">
+                                                                            
+                                        <script id="container" name="content" type="text/plain">{!! $bbs->content !!}</script>
+                                            
+                                        
+                                        <!-- 配置文件 -->
+                                        <script type="text/javascript" src="/bianji/utf8-php/ueditor.config.js"></script>
+                                        <!-- 编辑器源码文件 -->
+                                        <script type="text/javascript" src="/bianji/utf8-php/ueditor.all.js"></script>
+                                        <!-- 实例化编辑器 -->
+                                        <script type="text/javascript">
+                                            var ue = UE.getEditor('container');
+                                        </script>
+                                    </div>
+                                </div>
                     			
                     		<div class="mws-button-row">
                     			<input type="submit" class="btn btn-danger" value="确认修改">
