@@ -15,17 +15,17 @@ class IndexController extends Controller
     public static function getFlei($pid = 0)
     {
         $data = [];
-        //��ȡһ������
+        //一级导航
         $yiji_data = Goods::where('pid',$pid)->get();
 
-        //通过一级分类 获取二级分类
+        //二级导航
         foreach($yiji_data as $key => $value) {
            $temp = self::getFlei($value->id);
             $value['sub'] = $temp;
             $data[] = $value;
         }
+        
         return $data;
-
     }
 
 
@@ -37,15 +37,15 @@ class IndexController extends Controller
     public function index()
     {       
 
-            //��ѯ������Ʒ��Ϣ
+            //查询所有商品 
             $goods = Goodsgo::all();
               $i=1;
               $c=1;
-            //ǩ������
+           // 用户id
             $id =(Session('home_user')['id']);
             $infoadd = Userinfo::where('uid',$id)->get();
             $users = Users::find($id);
-
+            
          
              
         return view('home.index.index',['goods'=>$goods,'i'=>$i,'c'=>$c,'users'=>$users,'infoadd'=>$infoadd]);
@@ -81,9 +81,10 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        // 这里目前是退出的
+        // 
+        //退出登录
         session()->forget('home_user');
-        return '<script>alert("退出成功,");location.href="/";</script>';
+        return '<script>alert("退出登录");location.href="/";</script>';
     }
 
     /**

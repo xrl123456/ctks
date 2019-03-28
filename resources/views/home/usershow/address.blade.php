@@ -84,8 +84,13 @@
 							</div>
 						</div>
 					@endforeach
-					
+						</div>
+
+					</section>
 				</div>
+
+					
+				
 </div>
 <div class="footer">
 		<div class="footer-tags">

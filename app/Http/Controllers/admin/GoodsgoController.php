@@ -8,6 +8,7 @@ use App\Models\Goods;
 use DB;
 use App\Http\Requests\GoodsgoStoreRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\BbseditStoreRequest;
 class GoodsgoController extends Controller
 {
     /**
@@ -15,12 +16,20 @@ class GoodsgoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //初始化
-     
-        $goodsgo = Goodsgo::all();
-        return view('admin.goodsgo.index',['goodsgo'=>$goodsgo]);
+     //
+        //分页条数
+        $count = $request->input('count',5);
+        // dump($request->all());exit;
+        //搜索的关键字
+        $search = $request->input('search',''); 
+
+        $gname =Goodsgo::where('gname','like','%'.$search.'%')->paginate($count);
+        
+
+        return view('admin.goodsgo.index',['gname'=> $gname,'request'=>$request->all()]);
        
     }
 

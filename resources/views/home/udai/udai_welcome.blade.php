@@ -5,11 +5,11 @@
 				<div class="user-center__info bgf">
 					<div class="pull-left clearfix">
 						<div class="port b-r50 pull-left">
-							<img src="/home/images/icons/default_avt.png" alt="用户名" class="cover b-r50">
-							<a href="udai_setting.html" class="edit"><i class="iconfont icon-edit"></i></a>
+							<img src="{{ $info->pic or '' }}" alt="用户名" class="cover b-r50">
+							<a href="/home/setting" class="edit"><i class="iconfont icon-edit"></i></a>
 						</div>
-						<p class="name text-nowrap">您好，18759808122！</p>
-						<p class="money text-nowrap">余额：¥88.0</p>
+						<p class="name text-nowrap">您好！{{ $info->name or ''}}</p>
+						<p class="money text-nowrap">余额：¥00.0</p>
 						<p class="level text-nowrap">身份：普通会员 <a href="agent_level.html">提升</a></p>
 					</div>
 					<div class="pull-right user-nav">
@@ -31,7 +31,7 @@
 						</a>
 						<a href="udai_integral.html" class="user-nav__but">
 							<i class="iconfont icon-jifen fz40 cr"></i>
-							<div class="c6">积分 <span class="cr">200</span></div>
+							<div class="c6">积分 <span class="cr">{{ $info->info[0]->desc  or ''}}</span></div>
 						</a>
 						<a href="udai_message.html" class="user-nav__but">
 							<i class="iconfont icon-xiaoxi fz40 cr"></i>

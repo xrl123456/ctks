@@ -48,20 +48,7 @@ class SuperController extends Controller
 
         $res = $info->status;
         return $res;
-        /*if($res) {
-            $arr = [
-                'path'=>$res,
-                'msg'=>'success'
-            ];
-            echo json_encode($arr);
-        }else{
-            $arr = [
-                'path'=>$res,
-                'msg'=>'error'
-            ];
-            echo json_encode($arr);
-        }*/
-
+      
     }
     /**
      * Show the form for creating a new resource.
@@ -83,12 +70,7 @@ class SuperController extends Controller
      */
     public function store(SuperStoreRequest $request)
     {
-        // ?????        // dd($_POST);
-        /*
-            ?????   DB::beginTransaction();
-            ?????   DB::commit()
-            ?ع???   DB::rollBack()
-        */
+        
         DB::beginTransaction();
 
         $supers = new Supers;

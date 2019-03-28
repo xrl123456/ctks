@@ -1,6 +1,5 @@
 @extends('home.tabfoot.tab')
 @section('content')
-
 	<!-- 首页导航栏 -->
 	<div class="top-nav bg3">
 		<div class="nav-box inner">
@@ -9,6 +8,7 @@
 				
 				<div class="cat-list__box">
 					@foreach($data as $k=>$v)
+					@if($v->cname != '积分商品')
 					<div class="cat-box">
 						<div class="title">
 						<i class="iconfont icon-skirt ce"></i>{{ $v->cname }}
@@ -35,6 +35,7 @@
 						</div>
 						
 					</div>
+					@endif
 					@endforeach
 				</div>
 
@@ -154,7 +155,9 @@
     <div class="swiper-container banner-box">
         <div class="swiper-wrapper">
         @foreach($lbts as $k =>$v)
-            <div class="swiper-slide"><a href="item_show.html"><img src="/uploads/{{ $v->pic }}" class="cover"></a></div>
+      	
+           <div class="swiper-slide"><a href="item_show.html"><img src="/uploads/{{ $v->pic }}" class="cover"></a></div>
+         
 		@endforeach
 
 
@@ -172,87 +175,50 @@
 	<nav class="floor-nav visible-lg-block">
 	<span class="scroll-nav active">爆款</span>
 	 @foreach($data as $k=>$v)
+	 	@if($v->cname != '积分商品')
 		<span class="scroll-nav active">{{ $v->cname }}</span>
-		
+		@endif
 		@endforeach
 	</nav>
 
 	<!-- 楼层内容 -->
 	 
 	<div class="content inner" style="margin-bottom: 40px;">
+	
 		<section class="scroll-floor floor-1 clearfix">
 			<div class="pull-left">
+
 				<div class="floor-title">
-					<i class="iconfont icon-tuijian fz16"></i> 
-					<a href="" class="more"><i class="iconfont icon-more"></i></a>
+					<i class="iconfont icon-tuijian fz16">一级商品区</i> 
+					<a href="" class="more"><i class="iconfont icon-more">商品</i></a>
 				</div>
+				
 				<div class="con-box">
 					<a class="left-img hot-img" href="">
 						<img src="/home/images/floor_1.jpg" alt="" class="cover">
 					</a>
+					
 					<div class="right-box hot-box">
-						<a href="item_show.html" class="floor-item">
+					@foreach($goods as $key=>$value)
+					@if($v->pid == $value->tid)
+						
+						<a href="/home/item_show/{{ $value->id }}" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-001.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/uploads/Goods/{{ $value->pic }}" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
+								<span class="pull-left cr fz16">￥{{ $value->price }}</span>
+								<span class="pull-right c6">价格</span>
 							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
+							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">{{$value->gname}}</div>
 						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-002.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-003.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-004.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-005.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-006.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
+							
+						@endif
+				@endforeach
 					</div>
+			
 				</div>
+				
 			</div>
 			<div class="pull-right">
 				<div class="floor-title">
@@ -264,7 +230,7 @@
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
 								@foreach($Bbs as $k =>$v)
-								<a class="swiper-slide ep" href="/home/bbs/index/{{ $v->id }}">{{ $v->title }}</a>
+								<a class="swiper-slide ep" href="/home/bbs/index/{{ $v->id }}">{!! $v->title !!}</a>
 								@endforeach
 							</div>
 						</div>
@@ -300,10 +266,13 @@
 			</div>
 		
 		</section>
+
 		@foreach($data as $k=>$v)
+			@if($v->cname != '积分商品')
 		<section class="scroll-floor floor-{{ $i++}}">
 			<div class="floor-title">
 				<i class="iconfont icon-skirt fz16">{{ $v->cname }}</i>
+
 				<div class="case-list fz0 pull-right">
 					@foreach($v['sub'] as $kk=>$vv)
 					<a href="/home/item_categoryl/{{ $vv->id }}">{{ $vv->cname }}</a>
@@ -332,9 +301,11 @@
 					</a>
 						@endif
 					@endforeach
+						@endif
 					
 				</div>
 		</section>
+
 		@endforeach
 		</div>
 		

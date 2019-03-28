@@ -96,7 +96,7 @@ class OrdersController extends Controller
         $uid = session('home_user')['id'];
         $addres = DB::table('address')->where('uid',$uid)->get(); 
 
-        return view('home.usershow.order',['goods_info'=>$goods_info,'addres'=>$addres]);
+        return view('home.order.order',['goods_info'=>$goods_info,'addres'=>$addres]);
     }
 
 

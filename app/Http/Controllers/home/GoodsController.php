@@ -29,18 +29,12 @@ class GoodsController extends Controller
 			return view('home.udai.item_show',['itemShow'=>$itemShow]);
 
 		}	
-		// //商品加入购物车
-
-		// public function shopcart($id)
-		// {
-			 
-		// }
-
-		// public function categoryl($id)
-		// {
+		//第三级商品
+		public function categoryl($id)
+		{
 			
-  //     	  $goods = Goodsgo::all();
-		// 	return view('home.udai.item_category',['id'=>$id,'goods'=>$goods]);
-		// }
+      	  $goods = Goodsgo::all();
+			return view('home.udai.item_category',['id'=>$id,'goods'=>$goods]);
+		}
 
 }

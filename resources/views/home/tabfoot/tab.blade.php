@@ -24,21 +24,21 @@
 			@if( Session::get('home_user')['name'])
 			<div class="pull-left">
 				<div class="pull-left">嗨，<font color="#f0c">
-				@if( Session::get('home_user')['name'])
-				 {{Session::get('home_user')['name']}}
-				@else
 				
-				@endif
+				 {{Session::get('home_user')['name']}}
+				
+				
+
 				</font> 欢迎来到 <span class="cr"> U袋网 </span></div>
 				<a href="temp_article/udai_article4.html">帮助中心</a>
-				<!-- <a href="/{{ Session::get('home_user')['id'] }}">退出</a> -->
+				
 			</div>
 			<div class="pull-right">
-				@if( Session::get('home_user')['name'])
+				
 				<a href="/home/dropOut"><span class="cr">退出</span></a>
                 <a href="/home/udai">我的U袋</a>
 				<a href="udai_order.html">我的订单</a>
-				<a href="udai_integral.html">积分平台</a>
+				<a href="/home/integral">积分平台</a>
 			</div>          
 			@else
 			<div class="pull-left">
@@ -73,11 +73,17 @@
 					<a href="">2017新款</a>
 				</p>
 			</div>
+			@if( Session::get('home_user')['name'])
 			<div class="cart-box">
 				<a href="/home/shop" class="cart-but">
+
 					<i class="iconfont icon-shopcart cr fz16"></i>购物车<font color="red" id="shopcart">{{ (Session::get('shopcart') ? Session::get('shopcart') : '0')  }}</font>件
 				</a>
 			</div>
+			@else
+			<div>
+			</div>
+			@endif
 		</div>
 	</div>
 @section('content')

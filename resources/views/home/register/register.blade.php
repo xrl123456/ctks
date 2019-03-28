@@ -97,6 +97,18 @@
 	                        	<input checked="" name="agree" id="register_checkbox"  value="1" type="checkbox"><i></i> 同意<a href="temp_article/udai_article3.html">U袋网用户协议</a>
 	                        </label>
 	                    </div>
+	                    <!-- 显示跳转信息 开始 -->
+		                @if (count($errors) > 0)
+						    <div class="alert alert-danger">
+						        <ul>
+						            @foreach ($errors->all() as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif  
+                		<!-- 结束 -->
+
 	                    <!-- 错误信息 -->
 						<div class="form-group">
 							<div class="error_msg" id="register_error"></div>
@@ -105,24 +117,7 @@
 	                    <!-- <button onclick='doSubmitForm()' class="btn btn-large btn-primary btn-lg btn-block submit" id="register_submit" type="submit">注册</button> -->
                     </form>
                  
-                   
-                 <!--    <div class="tabs_div">
-	                    <div class="success-box">
-	                    	<div class="success-msg">
-								<i class="success-icon"></i>
-	                    		<p class="success-text">密码重置成功</p>
-	                    	</div>
-	                    </div>
-	                    <div class="option-box">
-	                    	<div class="buts-title">
-	                    		现在您可以
-	                    	</div>
-	                    	<div class="buts-box">
-	                    		<a role="button" href="index.html" class="btn btn-block btn-lg btn-default">继续访问商城</a>
-								<a role="button" href="login.html" class="btn btn-block btn-lg btn-info">返回登陆</a>
-	                    	</div>
-	                    </div>
-                    </div> -->
+               
                 </div>
 			</div>
 			<script>

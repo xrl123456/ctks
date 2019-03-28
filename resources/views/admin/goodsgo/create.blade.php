@@ -52,8 +52,11 @@
                                         <select class="required large" name="tid"  style="width:100px;" >
                                          <option>---请选择---</option>
                                           @foreach($goods as $k=>$v)
-
-                                            <option value="{{$v->pid }}">{{ $v->cname }}</option>
+                                            @if($v->pid==0)
+                                            <option value="{{$v->pid }}"disabled="disabled" >{{ $v->cname }}</option>
+                                            @else
+                                            <option value="{{$v->pid }}" >{{ $v->cname }}</option>
+                                            @endif
                                           @endforeach
                                         </select>
                                     </div>

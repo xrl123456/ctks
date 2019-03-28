@@ -7,17 +7,24 @@
                     </div>
                     <div class="mws-panel-body no-padding">
                         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
+                        
+                        <form action="/admins/goodsgo" method="get">
                         <div id="DataTables_Table_1_length" class="dataTables_length">
-	                        <label>显示<select size="1" name="DataTables_Table_1_length" aria-controls="DataTables_Table_1">
-	                        <option value="10" selected="selected">10</option>
-	                        <option value="25">25</option><option value="50">50</option>
-	                        <option value="100">100</option>
-	                        </select>条
+                        <label>显示
+                        <select size="1" name="count" aria-controls="DataTables_Table_1">
+                            <option value="5"  @if(isset($request['count']) && $request['count'] == 5) selected  @endif >5</option>
+                            <option value="10" @if(isset($request['count']) && $request['count'] == 10) selected @endif >10</option>
+                            <option value="30" @if(isset($request['count']) && $request['count'] == 30) selected @endif >30</option>
+                            <option value="50" @if(isset($request['count']) && $request['count'] == 50) selected @endif >50</option>
+                        </select>条
                         </label>
                         </div>
+                      
                         <div class="dataTables_filter" id="DataTables_Table_1_filter">
-                        <label>搜索: <input type="text" aria-controls="DataTables_Table_1">
-                        </label></div>
+                        <label>搜索关键字: <input type="text" aria-controls="DataTables_Table_1" name="search" value="{{ $request['search'] or ''}}"></label>
+                        <input type="submit" value="搜索">
+                        </div>
+                        </form>
                         <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
                             <thead>
                                 <tr role="row">
@@ -35,14 +42,14 @@
                             </thead>
                             
                         	<tbody role="alert" aria-live="polite" aria-relevant="all">
-                            @foreach($goodsgo as $k=>$v)
+                            @foreach($gname as $k=>$v)
                         		<tr class="odd" align="center">
                                     <td class="  sorting_1">{{ $v->id }}</td>
                                     <td class=" ">{{ $v->gname }}</td>
                                     <td class=" "><img src="/uploads/goods/{{ $v->pic }}" style="width:60px"></td>
                                     <td class=" ">{{ $v->price}}</td>
                                        
-                                    <td class=" ">{{ $v->goodtype->cname or '' }}</td>
+                                    <td class=" ">{{ $v->goodtype->cname or $v->gname }}</td>
                                   
                                     <td class="  ">{{ $v->goodsinfo }}</td>
                                     <td class=" ">{{ $v->goodsNum }}</td>
@@ -53,24 +60,20 @@
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                          <input type="submit" value="删除"  onclick="return confirm('数据无价谨慎操作')" class="btn btn-danger " >
-                                    </form>        
+                                    </form>
+                                    </td> 
+                                    </tr>
+
                                 @endforeach
                          	</tbody>
                         </table>
                          <div class="dataTables_info" id="DataTables_Table_1_info">
                          Showing 1 to 10 of 57 entries
                          </div>
-                         <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
-                         <a tabindex="0" class="first paginate_button paginate_button_disabled" id="DataTables_Table_1_first">First</a>
-                         <a tabindex="0" class="previous paginate_button paginate_button_disabled" id="DataTables_Table_1_previous">Previous</a>
-                         <span><a tabindex="0" class="paginate_active">1</a>
-                         <a tabindex="0" class="paginate_button">2</a>
-                         <a tabindex="0" class="paginate_button">3</a>
-                         <a tabindex="0" class="paginate_button">4</a>
-                         <a tabindex="0" class="paginate_button">5</a>
-                         </span>
-                         <a tabindex="0" class="next paginate_button" id="DataTables_Table_1_next">Next</a>
-                         <a tabindex="0" class="last paginate_button" id="DataTables_Table_1_last">Last</a>
+                         <div class="dataTables_paginate paging_full_numbers" id="page_page">
+
+                               {{ $gname->appends($request)->links() }}
+
                          </div>
                          </div>
                     </div>

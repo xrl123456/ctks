@@ -9,6 +9,7 @@ use App\Models\Users;
 use Hash;
 use DB;
 use App\Models\Goodsgo;
+use App\Http\Requests\home\RegisStoreRequest;
 
 class RegisterController extends Controller
 	{
@@ -19,7 +20,7 @@ class RegisterController extends Controller
 	    }
 
 	    //将注册页面内容的值导入数据库
-	  	public function show(Request $request)
+	  	public function show(RegisStoreRequest $request)
 	  	{
 	  		  DB::beginTransaction();
 	  		//判断验证码
@@ -30,8 +31,8 @@ class RegisterController extends Controller
 	  	 
 	  			if($request->has('agree')){
 	  			$user = new Users;
-	  			$user->name = $request->name;
-	  			 $user->phone =  $request->phone;
+	  			$user->name = $request->input('name','');
+	  			 $user->phone =$request->input('phone','');
 	  			 $user->password = Hash::make($request->password);
 	  			 $res = $user->save();
 	  			  $uid = $user->id;
@@ -127,8 +128,11 @@ class RegisterController extends Controller
 			{
 				// 个人中心首页显示 订单
 				
+				$id =(Session('home_user')['id']);
+				 $info = Users::find($id);
+				
 
-				return view('home.udai.udai_welcome');
+				return view('home.udai.udai_welcome',['info'=>$info]);
 			}
 			//个人资料
 			public function setting()
@@ -173,7 +177,7 @@ class RegisterController extends Controller
 	        			}
 
 			}
-
+			//签到操作
 			public function userget(Request $request)
 			{	
 				//签到天数

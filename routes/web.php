@@ -77,6 +77,8 @@
 	Route::get('/home/denlu','home\RegisterController@denlu');
 	//前台签到路由
 	Route::get('/home/userget','home\RegisterController@userget');
+	//前台积分页面
+	Route::get('/home/integral','home\UdaiController@integral');
 	//跳转前台用户中心
 	Route::get('/home/udai','home\RegisterController@welcome');
 	//跳转前台个人资料区
@@ -100,5 +102,5 @@
 	// 订单
 	Route::get('/home/order/number/{num}','home\OrdersController@number');
 	Route::resource('/home/order','home\OrdersController');
-
-
+	//测试
+	Route::get('/home/bbs/aaa','home\BbsController@aaa');

@@ -16,25 +16,27 @@
 								<th width="300">商品信息</th>
 								<th width="150">单价</th>
 								<th width="200">数量</th>
-								<th width="200">现价</th>
+								<th width="200">总价</th>
 								<th width="80">操作</th>
 							</tr>
 						</thead>
 						<tbody>
+
 							@foreach($testshop as $key=>$value)
-								@foreach($value->addersand as $k=>$v)
+								
 							<tr>
 								<th scope="row">
 									<label class="checked-label"><input type="checkbox"><i></i>
-										<div class="img"><img src="/uploads/Goods/{{ $v->pic }}" alt="" class="cover"></div>
+										<div class="img"><img src="" alt="" class="cover"></div>
 									</label>
 								</th>
 
 								<td>
-									<div class="name ep3">{{ $v->gname }}</div>
+
+									<div class="name ep3"></div>
 									<div class="type c9">颜色分类：深棕色  尺码：均码</div>
 								</td>
-								<td>¥{{ $v->price }}</td>
+								<td>¥444</td>
 								<td>
 									<div class="amount-widget">
 									<input class="amount-input" value="{{ $value->number }}" id="input" maxlength="8" title="请输入购买量" type="text" >
@@ -43,12 +45,12 @@
 										<a class="amount-but sub" "></a>
 									</div>
 								</div>
-									<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock">{{ $v->goodsNum }}</b> 件</span></div>
+									<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock">333333</b> 件</span></div>
 								</td>
 								<td>¥{{ $value->oprice }}</td>
 								<td><a href="">删除</a></td>
 							</tr>
-								@endforeach
+							
 							@endforeach
 						</tbody>
 					</table>

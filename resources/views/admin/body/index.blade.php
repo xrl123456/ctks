@@ -31,8 +31,9 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/css/page_page.css" media="screen" >
+<!-- <link rel="stylesheet" type="text/css" href="/admin/css/page_page.css" media="screen" > -->
 <title>MWS Admin - Form Layouts</title>
+<link rel="stylesheet" type="text/css" href="/admin/css/page_page.css" media="screen">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>

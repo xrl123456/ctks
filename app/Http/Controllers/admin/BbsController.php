@@ -21,7 +21,7 @@ class BbsController extends Controller
         $count=$request->input('count',5);
         $search=$request->input('search','');
         $bbslist=Bbs::where('title','like','%'.$search.'%')->paginate($count);
-        //var_dump($userlist);
+ 
         return view('admin.bbs.index',['bbslist'=>$bbslist,'request'=>$request->all(),]);
     }
 

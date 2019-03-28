@@ -177,22 +177,22 @@
 												}
 												$('.amount-input').val(num - 1);
 											}
-											var coumt = $('#input').val();
-												$.ajaxSetup({
-							                        headers: {
-							                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-							                        }
-							                    })
-							                    $.ajax({
-						                            'url': '/home/order/number/'+coumt,
-						                            'type': 'get',
-						                            'data': '',
-						                            'async': true,
-													success:function(data){
-						        //                   
-						                        			console.log(data);
-						                            }
-						                        })
+											// var coumt = $('#input').val();
+											// 	$.ajaxSetup({
+							    //                     headers: {
+							    //                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							    //                     }
+							    //                 })
+							    //                 $.ajax({
+						     //                        'url': '/home/order/number/'+coumt,
+						     //                        'type': 'get',
+						     //                        'data': '',
+						     //                        'async': true,
+											// 		success:function(data){
+						     //    //                   
+						     //                    			console.log(data);
+						     //                        }
+						     //                    })
 										});
 									});
 										
@@ -220,17 +220,20 @@
                         }
                     })
                     // 这段是点击隐藏的// $("#shopnone").hide();
+                    // 获取购买的数量
 					var num = parseInt($('.amount-input').val());
 					var none = $("#shopadd").text();
+						// alert(none);
 					$.ajax({
                             'url': '/home/shop/shopping/'+id+'/'+num+'/'+{{ Session::get('home_user')['id'] }},
                             'type': 'get',
                             'data': '',
                             'async': true,
 							success:function(data){
+								// alert(data);
                                 $('#shopcart').text(data);
                                 setTimeout(function(){
-									$("#shopadd").text("已加入该商品");
+									$("#shopadd").text("已加购物车");
 									setTimeout(function(){
 									$("#shopadd").text(none);
 										},5000)	
