@@ -6,12 +6,14 @@
 		<section class="user-center inner clearfix">
 			<div class="user-content__box clearfix bgf">
 				<div class="title">购物车</div>
-				<form action="udai_shopcart_pay.html" class="shopcart-form__box">
+				<form action="/home/shop" class="shopcart-form__box" method="post" >
+					{{ csrf_field() }}
+
 					<table class="table table-bordered">
 						<thead>
 							<tr>
 								<th width="150">
-									<label class="checked-label"><input type="checkbox" class="check-all"><i></i> 全选</label>
+									<label class="checked-label"><input type="checkbox" class="check-all" ><i></i> 全选</label>
 								</th>
 								<th width="300">商品信息</th>
 								<th width="150">单价</th>
@@ -25,9 +27,12 @@
 							@foreach($testshop as $key=>$value)
 								
 							<tr>
-								<th scope="row">
-									<label class="checked-label"><input type="checkbox"><i></i>
-										<div class="img"><img src="" alt="" class="cover"></div>
+
+								<th scope="row" style="width:140px;height:140px;">
+									 <!-- onclick="shopbox({{ $value->id }})" -->
+									<label class="checked-label"><input id="sub_btn" id="boxstatus{{ $value->id }}" type="checkbox" value="{{ $value->oprice }}" name="{{ $value->id }}"  ><i></i>
+										<div class="img" ><img src="/uploads/Goods/{{ $v->pic }}"  alt="" class="cover"></div>
+
 									</label>
 								</th>
 
@@ -39,85 +44,108 @@
 								<td>¥444</td>
 								<td>
 									<div class="amount-widget">
-									<input class="amount-input" value="{{ $value->number }}" id="input" maxlength="8" title="请输入购买量" type="text" >
+									<input class="amount-input" id="inputnum{{ ($value->id) }}" value="{{ $value->number }}" maxlength="3" title="请输入购买量" type="text" disabled="disabled">
 									<div class="amount-btn">
-										<a class="amount-but add" "></a>
-										<a class="amount-but sub" "></a>
+										<a class="amount-but add" onclick="add({{ $value->id }})" ></a>
+										<a class="amount-but sub" onclick="prep({{ $value->id }})"></a>
 									</div>
 								</div>
-									<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock">333333</b> 件</span></div>
+
+									<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock{{ $value->id }}">{{ $v->goodsNum }}</b> 件</span></div>
+
 								</td>
-								<td>¥{{ $value->oprice }}</td>
-								<td><a href="">删除</a></td>
+								<td id="newoprice{{ $value->id }}">¥{{ $value->oprice }}</td>
+								<td><a href="/home/shop/del/{{ $value->id }}" style="background-color:orange;border: 1px solid red;width:60px;height:30px;border-radius:10px 10px 10px 10px; margin-top:40px;"  onclick="return confirm('删了就没了哦')"><h3>删除</h3></a></td>
+								<!-- <td><a href="/home/shop/del/{{ $value->id }}"><button type="submit" style="background-color:orange;border: 1px solid red;width:60px;height:30px;border-radius:10px 10px 10px 10px; margin-top:40px;">删除</button></a></td> -->
+							 <!-- disabled="disabled" -->
 							</tr>
 							
 							@endforeach
 						</tbody>
 					</table>
 					<div class="user-form-group tags-box shopcart-submit pull-right">
-						<button type="submit" class="btn">提交订单</button>
+						<input type="submit" class="btn" value="提交订单" onclick="return dontshop()">
+						<!-- onclick="return dontshop() -->
 					</div>
 					<div class="checkbox shopcart-total">
 						<label><input type="checkbox" class="check-all"><i></i> 全选</label>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">删除</a>
-						<div class="pull-right">
-							已选商品 <span>2</span> 件
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/home/shop/out" onclick="return confirm('清空就没了哦')">清空购物车</a>
+						<!-- <div class="pull-right">
+							已选商品 <span id="shopnum">0</span> 件
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计（不含运费）
-							<b class="cr">¥<span class="fz24">40.00</span></b>
-						</div>
+							<b class="cr">¥<span class="fz24">0</span></b>
+						</div> -->
 					</div>
-					<script>
 
-									// $(function () {
-									// 	$('.amount-input').onlyReg({reg: /[^0-9]/g});
-									// 	var stock = parseInt($('#Stock').html());
-									// 	$('.amount-widget').on('click','.amount-but',function() {
-									// 		//获取的是输入的数量
-									// 		var num = parseInt($('.amount-input').val());
-									// 		console.log(num);
-									// 		//判断值不能为0
-									// 		if (!num) num = 0;
-									// 		//当前对象加的时候
-									// 		if ($(this).hasClass('add')) {
-									// 			if (num > stock - 1){
-									// 				return DJMask.open({
-									// 				　　width:"300px",
-									// 				　　height:"100px",
-									// 				　　content:"您输入的数量超过库存上限"
-									// 			　　});
-									// 			}
-									// 			$('.amount-input').val(num + 1);
-									// 		} else if ($(this).hasClass('sub')) {
-									// 			if (num == 1){
-									// 				return DJMask.open({
-									// 				　　width:"300px",
-									// 				　　height:"100px",
-									// 				　　content:"您输入的数量有误"
-									// 			　　});
-									// 			}
-									// 			$('.amount-input').val(num - 1);
-									// 		}
-											// var coumt = $('#input').val();
-											// 	$.ajaxSetup({
-							    //                     headers: {
-							    //                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-							    //                     }
-							    //                 })
-							    //                 $.ajax({
-						     //                        'url': '/home/order/number/'+coumt,
-						     //                        'type': 'get',
-						     //                        'data': '',
-						     //                        'async': true,
-											// 		success:function(data){
-						     //    //                   
-						     //                    			console.log(data);
-						     //                        }
-						     //                    })
-									// 	});
-									// });
-										
-								</script>
+
+				</form>
 					<script>
+							// $('input.val').onlyReg({reg: /[^0-9.]/g});
+							function add(id){
+
+								// console.log(id);
+								var num = $('#inputnum'+id).val();
+
+								// console.log(num);
+								var topnum =$('#Stock'+id).text();
+								// console.log(topnum);
+								// 总金额
+								var newoprice = $('#newoprice'+id).text();
+								// console.log(newoprice);
+								// 操作加 
+								if(num > topnum -1){
+									alert('没这么多库存');
+								}else{
+									num++  ;
+									// console.log(num);
+								}
+
+								$.ajax({
+		                            'url': '/home/shop/number/'+num+'/'+id,
+		                            'type': 'get',
+		                            'data': '',
+		                            'async': true,
+									success:function(data){
+		   									                   
+		                        			$('#newoprice'+id).text('￥'+data.oprice);
+											$('#inputnum'+id).val(data.num);
+		                            }
+		                        })
+							}
+							function prep(id){
+
+								// console.log(id);
+								var num = $('#inputnum'+id).val();
+								// console.log(num);
+								var topnum =$('#Stock'+id).text();
+								// console.log(topnum);
+								// // 总金额
+								var newoprice = $('#newoprice'+id).text();
+								// 操作加 
+								if(num  == 1 ){
+									alert('大爷，好歹留点存货吧');
+								}else{
+									num--  ;
+								}
+								$.ajax({
+		                            'url': '/home/shop/number/'+num+'/'+id,
+		                            'type': 'get',
+		                            'data': '',
+		                            'async': true,
+									success:function(data){
+		                        			$('#newoprice'+id).text('￥'+data.oprice);
+											$('#inputnum'+id).val(data.num);
+											// console.log(data.status);
+		                            }
+		                            
+		                        })
+									
+							}
+					</script>
+
+
+					<script type="text/javascript">
+					
 						$(document).ready(function(){
 							var $item_checkboxs = $('.shopcart-form__box tbody input[type="checkbox"]'),
 								$check_all = $('.check-all');
@@ -129,27 +157,38 @@
 							// 点击选择
 							$item_checkboxs.on('change', function() {
 								var flag = true;
+								// console.log(item_checkboxs);
 								$item_checkboxs.each(function() {
 									if (!$(this).prop('checked')) { flag = false }
 								});
 								$check_all.prop('checked', flag);
 							});
-							// 个数限制输入数字
-							$('input.val').onlyReg({reg: /[^0-9.]/g});
-							// 加减个数
-							$('.cart-num__box').on('click', '.sub,.add', function() {
-								var value = parseInt($(this).siblings('.val').val());
-								if ($(this).hasClass('add')) {
-									$(this).siblings('.val').val(Math.min((value += 1),99));
-								} else {
-									$(this).siblings('.val').val(Math.max((value -= 1),1));
-								}
-							});
+							
 						});
+						// 阻止form表单传送数据 
+						function dontshop(){
+							var box = $('input:checkbox:checked');
+							if(box.length == 0){
+								// console.log(123);
+								alert('老板,不买东西怎么结算');
+								return false;
+							}else{
+								return true;
+							}
+						
+						}
+
+
+				
+						// console.log(id);
+													        				
+
+
+						// $('#shopnum').test(shopnumber);
+
 					</script>
 
 
-				</form>
 			</div>
 		</section>
 	</div>

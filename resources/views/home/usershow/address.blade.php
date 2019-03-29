@@ -1,5 +1,7 @@
 @extends('home.udai.udai')
- @section('content')
+
+@section('content')
+
 
 <div class="pull-right">
 				<div class="user-content__box clearfix bgf">
@@ -88,10 +90,9 @@
 
 					</section>
 				</div>
-
 					
-				
-</div>
+	</div>
+
 <div class="footer">
 		<div class="footer-tags">
 			<div class="tags-box inner">

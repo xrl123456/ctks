@@ -177,6 +177,7 @@
 												}
 												$('.amount-input').val(num - 1);
 											}
+
 											// var coumt = $('#input').val();
 											// 	$.ajaxSetup({
 							    //                     headers: {
@@ -193,6 +194,23 @@
 						     //                    			console.log(data);
 						     //                        }
 						     //                    })
+
+											var coumt = $('#input').val();
+												$.ajaxSetup({
+							                        headers: {
+							                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							                        }
+							                    })
+							                    $.ajax({
+						                            'url': '/home/order/number/'+coumt,
+						                            'type': 'get',
+						                            'data': '',
+						                            'async': true,
+													success:function(data){
+						        //                   
+						                        			// console.log(data);
+						                            }
+						                        })
 										});
 									});
 										
@@ -230,8 +248,7 @@
                             'data': '',
                             'async': true,
 							success:function(data){
-								// alert(data);
-                                $('#shopcart').text(data);
+             $('#shopcart').text(data);
                                 setTimeout(function(){
 									$("#shopadd").text("已加购物车");
 									setTimeout(function(){

@@ -12,6 +12,7 @@
 */
 
 
+
 	// 这个是登录的
 	Route::resource('admins/login','admin\LoginController');
 
@@ -110,8 +111,51 @@
 	// 订单
 	Route::get('/home/order/number/{num}','home\OrdersController@number');
 	Route::resource('/home/order','home\OrdersController');
+		// 购物车的数量 更改  
+   	Route::get('/home/shop/number/{num}/{id}','home\ShopController@number');
+  	 // 清空购物车
+	Route::get('/home/shop/out','home\ShopController@out');
+
+	// 从购物车删除
+	Route::get('/home/shop/del/{id}','home\ShopController@del');
+	// 从个人中心删除
+	Route::get('/home/order/del/{id}','home\OrdersController@del');
+	// 从购物车结算
+	Route::post('/home/order/shoppay/{id}','home\OrdersController@shoppay');
+	Route::resource('/home/shop','home\ShopController');
+	// 收货地址 --------
+	Route::resource('/home/addres','home\AddressController');
+	// 个人中心  
+	Route::resource('/home/usershow','home\UsershowController');
+
 
 	//测试
 	Route::get('/home/bbs/aaa','home\BbsController@aaa');
 
 	
+
+
+// // 邮箱验证 找回密码
+// Route::get('/admins/seek/email/{id}/{token}','admin\SeekController@email');
+// Route::resource('admins/seek','admin\SeekController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

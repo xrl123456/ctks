@@ -1,70 +1,77 @@
-@extends('home.tabfoot.tab')
+@extends('home.udai.udai')
 @section('content')
-</div>
-	<!-- 内页导航栏 -->
-	<div class="top-nav bg3">
-		<div class="nav-box inner">
-			<div class="all-cat">
-				<div class="title"><i class="iconfont icon-menu"></i> 全部分类</div>
-			</div>
-			<ul class="nva-list">
-				<a href="index.html"><li>首页</li></a>
-				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
-				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
-				<a href="class_room.html"><li>U袋学堂</li></a>
-				<a href="enterprise_id.html"><li>企业账号</li></a>
-				<a href="udai_contract.html"><li>诚信合约</li></a>
-				<a href="item_remove.html"><li>实时下架</li></a>
-			</ul>
-		</div>
-	</div>
-	<div class="content inner">
-		<section class="filter-section clearfix">
-			<ol class="breadcrumb">
-				<li><a href="index.html">首页</a></li>
-				<li class="active">商品筛选</li>
-			</ol>
-			<!-- --> 
-		</section>
-		<section class="item-show__div clearfix">
-			<div class="pull-left">
-				
-				<div class="item-list__area clearfix">
-				
-					@foreach($goods as $k=>$v)
-					@if($id == $v->tid)
-					<div class="item-card">
-						
+	
 
-						<a href="/home/item_show/{{ $v->id }}" class="photo">
-							<img src="/uploads/Goods/{{ $v->pic }}" alt="锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款" class="cover">
-							<div class="name">{{ $v->gname }}</div>
-						</a>
-						<div class="middle">
-							<div class="price"><small>价格￥</small>{{ $v->price }}</div>
-							<div class="sale"><a href="#">加入购物车</a></div>
+	<div class="pull-right">
+				<div class="user-content__box clearfix bgf">
+					<div class="title">订单中心-订单2669901385864042</div>
+					<div class="order-info__box">
+						<div class="order-addr">收货信息：<span class="c6">{{ $addres->name }} <font color="orange">{{ $addres->phone }}</font> &nbsp; {{ $addres->address }}</span></div>
+						<div class="order-info">
+							订单信息
+							<table>
+								@foreach($orderlist as $key =>$value )
+								<tr>
+									<td>订单编号：{{ $value->oid }}</td>
+									<!-- <td>支付宝交易号：20175215464616164616</td> -->
+									<td>创建时间：{{ $value->created_at }}</td>
+								</tr>
+								<tr>
+									<!-- <td>付款时间：</td> -->
+									<!-- <td>成交时间：2017-09-20 08:25:45</td> -->
+									<td></td>
+								</tr>
+								@endforeach
+							</table>
 						</div>
-						
+						<div class="table-thead">
+							<div class="tdf3">商品</div>
+							<div class="tdf1">状态</div>
+							<div class="tdf1">数量</div>
+							<div class="tdf1">单价</div>
+							<div class="tdf2">优惠</div>
+							<div class="tdf1">总价</div>
+							<div class="tdf1">运费</div>
+						</div>
+						@foreach($orderlist as $key=>$value)
+						@foreach($value->addersand as $k=>$v)						
+						<div class="order-item__list">
+							<div class="item">
+								<div class="tdf3">
+									<a href="item_show.html"><div class="img"><img src="/home/images/temp/M-003.jpg" alt="" class="cover"></div>
+									<div class="ep2 c6">{{ $v->gname }} </div></a>
+									<div class="attr ep">{{ $v->goodsinfo }}  尺码：均码</div>
+								</div>
+								<div class="tdf1" >
+									<!-- 状态   -->
+									@if(( $value->status) == 0 )
+										<a href="/home/shop" class="but but-primary">等待付款</a>
+									@elseif(( $value->status) == 1)
+										等待发货
+									@elseif(( $value->status) == 2)
+										已发货,等待收货
+									@elseif(( $value->status) == 3)
+										已收货,待评价
+									@else
+										订单完成，追加评价
+									@endif
+									
+									
+								</div>
+								<div class="tdf1">{{ $value->number }}</div>
+								<div class="tdf1">¥{{ $v->price }}</div>
+								<div class="tdf2">
+									<div class="ep2">该商品暂无<br>可参加的优惠</div>
+								</div>
+								<div class="tdf1">¥{{ $value->oprice }}</div>
+								<div class="tdf1">
+									<div class="ep2">包邮</div>
+								</div>
+							</div>
+
+						@endforeach
+						@endforeach
 					</div>
-					@endif
-					@endforeach
-				
-				</div>
-				
-			</div>
-			<div class="pull-right">
-				
-				<div class="desc-segments__content">
-					<div class="lace-title">
-						<span class="c6">爆款推荐</span>
-					</div>
-					<div class="picked-box">
-						<a href="" class="picked-item"><img src="/home/images/temp/S-001.jpg" alt="" class="cover"><span class="look_price">¥134.99</span></a>
-						<a href="" class="picked-item"><img src="/home/images/temp/S-002.jpg" alt="" class="cover"><span class="look_price">¥134.99</span></a>
-						<a href="" class="picked-item"><img src="/home/images/temp/S-003.jpg" alt="" class="cover"><span class="look_price">¥134.99</span></a>
-						<a href="" class="picked-item"><img src="/home/images/temp/S-004.jpg" alt="" class="cover"><span class="look_price">¥134.99</span></a>
-						<a href="" class="picked-item"><img src="/home/images/temp/S-005.jpg" alt="" class="cover"><span class="look_price">¥134.99</span></a>
-					
 				</div>
 			</div>
 		</section>

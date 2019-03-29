@@ -156,7 +156,12 @@
                          
                         </ul>
                     </li>
-
+                    <li class="active">
+                        <a href="#"><i class="icon-stats-up"></i>订单管理</a>
+                        <ul>
+                            <li><a href="/admins/order">订单列表</a></li>
+                        </ul>
+                    </li>
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>分类管理</a>
                         <ul>
@@ -188,7 +193,7 @@
                             <li><a href="/admins/bbs/create">公告添加</a></li>
                         </ul>
                     </li>
-                    
+
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>轮播图管理</a>
                         <ul>
@@ -196,6 +201,7 @@
                             <li><a href="/admins/lbts/create">轮播图添加</a></li>
                         </ul>
                     </li>
+
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>网站管理</a>
 
@@ -206,6 +212,7 @@
                     </li>
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>用户管理</a>
+
 
                         <ul>
                             <li><a href="/admins/super">人员列表</a></li>

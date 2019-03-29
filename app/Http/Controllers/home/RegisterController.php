@@ -9,7 +9,10 @@ use App\Models\Users;
 use Hash;
 use DB;
 use App\Models\Goodsgo;
-use App\Http\Requests\home\RegisStoreRequest;
+
+use App\Models\Orders;
+use App\Models\Order_info;
+use App\Models\Address;
 
 class RegisterController extends Controller
 	{
@@ -158,12 +161,31 @@ class RegisterController extends Controller
 			public function welcome()
 			{
 				// 个人中心首页显示 订单
+
 				
-				$id =(Session('home_user')['id']);
-				 $info = Users::find($id);
+				// $id =(Session('home_user')['id']);
+				//  $info = Users::find($id);
 				
 
-				return view('home.udai.udai_welcome',['info'=>$info]);
+				// return view('home.udai.udai_welcome',['info'=>$info]);
+
+				// 显示订单
+				$uid = (session('home_user')['id']);
+		        $addres = DB::table('address')->where('uid',$uid)->get();
+		       
+		        $total = new Orders;
+		        $testshop = $total->where('uid','=',$uid)->orderBy('id','desc')->get();
+		        $newshop = $total->where('uid','=',$uid)->where('status','0')->orderBy('id','desc')->get();
+		        $shop1 = $total->where('uid','=',$uid)->where('status','1')->orderBy('id','desc')->get();
+		        $shop2 = $total->where('uid','=',$uid)->where('status','2')->orderBy('id','desc')->get();
+		        $shop3 = $total->where('uid','=',$uid)->where('status','3')->orderBy('id','desc')->get();
+		        // dd($newshop);
+		        
+				$i = 1;
+				$or =0;
+
+				return view('home.udai.udai_welcome',['testshop'=>$testshop,'newshop'=>$newshop,'shop1'=>$shop1,'shop2'=>$shop2,'shop3'=>$shop3]);
+
 			}
 			//个人资料
 			public function setting()
