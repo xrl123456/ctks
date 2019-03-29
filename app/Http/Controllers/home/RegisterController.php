@@ -53,6 +53,37 @@ class RegisterController extends Controller
 	  			}
 	  		 }
 	  	}
+	  	//修改密码
+	  	public function amend(Request $request)
+		{
+			// 判断验证码
+			if(session('rand_cond') != $request->smscode){
+
+			  			 echo "<script>alert('验证码错误');location.href='/home/denlu';</script>";
+			  		}else{
+			  			  $phone = $request->phone;
+			  			 $user = DB::select('select * from users where phone = ?', [$phone]);
+			  			 		// 判断是否注册过
+				  			if($user){
+				  				 $id = $user[0]->id;
+				  				$password = Hash::make($request->password);
+				  				 $res = DB::table('users')->where('id', $id)->update(['password' =>$password]);
+				  				 // 判断是否修改成功
+				  				if($res){
+							  		 echo "<script>alert('修改成功');location.href='/home/denlu';</script>";
+							  		}else{
+							  		 echo "<script>alert('修改失败');location.href='/home/denlu';</script>";
+							  			 }
+							 
+				  			}else{
+				  				echo "<script>alert('用户不存在');location.href='/home/register?p=register';</script>";
+			  			}
+	  			}
+	  	 
+		}
+		
+
+
 
 	  	//手机验证发送验证码
 	  	public function yanzhen(Request $request)
@@ -222,6 +253,8 @@ class RegisterController extends Controller
 				 }
 			
 			}
+
+
 		
 
 	}

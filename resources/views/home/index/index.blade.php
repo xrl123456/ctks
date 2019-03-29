@@ -8,10 +8,10 @@
 				
 				<div class="cat-list__box">
 					@foreach($data as $k=>$v)
-					@if($v->cname != '积分商品')
+					@if($v->cname != '积分商品' && $v->cname != '爆款类')
 					<div class="cat-box">
 						<div class="title">
-						<i class="iconfont icon-skirt ce"></i>{{ $v->cname }}
+						<a href="/home/item_categoryl/{{ $v->id }}"><i class="iconfont icon-skirt ce">{{ $v->cname }}</i></a>
 						</div>
 
 						<div class="cat-list__deploy">
@@ -24,7 +24,7 @@
 
 									<div class="genre-list">
 										@foreach($vv['sub'] as $kkk=>$vvv)
-										<a href="">{{ $vvv->cname }}</a>
+										<a href="/home/item_categoryl/{{ $vvv->id }}">{{ $vvv->cname }}</a>
 										@endforeach
 									</div>
 									@endforeach
@@ -175,7 +175,7 @@
 	<nav class="floor-nav visible-lg-block">
 	<span class="scroll-nav active">爆款</span>
 	 @foreach($data as $k=>$v)
-	 	@if($v->cname != '积分商品')
+	 	@if($v->cname != '积分商品' && $v->cname != '爆款类')
 		<span class="scroll-nav active">{{ $v->cname }}</span>
 		@endif
 		@endforeach
@@ -189,7 +189,7 @@
 			<div class="pull-left">
 
 				<div class="floor-title">
-					<i class="iconfont icon-tuijian fz16">一级商品区</i> 
+					<i class="iconfont icon-tuijian fz16">爆款</i> 
 					<a href="" class="more"><i class="iconfont icon-more">商品</i></a>
 				</div>
 				
@@ -200,7 +200,8 @@
 					
 					<div class="right-box hot-box">
 					@foreach($goods as $key=>$value)
-					@if($v->pid == $value->tid)
+					@foreach($v['sub'] as $kk=>$vv)
+					@if($vv->pid == $value->tid && $vv->cname = '爆款')
 						
 						<a href="/home/item_show/{{ $value->id }}" class="floor-item">
 							<div class="item-img hot-img">
@@ -214,6 +215,7 @@
 						</a>
 							
 						@endif
+				@endforeach
 				@endforeach
 					</div>
 			
@@ -268,7 +270,7 @@
 		</section>
 
 		@foreach($data as $k=>$v)
-			@if($v->cname != '积分商品')
+			@if($v->cname != '积分商品' && $v->cname != '爆款类')
 		<section class="scroll-floor floor-{{ $i++}}">
 			<div class="floor-title">
 				<i class="iconfont icon-skirt fz16">{{ $v->cname }}</i>
@@ -285,20 +287,24 @@
 					<img src="/home/images/floor_{{$c++}}.jpg" alt="" class="cover">
 				</a>
 				
-				<div class="right-box">
+				<div class="right-box" style ="overflow :hidden" >
 				@foreach($goods as $key=>$value)
 					@if($vv->pid == $value->tid)
+					@if($value->status !=1)
+					
 					<a href="/home/item_show/{{ $value->id }}" class="floor-item">
 						<div class="item-img hot-img">
 							<img src="/uploads/Goods/{{ $value->pic }}" alt="纯色圆领短袖T恤活a动衫弹力柔软" class="cover">
 						</div>
-						<div class="price clearfix">
+						<div class="price clearfix" >
 							<span class="pull-left cr fz16">￥{{ $value->price }}</span>
 							<span class="pull-right c6">价格</span>
 						</div>
 						<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">{{ $value->gname }}</div>
 
 					</a>
+			
+						@endif
 						@endif
 					@endforeach
 						@endif

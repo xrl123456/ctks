@@ -64,7 +64,7 @@
 					<a href="/home/setting"><dd>个人资料</dd></a>
 					<a href="udai_treasurer.html"><dd>资金管理</dd></a>
 					<a href="/home/integral"><dd>积分平台</dd></a>
-					<a href="/home/addres/{{ Session::get('home_user')['id'] }}"><dd>收货地址</dd></a>
+					<a href="/home/addres"><dd>收货地址</dd></a>
 					<a href="udai_coupon.html"><dd>我的优惠券</dd></a>
 					<a href="udai_paypwd_modify.html"><dd>修改支付密码</dd></a>
 					<a href="udai_pwd_modify.html"><dd>修改登录密码</dd></a>

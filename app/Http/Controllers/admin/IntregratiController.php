@@ -1,55 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\home;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Goods;
-use App\Models\Goodsgo;
-use App\Models\Userinfo;
+use App\Models\Integrals;
+use  App\Models\Goodsgo;
+use DB;
 use App\Models\Users;
-class IndexController extends Controller
+class IntregratiController extends Controller
 {
-
-
-    public static function getFlei($pid = 0)
-    {
-        $data = [];
-        //一级导航
-        $yiji_data = Goods::where('pid',$pid)->get();
-
-        //二级导航
-        foreach($yiji_data as $key => $value) {
-           $temp = self::getFlei($value->id);
-            $value['sub'] = $temp;
-            $data[] = $value;
-        }
-        
-        return $data;
-    }
-
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {       
+    {
+         $integ = Integrals::all();
+                  $i=1;
 
-            //查询所有商品 
-            $goods = Goodsgo::all();
-              $i=1;
-              $c=1;
-              $b=1;
-           // 用户id
-            $id =(Session('home_user')['id']);
-            $infoadd = Userinfo::where('uid',$id)->get();
-            $users = Users::find($id);
-            
-         
-             
-        return view('home.index.index',['goods'=>$goods,'b'=>$b,'i'=>$i,'c'=>$c,'users'=>$users,'infoadd'=>$infoadd]);
+       return view("admin.intregrati.index",['integ'=>$integ ,'i'=>$i]);
     }
 
     /**
@@ -60,7 +31,6 @@ class IndexController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**
@@ -71,7 +41,8 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+          echo '2';
     }
 
     /**
@@ -82,10 +53,19 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        // 
-        //退出登录
-        session()->forget('home_user');
-        return '<script>alert("退出登录");location.href="/";</script>';
+         $integ = Integrals::find($id);
+         if($integ->status == 0){
+            $integ->status =1;
+            $res = $integ->save();
+            if($res){
+                return '<script>alert("成功发货");location.href="/admins/integrati";</script>';
+            }else{
+                return '<script>alert("发货失败");location.href="/admins/integrati";</script>';
+            }
+         }else{
+            echo '2';
+         }
+            
     }
 
     /**
@@ -94,9 +74,15 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+        //订单详情
     public function edit($id)
     {
-        //
+            
+            $integ = Integrals::find($id);
+            //地址id
+             $aid = $integ->aid;
+
+        return view("admin.intregrati.intreg",['integ'=>$integ]);
     }
 
     /**

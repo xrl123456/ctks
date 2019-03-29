@@ -43,6 +43,8 @@
 		Route::resource('/admins/bbs','admin\BbsController');
 		//商品添加路由
 		Route::resource('/admins/goodsgo','admin\GoodsgoController');
+		//积分兑换管理
+		Route::resource('/admins/integrati','admin\IntregratiController');
 		// 管理员模块
 		Route::post('/admins/super/status/{id}','admin\SuperController@status');
 		Route::post('/admins/super/showup/{id}','admin\SuperController@showup');
@@ -75,6 +77,8 @@
 	/// 前台 登录 路由
 	Route::resource('/home/login','home\LoginController');
 	Route::get('/home/denlu','home\RegisterController@denlu');
+	//修改密码
+	Route::get('/home/amend','home\RegisterController@amend');
 	//前台签到路由
 	Route::get('/home/userget','home\RegisterController@userget');
 	//前台积分页面
@@ -95,11 +99,6 @@
 	Route::get('/home/item_categoryl/{id}','home\GoodsController@categoryl');
 	//跳转前台广告
 	Route::get('/home/bbs/index/{id}','home\BbsController@index');
-
-	// //Route::get('/home/lbts/index','home\LbtsController@index');
-	// Route::get('/admins/guanli/index','admin\GuanliController@index');
-	// Route::resource('/admins/guanli','admin\GuanliController');
-
 
 
 	//管理路由

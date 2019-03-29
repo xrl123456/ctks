@@ -212,7 +212,14 @@
                             <li><a href="/admins/super/create">人员添加</a></li>
                         </ul>
                     </li>
+                    <li class="active">
+                        <a href="#"><i class="icon-list"></i>积分兑换管理</a>
 
+                        <ul>
+                            <li><a href="/admins/integrati">订单列表</a></li>
+                           
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

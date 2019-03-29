@@ -65,7 +65,7 @@
 												@if($value->price > $user->info[0]->desc )
 												<a class="but disabled" href="#" role="button">积分不够</a>
 												@else
-												<a class="but" href="#" role="button">兑换</a>
+												<a class="but" href="/home/convert/{{ $value->id }}" role="button">兑换</a>
 												@endif
 												
 												
@@ -160,7 +160,11 @@
 									<div class="tdf2"><span class="c6">{{ $vvv->oid }}</span></div>
 									<div class="tdf2"><span class="c6">{{ $vvv->created_at }}</span></div>
 									<div class="tdf1">
-										<span class="c6">积分兑换</span>
+										@if($vvv->status == 0)
+										<span class="c6">兑换成功</span>
+										@else 
+										<span class="c6">已发货</span>
+										@endif
 									</div>
 								</div>
 								@endif

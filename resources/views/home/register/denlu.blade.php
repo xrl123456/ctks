@@ -112,15 +112,15 @@
   					<h2>找回密码<a href="javascript:;" class="pull-right fz16" id="pwdlogin">返回登录</a></h2>
   				</div>
   				<div class="tabs_container">
-					<form class="tabs_form" action="" method="post" id="resetpwd_form">
-						<div class="form-group">
+					<form class="tabs_form" action="/home/amend" method="get" id="resetpwd_form">
+						<!-- <div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								</div>
 								<input class="form-control" name="name" value="{{ old('name') }}"  required placeholder="账号名"  type="text">
 							</div>
-						</div>
+						</div> -->
 
 						<div class="form-group">
 							<div class="input-group">
@@ -132,12 +132,29 @@
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<input class="form-control" name="sms" id="resetpwd_sms" placeholder="输入验证码" type="text">
+								<input class="form-control" name="smscode" id="resetpwd_sms" placeholder="输入验证码" type="text">
 								<span class="input-group-btn">
-									<button class="btn btn-primary getsms" type="button">发送短信验证码</button>
+									<button class="btn btn-primary getsms"  onclick="zhuchen();" type="button">发送短信验证码</button>
 								</span>
 							</div>
 						</div>
+						
+												<script type="text/javascript">
+											function zhuchen(){
+												//获取手机
+												var phone = $('#resetpwd_phone').val();
+
+												//第一个参数是跳转的地址,
+												$.get('/home/yanzhen',{phone:phone},function(data){
+													if(rand_cond == '0'){
+														alert('发送成功');
+													}else{
+														alert('发送失败');
+													}
+												});
+											}
+
+											</script>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
@@ -151,7 +168,8 @@
 						<div class="form-group">
 							<div class="error_msg" id="resetpwd_error"></div>
 						</div>
-	                    <button class="btn btn-large btn-primary btn-lg btn-block submit" id="resetpwd_submit" type="button">重置密码</button>
+						<!-- <input checked="" name="submit" id="register_checkbox"  value="提交" type="checkbox"> -->
+	                    <button  class="btn btn-large btn-primary btn-lg btn-block " id="" type="submit">重置密码</button>
                     </form>
                     <div class="tabs_div">
 	                    <div class="success-box">

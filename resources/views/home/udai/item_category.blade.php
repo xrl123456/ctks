@@ -36,13 +36,13 @@
 					<div class="item-card">
 						
 
-						<a href="item_show.html" class="photo">
+						<a href="/home/item_show/{{ $v->id }}" class="photo">
 							<img src="/uploads/Goods/{{ $v->pic }}" alt="锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款" class="cover">
 							<div class="name">{{ $v->gname }}</div>
 						</a>
 						<div class="middle">
 							<div class="price"><small>价格￥</small>{{ $v->price }}</div>
-							<div class="sale"><a href="/home/shopcart/{{ $v->id }}">加入购物车</a></div>
+							<div class="sale"><a href="#">加入购物车</a></div>
 						</div>
 						
 					</div>

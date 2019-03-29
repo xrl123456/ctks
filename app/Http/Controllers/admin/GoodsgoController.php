@@ -28,7 +28,6 @@ class GoodsgoController extends Controller
 
         $gname =Goodsgo::where('gname','like','%'.$search.'%')->paginate($count);
         
-
         return view('admin.goodsgo.index',['gname'=> $gname,'request'=>$request->all()]);
        
     }
