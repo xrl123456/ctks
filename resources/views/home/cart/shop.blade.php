@@ -6,18 +6,10 @@
 			<div class="user-content__box clearfix bgf">
 				<div class="title">购物车-确认支付 </div>
 				<div class="shop-title">收货地址</div>
-				<form action="" class="shopcart-form__box">
+				<form action="/home/order/shoppay/{{ Session::get('home_user')['id'] }}" class="shopcart-form__box" method="post">
 					{{ csrf_field() }} 
 					<div class="addr-radio">
-						<!-- <div class="radio-line radio-box active">
-							<label class="radio-label ep" title="福建省 福州市 鼓楼区 温泉街道 五四路159号世界金龙大厦20层B北 福州rpg.blue网络 （喵喵喵 收） 153****9999">
-								<input name="addr" checked="" value="0" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>
-								
-							</label>
-							<a href="javascript:;" class="default">默认地址</a>
-							<a href="udai_address_edit.html" class="edit">修改</a>
-						</div> -->
-						
+						<!-- 地址选择 -->
 						@foreach($addres as $key => $value)
 						<div class="radio-line radio-box ">
 							<label class="radio-label ep" title="{{ $value->address }}（{{ $value->name }}）{{ $value->phone }}">
@@ -36,7 +28,8 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th width="120"></th>
+									<th width="120">编号</th>
+									<th width="80"></th>
 									<th width="300">商品信息</th>
 									<th width="150">单价</th>
 									<th width="200">数量</th>
@@ -45,13 +38,14 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($testshop as $key=>$value)
-										@foreach($value->addersand as $k=>$v)
+								@foreach($shops as $key=>$value)
+									@foreach($value->addersand as $k=>$v)
 								<tr>
-									<th scope="row"><a href="item_show.html"><div class="img"><img src="images/temp/M-003.jpg" alt="" class="cover"></div></a></th>
+									<td><input name="{{ $value->id }}" value="{{ $i++ }}" style="width:80px;border:#000;"></td>
+									<th scope="row"><a href="item_show.html"><div class="img"><img src="/uploads/Goods/{{ $v->pic }}" alt="" class="cover"></div></a></th>
 									<td>
 										<div class="name ep3">{{ $v->gname }}</div>
-										<div class="type c9">颜色分类：深棕色  尺码：均码</div>
+										<div class="type c9">描述：{{ $v->goodsinfo }}</div>
 									</td>
 									<td>¥{{ $v->price }}</td>
 									<td>{{ $value->number }}</td>
@@ -82,8 +76,8 @@
 							</script>
 							<div class="info-line">优惠活动：<span class="c6">无</span></div>
 							<div class="info-line">运费：<span class="c6">¥0.00</span></div>
-							<div class="info-line"><span class="favour-value">已优惠 ¥2.0</span>合计：<b class="fz18 cr">¥18.0</b></div>
-							<div class="info-line fz12 c9">（可获 <span class="c6">20</span> 积分）</div>
+							<div class="info-line"><span class="favour-value"></span>合计：<b class="fz18 cr">￥{{ Session::get('money') }}</b></div>
+							<!-- <div class="info-line fz12 c9">（可获 <span class="c6">20</span> 积分）</div> -->
 						</div>
 					</div>
 					<div class="shop-title">确认订单</div>
@@ -91,36 +85,53 @@
 						<div class="radio-line radio-box">
 							<label class="radio-label ep">
 								<input name="pay-mode" value="1" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>
-								<span class="fz16">余额支付</span><span class="fz14">（可用余额：¥88.0）</span>
+								<span class="fz16">余额支付</span><span class="fz14">（可用余额：¥88888.0）</span>
 							</label>
-							<div class="pay-value">支付<b class="fz16 cr">18.00</b>元</div>
+							<div class="pay-value">支付<b class="fz16 cr">￥{{ Session::get('money') }}</b>元</div>
 						</div>
 						<div class="radio-line radio-box">
 							<label class="radio-label ep">
 								<input name="pay-mode" value="2" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>
 								<img src="images/icons/alipay.png" alt="支付宝支付">
 							</label>
-							<div class="pay-value">支付<b class="fz16 cr">18.00</b>元</div>
+							<div class="pay-value">支付<b class="fz16 cr">￥{{ Session::get('money') }}</b>元</div>
 						</div>
 						<div class="radio-line radio-box">
 							<label class="radio-label ep">
 								<input name="pay-mode" value="3" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>
 								<img src="images/icons/paywechat.png" alt="微信支付">
 							</label>
-							<div class="pay-value">支付<b class="fz16 cr">18.00</b>元</div>
+							<div class="pay-value">支付<b class="fz16 cr">￥{{ Session::get('money') }}</b>元</div>
 						</div>
 					</div>
 					<div class="user-form-group shopcart-submit">
-						<button type="submit" class="btn">继续支付</button>
+						<input type="submit" class="btn" value="继续支付" onclick="return dontshop()">
 					</div>
+				</form>
 					<script>
 						$(document).ready(function(){
 							$(this).on('change','input',function() {
 								$(this).parents('.radio-box').addClass('active').siblings().removeClass('active');
 							})
 						});
+
+						$(document).ready(function(){
+							$(this).on('change','input',function() {
+								$(this).parents('.radio-box').addClass('active').siblings().removeClass('active');
+							})
+						});
+						function dontshop(){
+							var	radio = $("input[name='addres']:checked").val();
+							var money =$("input[name='pay-mode']:checked").val();
+							if(radio && money){
+
+								return true;
+							}else{
+								alert('请选择收货信息或付款方式');
+								return false;
+							}
+						}
 					</script>
-				</form>
 			</div>
 		</section>
 	</div>

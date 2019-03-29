@@ -98,10 +98,14 @@
 					<a href="temp_article/udai_article12.html"><dd>隐私说明</dd></a>
 				</dl>
 			</div>
+
+
 	 <!-- 开始 -->
+
             @section('content')
 
             
             @show
             <!-- 结束 -->
-                
+</body>
+</html>

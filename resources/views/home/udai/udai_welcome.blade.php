@@ -15,11 +15,11 @@
 					<div class="pull-right user-nav">
 						<a href="udai_order.html" class="user-nav__but">
 							<i class="iconfont icon-rmb fz40 cr"></i>
-							<div class="c6">待支付 <span class="cr">1</span></div>
+							<div class="c6">待支付  <span class="cr">{{ count($newshop) }}</span></div>
 						</a>
 						<a href="udai_order.html" class="user-nav__but">
 							<i class="iconfont icon-eval fz40 cr"></i>
-							<div class="c6">待评价 <span class="c3">0</span></div>
+							<div class="c6">待评价 <span class="c3">{{ count($shop3) }}</span></div>
 						</a>
 						<a href="udai_collection.html" class="user-nav__but">
 							<i class="iconfont icon-star fz40 cr"></i>
@@ -41,18 +41,18 @@
 				</div>
 				<div class="order-list__div bgf">
 					<div class="user-title">
-						我的订单<span class="c6">（显示最新三条）</span>
-						<a href="" class="pull-right">查看所有订单></a>
+						我的订单<span class="c6"></span>
+						<a href="#alls" class="pull-right"  aria-controls="alls">查看所有订单></a>
 					</div>
 					<div class="order-panel">
 						<ul class="nav user-nav__title" role="tablist">
 							<li role="presentation" class="nav-item active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab">所有订单</a></li>
-							<li role="presentation" class="nav-item "><a href="#pay" aria-controls="pay" role="tab" data-toggle="tab">待付款 <span class="cr">0</span></a></li>
-							<li role="presentation" class="nav-item "><a href="#emit" aria-controls="emit" role="tab" data-toggle="tab">待发货 <span class="cr">0</span></a></li>
-							<li role="presentation" class="nav-item "><a href="#take" aria-controls="take" role="tab" data-toggle="tab">待收货 <span class="cr">0</span></a></li>
-							<li role="presentation" class="nav-item "><a href="#eval" aria-controls="eval" role="tab" data-toggle="tab">待评价 <span class="cr">0</span></a></li>
+							<li role="presentation" class="nav-item "><a href="#pay" aria-controls="pay" role="tab" data-toggle="tab">待付款 <span class="cr">{{ count($newshop) }}</span></a></li>
+							<li role="presentation" class="nav-item "><a href="#emit" aria-controls="emit" role="tab" data-toggle="tab">待发货 <span class="cr">{{ count($shop1) }}</span></a></li>
+							<li role="presentation" class="nav-item "><a href="#take" aria-controls="take" role="tab" data-toggle="tab">待收货 <span class="cr">{{ count($shop2 )}}</span></a></li>
+							<li role="presentation" class="nav-item "><a href="#eval" aria-controls="eval" role="tab" data-toggle="tab">待评价 <span class="cr">{{ count($shop3) }}</span></a></li>
 						</ul>
-
+							<!-- 显示所有的订单的  就是倒叙3条 -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane fade in active" id="all">
 								<table class="table text-center">
@@ -64,106 +64,138 @@
 										<th width="120">交易状态</th>
 										<th width="120">交易操作</th>
 									</tr>
+									@foreach($testshop as $key=>$value)
+									<!-- 这里放个判断 前面值显示三条 -->
+									@foreach($value->addersand as $k=>$v)
+							
+									<!-- 再写个判断头一个订单的合起来 -->
 									<tr class="order-item">
 										<td>
 											<label>
 												<div class="num">
 													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
+													{{ $value->updated_at }} 订单号: {{ $value->oid }}
 												</div>
-												<div class="card">
-													<div class="img"><img src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
-												</div>
-											</label>
-										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
-										<td class="state">
-											<a class="but c6">等待付款</a>
-											<a href="" class="but c9">订单详情</a>
-										</td>
-										<td class="order">
-											<a href="udai_shopcart_pay.html" class="but but-primary">立即付款</a>
-											<!-- <a href="" class="but but-link">评价</a> -->
-											<a href="" class="but c3">取消订单</a>
-										</td>
-									</tr>
-									<tr class="order-item">
-										<td>
-											<label>
-												<div class="num">
-													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
-												</div>
-												<div class="card">
-													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
+												<div class="card" id="">
+													<div class="img"><img src="/uploads/Goods/{{ $v->pic }}" alt="" class="cover"></div>
+													<div class="name ep2">{{ $v->gname }}</div>
+													<div class="format">{{ $v->goodsinfo }}</div>
+													
 												</div>
 											</label>
 										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
+										<td>￥{{ $v->price }}</td>
+										<td>{{ $value->number }}</td>
+										<td>￥{{ $value->oprice }}<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
 										<td class="state">
-											<a class="but c6">等待收货</a>
-											<a href="udai_mail_query.html" class="but cr">查看物流</a>
-											<a href="" class="but c9">订单详情</a>
+											<a class="but c6">
+												@if(( $value->status) == 0 )
+													等待付款
+												@elseif(( $value->status) == 1)
+													等待发货
+												@elseif(( $value->status) == 2)
+													已发货,等待收货
+												@elseif(( $value->status) == 3)
+													已收货,待评价
+												@else
+													订单完成，追加评价
+												@endif
+											</a>
+											<!-- <a href="" class="but c9">订单详情</a> -->
 										</td>
 										<td class="order">
-											<a href="udai_order_receipted.html" class="but but-primary">确认收货</a>
-											<!-- <a href="" class="but but-link">评价</a> -->
-											<a href="udai_apply_return.html" class="but c3">退款/退货</a>
+											@if($value->status == 3)
+												<a href="#" class="but but-link">评价</a>
+												@elseif($value->status > 0)
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@else 
+													<a href="/home/shop" class="but but-primary"> 立即付款 
+												@endif
+												</a>
+											@if($value->status < 2) <a href="/home/order/del/{{ $value->id }}" class="but c3"  onclick="return confirm('亲~不再考虑一下嘛？')"> 取消订单 @else   @endif</a>
 										</td>
 									</tr>
-									<tr class="order-item">
-										<td>
-											<label>
-												<div class="num">
-													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
-												</div>
-												<div class="card">
-													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
-												</div>
-											</label>
-										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
-										<td class="state">
-											<a class="but c6">交易成功</a>
-											<a href="udai_mail_query.html" class="but cr">查看物流</a>
-											<a href="" class="but c9">订单详情</a>
-										</td>
-										<td class="order">
-											<a href="" class="but but-link">评价</a>
-											<a href="" class="but c3">取消订单</a>
-										</td>
-									</tr>
+							
+									@endforeach
+									@endforeach
 								</table>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="pay">
 								<table class="table text-center">
 									<tr>
-										<th width="380">商品信息</th>
+										<th width="380" >商品信息</th>
 										<th width="85">单价</th>
 										<th width="85">数量</th>
 										<th width="120">实付款</th>
 										<th width="120">交易状态</th>
 										<th width="120">交易操作</th>
 									</tr>
-									<tr class="order-empty"><td colspan='6'>
-										<div class="empty-msg">最近没有任何订单，家里好像缺了点什么！<br><a href="item_category.html">要不瞧瞧去？</a></div>
-									</td></tr>
+									
+									@if(count($newshop))
+									@foreach($newshop as $key=>$value)
+									@foreach($value->addersand as $k=>$v)
+										
+
+									<tr class="order-item">
+										<td>
+											<label>
+												<div class="num">
+													<!-- <input type="checkbox"> -->
+													{{ $value->updated_at }} 订单号: {{ $value->oid }}
+												</div>
+												<div class="card" id="">
+													<div class="img"><img src="/uploads/Goods/{{ $v->pic }}" alt="" class="cover"></div>
+													<div class="name ep2">{{ $v->gname }}</div>
+													<div class="format">{{ $v->goodsinfo }}</div>
+													
+												</div>
+											</label>
+										</td>
+										<td>￥{{ $v->price }}</td>
+										<td>{{ $value->number }}</td>
+										<td>￥{{ $value->oprice }}<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
+										<td class="state">
+											<a class="but c6">
+												@if(( $value->status) == 0 )
+													等待付款
+												@elseif(( $value->status) == 1)
+													等待发货
+												@elseif(( $value->status) == 2)
+													已发货,等待收货
+												@elseif(( $value->status) == 3)
+													已收货,待评价
+												@else
+													订单完成，追加评价
+												@endif
+											</a>
+											<!-- <a href="" class="but c9">订单详情</a> -->
+										</td>
+
+											<td class="order">
+												@if($value->status == 3)
+												<a href="#" class="but but-link">评价</a>
+												@elseif($value->status > 0)
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@else 
+													<a href="/home/shop" class="but but-primary"> 立即付款 
+												@endif
+												</a>
+											@if($value->status < 2) <a href="/home/order/del/{{ $value->id }}" class="but c3"  onclick="return confirm('亲~不再考虑一下嘛？')"> 取消订单 @else   @endif</a>
+											</td>
+										</tr>
+						
+
+								
+									@endforeach
+									@endforeach
+									@else
+
+									<tr class="order-empty">
+										<td colspan='6'>
+											<div class="empty-msg">最近没有任何订单，家里好像缺了点什么！<br><a href="/">要不瞧瞧去？</a></div>
+										</td>
+									@endif
+									</tr>
 								</table>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="emit">
@@ -176,87 +208,65 @@
 										<th width="120">交易状态</th>
 										<th width="120">交易操作</th>
 									</tr>
+									@if(count($shop1))
+									@foreach($shop1 as $key=>$value)
+									@foreach($value->addersand as $k=>$v)
 									<tr class="order-item">
 										<td>
 											<label>
 												<div class="num">
 													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
+													{{ $value->updated_at }} 订单号: {{ $value->oid }}
 												</div>
-												<div class="card">
-													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
-												</div>
-											</label>
-										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
-										<td class="state">
-											<a class="but c6">等待发货</a>
-											<a href="" class="but c9">订单详情</a>
-										</td>
-										<td class="order">
-											<a href="udai_order_receipted.html" class="but but-primary">确认收货</a>
-											<a href="udai_apply_return.html" class="but c3">退款/退货</a>
-										</td>
-									</tr>
-									<tr class="order-item">
-										<td>
-											<label>
-												<div class="num">
-													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
-												</div>
-												<div class="card">
-													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
+												<div class="card" id="">
+													<div class="img"><img src="/uploads/Goods/{{ $v->pic }}" alt="" class="cover"></div>
+													<!-- <div class="name ep2">{{ $v->gname }}</div> -->
+													<!-- <div class="format">{{ $v->goodsinfo }}</div> -->
+													
 												</div>
 											</label>
 										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
+										<td>￥{{ $v->price }}</td>
+										<td>{{ $value->number }}</td>
+										<td>￥{{ $value->oprice }}<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
 										<td class="state">
-											<a class="but c6">等待发货</a>
-											<a href="" class="but c9">订单详情</a>
+											<a class="but c6">
+												@if(( $value->status) == 0 )
+													等待付款
+												@elseif(( $value->status) == 1)
+													等待发货
+												@elseif(( $value->status) == 2)
+													已发货,等待收货
+												@elseif(( $value->status) == 3)
+													已收货,待评价
+												@else
+													订单完成，追加评价
+												@endif
+											</a>
+											<!-- <a href="" class="but c9">订单详情</a> -->
 										</td>
 										<td class="order">
-											<a href="udai_order_receipted.html" class="but but-primary">确认收货</a>
-											<a href="udai_apply_return.html" class="but c3">退款/退货</a>
+											@if($value->status == 3)
+												<a href="#" class="but but-link">评价</a>
+												@elseif($value->status > 0)
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@else 
+													<a href="/home/shop" class="but but-primary"> 立即付款 
+												@endif
+												</a>
+											@if($value->status < 2) <a href="/home/order/del/{{ $value->id }}" class="but c3"  onclick="return confirm('亲~不再考虑一下嘛？')"> 取消订单 @else   @endif</a>
 										</td>
 									</tr>
-									<tr class="order-item">
-										<td>
-											<label>
-												<div class="num">
-													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
-												</div>
-												<div class="card">
-													<div class="img"><img src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
-												</div>
-											</label>
+									@endforeach
+									@endforeach
+									@else
+										<tr class="order-empty">
+										<td colspan='6'>
+											<div class="empty-msg">最近没有任何订单，家里好像缺了点什么！<br><a href="/">要不瞧瞧去？</a></div>
 										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
-										<td class="state">
-											<a class="but c6">等待发货</a>
-											<a href="" class="but c9">订单详情</a>
-										</td>
-										<td class="order">
-											<a href="udai_order_receipted.html" class="but but-primary">确认收货</a>
-											<a href="udai_apply_return.html" class="but c3">退款/退货</a>
-										</td>
-									</tr>
+										</tr>
+									@endif
+									
 								</table>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="take">
@@ -269,9 +279,64 @@
 										<th width="120">交易状态</th>
 										<th width="120">交易操作</th>
 									</tr>
-									<tr class="order-empty"><td colspan='6'>
-										<div class="empty-msg">最近没有任何订单，家里好像缺了点什么！<br><a href="item_category.html">要不瞧瞧去？</a></div>
-									</td></tr>
+									@if(count($shop2))
+									@foreach($shop2 as $key=>$value)
+									@foreach($value->addersand as $k=>$v)
+									<tr class="order-item">
+										<td>
+											<label>
+												<div class="num">
+													<!-- <input type="checkbox"> -->
+													{{ $value->updated_at }} 订单号: {{ $value->oid }}
+												</div>
+												<div class="card" id="">
+													<div class="img"><img src="/uploads/Goods/{{ $v->pic }}" alt="" class="cover"></div>
+													<!-- <div class="name ep2">{{ $v->gname }}</div> -->
+													<!-- <div class="format">{{ $v->goodsinfo }}</div> -->
+													
+												</div>
+											</label>
+										</td>
+										<td>￥{{ $v->price }}</td>
+										<td>{{ $value->number }}</td>
+										<td>￥{{ $value->oprice }}<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
+										<td class="state">
+											<a class="but c6">
+												@if(( $value->status) == 0 )
+													等待付款
+												@elseif(( $value->status) == 1)
+													等待发货
+												@elseif(( $value->status) == 2)
+													已发货,等待收货
+												@elseif(( $value->status) == 3)
+													已收货,待评价
+												@else
+													订单完成，追加评价
+												@endif
+											</a>
+											<!-- <a href="" class="but c9">订单详情</a> -->
+										</td>
+										<td class="order">
+											@if($value->status == 3)
+												<a href="#" class="but but-link">评价</a>
+												@elseif($value->status > 0)
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@else 
+													<a href="/home/shop" class="but but-primary"> 立即付款 
+												@endif
+												</a>
+											@if($value->status < 2) <a href="/home/order/del/{{ $value->id }}" class="but c3"  onclick="return confirm('亲~不再考虑一下嘛？')"> 取消订单 @else   @endif</a>
+										</td>
+									</tr>
+									@endforeach
+									@endforeach
+									@else
+										<tr class="order-empty">
+										<td colspan='6'>
+											<div class="empty-msg">最近没有任何订单，家里好像缺了点什么！<br><a href="/">要不瞧瞧去？</a></div>
+										</td>
+										</tr>
+									@endif
 								</table>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="eval">
@@ -284,92 +349,68 @@
 										<th width="120">交易状态</th>
 										<th width="120">交易操作</th>
 									</tr>
+									@if(count($shop3))
+									@foreach($shop3 as $key=>$value)
+									@foreach($value->addersand as $k=>$v)
 									<tr class="order-item">
 										<td>
 											<label>
 												<div class="num">
 													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
+													{{ $value->updated_at }} 订单号: {{ $value->oid }}
 												</div>
-												<div class="card">
-													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
-												</div>
-											</label>
-										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
-										<td class="state">
-											<a class="but c6">交易成功</a>
-											<a href="udai_mail_query.html" class="but cr">查看物流</a>
-											<a href="" class="but c9">订单详情</a>
-										</td>
-										<td class="order">
-											<a href="" class="but but-link">评价</a>
-											<a href="" class="but c3">取消订单</a>
-										</td>
-									</tr>
-									<tr class="order-item">
-										<td>
-											<label>
-												<div class="num">
-													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
-												</div>
-												<div class="card">
-													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
+												<div class="card" id="">
+													<div class="img"><img src="/uploads/Goods/{{ $v->pic }}" alt="" class="cover"></div>
+													<!-- <div class="name ep2">{{ $v->gname }}</div> -->
+													<!-- <div class="format">{{ $v->goodsinfo }}</div> -->
+													
 												</div>
 											</label>
 										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
+										<td>￥{{ $v->price }}</td>
+										<td>{{ $value->number }}</td>
+										<td>￥{{ $value->oprice }}<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
 										<td class="state">
-											<a class="but c6">交易成功</a>
-											<a href="udai_mail_query.html" class="but cr">查看物流</a>
-											<a href="" class="but c9">订单详情</a>
+											<a class="but c6">
+												@if(( $value->status) == 0 )
+													等待付款
+												@elseif(( $value->status) == 1)
+													等待发货
+												@elseif(( $value->status) == 2)
+													已发货,等待收货
+												@elseif(( $value->status) == 3)
+													已收货,待评价
+												@else
+													订单完成，追加评价
+												@endif
+											</a>
+											<!-- <a href="" class="but c9">订单详情</a> -->
 										</td>
 										<td class="order">
-											<a href="" class="but but-link">评价</a>
-											<a href="" class="but c3">取消订单</a>
+											@if($value->status == 3)
+												<a href="#" class="but but-link">评价</a>
+												@elseif($value->status > 0)
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@else 
+													<a href="/home/shop" class="but but-primary"> 立即付款 
+												@endif
+												</a>
+											@if($value->status < 2) <a href="/home/order/del/{{ $value->id }}" class="but c3"  onclick="return confirm('亲~不再考虑一下嘛？')"> 取消订单 @else   @endif</a>
 										</td>
 									</tr>
-									<tr class="order-item">
-										<td>
-											<label>
-												<div class="num">
-													<!-- <input type="checkbox"> -->
-													2017-03-30 订单号: 2669901385864042
-												</div>
-												<div class="card">
-													<div class="img"><img  src="/home/images/temp/item-img_1.jpg" alt="" class="cover"></div>
-													<div class="name ep2">纯色圆领短袖T恤活动衫弹力柔软纯色圆领短袖T恤</div>
-													<div class="format">颜色分类：深棕色  尺码：均码</div>
-													<div class="favour">使用优惠券：优惠¥2.00</div>
-												</div>
-											</label>
+									@endforeach
+									@endforeach
+									@else
+										<tr class="order-empty">
+										<td colspan='6'>
+											<div class="empty-msg">最近没有任何订单，家里好像缺了点什么！<br><a href="/">要不瞧瞧去？</a></div>
 										</td>
-										<td>$100</td>
-										<td>1</td>
-										<td>$1000<br><span class="fz12 c6 text-nowrap">(含运费: ¥0.00)</span></td>
-										<td class="state">
-											<a class="but c6">交易成功</a>
-											<a href="udai_mail_query.html" class="but cr">查看物流</a>
-											<a href="" class="but c9">订单详情</a>
-										</td>
-										<td class="order">
-											<a href="" class="but but-link">评价</a>
-											<a href="" class="but c3">取消订单</a>
-										</td>
-									</tr>
+										</tr>
+									@endif
 								</table>
 							</div>
+
+							
 						</div>
 					</div>
 				</div>

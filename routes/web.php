@@ -55,6 +55,9 @@ Route::post('/admins/super/showup/{id}','admin\SuperController@showup');
 Route::post('/admins/super/imgup/{id}','admin\SuperController@imgup');
 Route::resource('/admins/super','admin\SuperController');
 
+// 订单管理模块
+Route::resource('/admins/order','admin\OrdersController');
+
 
 // 后台 用户管理？！
 Route::resource('/admins/users','admin\UsersController');
@@ -114,8 +117,17 @@ Route::get('/home/shopcart/{id}','home\GoodsController@shopcart');
 
 // 购物车  
 Route::get('/home/shop/shopping/{id}/{num}/{uid}','home\ShopController@shopping');
+// 购物车的数量 更改  
+Route::get('/home/shop/number/{num}/{id}','home\ShopController@number');
+// 清空购物车
+Route::get('/home/shop/out','home\ShopController@out');
+// 从购物车删除
+Route::get('/home/shop/del/{id}','home\ShopController@del');
+// 从个人中心删除
+Route::get('/home/order/del/{id}','home\OrdersController@del');
+// 从购物车结算
+Route::post('/home/order/shoppay/{id}','home\OrdersController@shoppay');
 Route::resource('/home/shop','home\ShopController');
-
 
 // 收货地址 --------
 Route::resource('/home/addres','home\AddressController');
@@ -124,5 +136,8 @@ Route::resource('/home/addres','home\AddressController');
 // 订单
 Route::get('/home/order/number/{num}','home\OrdersController@number');
 Route::resource('/home/order','home\OrdersController');
+
+// 个人中心  
+Route::resource('/home/usershow','home\UsershowController');
 
 

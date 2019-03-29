@@ -7,7 +7,7 @@
 			<div class="user-content__box clearfix bgf">
 				<div class="title">购物车-确认支付 </div>
 				<div class="shop-title">收货地址</div>
-				<form action="/home/order" class="shopcart-form__box" method="post">
+				<form action="/home/order" class="shopcart-form__box" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }} 
 					<div class="addr-radio">
 						<!-- <div class="radio-line radio-box active">
@@ -20,9 +20,9 @@
 						</div> -->
 						
 						@foreach($addres as $key => $value)
-						<div class="radio-line radio-box ">
+						<div  class="radio-line radio-box ">
 							<label class="radio-label ep" title="{{ $value->address }}（{{ $value->name }}）{{ $value->phone }}">
-								<input name="addres" value="{{ $value->id }}" autocomplete="off" type="radio" id="shopradio"><i class="iconfont icon-radio"></i>
+								<input name="addres" value="{{ $value->id }}" autocomplete="off" type="radio" id="shopradio" ><i class="iconfont icon-radio"></i>
 								{{ $value->address }}（{{ $value->name }}）{{ $value->phone }}
 								 
 							</label>
@@ -120,8 +120,11 @@
 							})
 						});
 						function shopping(){
-							var radio = $('#shopradio').prop("checked");
-							var money = $('#shopbutton input').prop("checked");
+							var	radio = $("input[name='addres']:checked").val();
+							// document.('#shopradio').prop('checked');
+							 // $('#shopradio').parents('.radio-box').addClass('active').removeClass('active').prop("checked");
+							var money =$("input[name='pay-mode']:checked").val();
+						
 							
 							if(radio && money){
 

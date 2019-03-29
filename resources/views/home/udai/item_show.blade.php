@@ -190,7 +190,7 @@
 						                            'async': true,
 													success:function(data){
 						        //                   
-						                        			console.log(data);
+						                        			// console.log(data);
 						                            }
 						                        })
 										});
@@ -228,6 +228,7 @@
                             'data': '',
                             'async': true,
 							success:function(data){
+								// console.log(data);
                                 $('#shopcart').text(data);
                                 setTimeout(function(){
 									$("#shopadd").text("已加入该商品");
