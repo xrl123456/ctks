@@ -17,8 +17,8 @@
 							<b class="cr fz16">积分使用规则：</b><br>
 							<span class="c3">1、如何获得积分？</span>
 							<ul>
-								<li>1) 积分可以通过在购买商品获得，积分会在确认收货的时候增加。</li>
-								<li>2) 通过签到获得：每次签到可获得 3 积分</li>
+								<li>1) 通过签到获得：每次签到可获得 10 积分</li>
+								<li>2) 通过签到获得：连续签到7天以上每次可获得 20 积分</li>
 							</ul>
 							<span class="c3">2、如何使用积分？</span>
 							<ul><li>可使用积分兑换商品</li></ul>
@@ -47,15 +47,15 @@
 											@foreach($goods as $key=>$value)
 											@if($vv->cname =='积分品')
 											@if($vv->pid == $value->tid)
-												
+											@if($value->goodsNum !=0)
 												
 												
 										<div class="integral-item">
 											<div class="tdf3">
 												<a class="integral-item__info" href="">
 													<div class="img"><img src="/uploads/Goods/{{ $value->pic }}" alt="" class="cover"></div>
-													<div class="name ep2">{{$value->gname}}</div>
-													<div class="type">颜色分类：深棕色 尺码：均码</div>
+													<div class="name ep2">{{ $value->gname }}</div>
+													<div class="type">库存 {{ $value->goodsNum }} 件</div>
 												</a>
 											</div>
 											<div class="tdf2"><span class="c9">
@@ -73,26 +73,13 @@
 										</div>
 											@endif
 											@endif
+											@endif
 											@endforeach
 										
 										@endforeach
 										@endforeach
 										
-										<!-- <div class="integral-item">
-											<div class="tdf3">
-												<a class="integral-item__info" href="">
-													<div class="img"><img src="images/temp/M-002.jpg" alt="" class="cover"></div>
-													<div class="name ep2">霜天月明 原创日常汉服男云纹绣花单大氅传统礼服外套</div>
-													<div class="type">颜色分类：深棕色 尺码：均码</div>
-												</a>
-											</div>
-											<div class="tdf2"><span class="c9">¥1269.90</span></div>
-											<div class="tdf2"><span class="cr">2000</span></div>
-											<div class="tdf1">
-												<a class="but disabled" href="#" role="button">积分不够</a>
-											</div>
-										</div>
-										 -->
+										
 									</div>
 									<div class="page text-right clearfix">
 										<a class="disabled">上一页</a>
@@ -104,34 +91,35 @@
 								</div>
 								<div role="tabpanel" class="tab-pane fade" id="usable">
 									<div class="integral-item__list">
+
+										@foreach($data as $k=>$v)
+										@foreach($v['sub'] as $kk=>$vv)
+											
+											@foreach($goods as $key=>$value)
+											@if($vv->cname =='积分品')
+											@if($vv->pid == $value->tid)
+												@if($value->price < $user->info[0]->desc )
 										<div class="integral-item">
 											<div class="tdf3">
 												<a class="integral-item__info" href="">
-													<div class="img"><img src="images/temp/S-001.jpg" alt="" class="cover"></div>
-													<div class="name ep2">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-													<div class="type">颜色分类：深棕色 尺码：均码</div>
+													<div class="img"><img src="/uploads/Goods/{{ $value->pic }}" alt="" class="cover"></div>
+													<div class="name ep2">{{ $value->gname }}</div>
+													<div class="type">库存 {{ $value->goodsNum }} 件</div>
 												</a>
 											</div>
-											<div class="tdf2"><span class="c9">¥269.90</span></div>
-											<div class="tdf2"><span class="cr">500</span></div>
+											<div class="tdf2"><span class="c9">{{$value->goodsinfo}}</span></div>
+											<div class="tdf2"><span class="cr">{{$value->price}}</span></div>
 											<div class="tdf1">
-												<a class="but" href="#" role="button">兑换</a>
+												<a class="but" href="/home/convert/{{ $value->id }}" role="button">兑换</a>
 											</div>
 										</div>
-										<div class="integral-item">
-											<div class="tdf3">
-												<a class="integral-item__info" href="">
-													<div class="img"><img src="images/temp/S-002.jpg" alt="" class="cover"></div>
-													<div class="name ep2">霜天月明 原创日常汉服男云纹绣花单大氅传统礼服外套</div>
-													<div class="type">颜色分类：深棕色 尺码：均码</div>
-												</a>
-											</div>
-											<div class="tdf2"><span class="c9">¥1269.90</span></div>
-											<div class="tdf2"><span class="cr">2000</span></div>
-											<div class="tdf1">
-												<a class="but disabled" href="#" role="button">积分不够</a>
-											</div>
-										</div>
+										@endif
+										@endif
+										@endif
+										@endforeach
+										
+										@endforeach
+										@endforeach
 										
 									</div>
 									<div class="page text-right clearfix">
@@ -148,122 +136,36 @@
 							<div class="table-thead">
 								<div class="tdf3">来源/用途</div>
 								<div class="tdf2">积分变化</div>
+								<div class="tdf2">订单号</div>
 								<div class="tdf2">日期</div>
 								<div class="tdf1">备注</div>
 							</div>
 							<div class="integral-item__list">
+									@foreach($integ as $kkk=>$vvv)
+
+									@foreach($goods as $key=>$value)
+									@if($vvv->gid == $value->id)
+							
 								<div class="integral-item">
 									<div class="tdf3">
 										<a class="integral-item__info" href="">
-											<div class="img"><img src="images/temp/M-001.jpg" alt="" class="cover"></div>
-											<div class="name ep2">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-											<div class="type">颜色分类：深棕色 尺码：均码</div>
+											<div class="img"><img src="/uploads/Goods/{{ $value->pic }}" alt="" class="cover"></div>
+											<div class="name ep2">{{ $value->gname }}</div>
+											<div class="type">兑换商品 1 件</div>
 										</a>
 									</div>
 									<div class="tdf2">
-										<b class="fz24 cg">+200</b>
+										<b class="fz24 cr">-{{ $vvv->price }}</b>
 									</div>
-									<div class="tdf2"><span class="c6">2017年4月12日 15:13:14</span></div>
+									<div class="tdf2"><span class="c6">{{ $vvv->oid }}</span></div>
+									<div class="tdf2"><span class="c6">{{ $vvv->created_at }}</span></div>
 									<div class="tdf1">
-										<span class="c6">交易获得</span>
+										<span class="c6">积分兑换</span>
 									</div>
 								</div>
-								<div class="integral-item">
-									<div class="tdf3">
-										<a class="integral-item__info" href="">
-											<div class="img"><img src="images/temp/M-002.jpg" alt="" class="cover"></div>
-											<div class="name ep2">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-											<div class="type">颜色分类：深棕色 尺码：均码</div>
-										</a>
-									</div>
-									<div class="tdf2">
-										<b class="fz24 cr">-1500</b>
-									</div>
-									<div class="tdf2"><span class="c6">2017年4月12日 15:13:14</span></div>
-									<div class="tdf1">
-										<span class="c6">兑换消耗</span>
-									</div>
-								</div>
-								<div class="integral-item">
-									<div class="tdf3">
-										<a class="integral-item__info" href="">
-											<div class="img"><img src="images/temp/M-003.jpg" alt="" class="cover"></div>
-											<div class="name ep2">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-											<div class="type">颜色分类：深棕色 尺码：均码</div>
-										</a>
-									</div>
-									<div class="tdf2">
-										<b class="fz24 cg">+300</b>
-									</div>
-									<div class="tdf2"><span class="c6">2017年4月12日 15:13:14</span></div>
-									<div class="tdf1">
-										<span class="c6">交易获得</span>
-									</div>
-								</div>
-								<div class="integral-item">
-									<div class="tdf3">
-										<a class="integral-item__info" href="">
-											<div class="img"><img src="images/temp/M-004.jpg" alt="" class="cover"></div>
-											<div class="name ep2">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-											<div class="type">颜色分类：深棕色 尺码：均码</div>
-										</a>
-									</div>
-									<div class="tdf2">
-										<b class="fz24 cg">+250</b>
-									</div>
-									<div class="tdf2"><span class="c6">2017年4月12日 15:13:14</span></div>
-									<div class="tdf1">
-										<span class="c6">交易获得</span>
-									</div>
-								</div>
-								<div class="integral-item">
-									<div class="tdf3">
-										<a class="integral-item__info" href="">
-											<div class="img"><img src="images/temp/M-005.jpg" alt="" class="cover"></div>
-											<div class="name ep2">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-											<div class="type">颜色分类：深棕色 尺码：均码</div>
-										</a>
-									</div>
-									<div class="tdf2">
-										<b class="fz24 cg">+450</b>
-									</div>
-									<div class="tdf2"><span class="c6">2017年4月12日 15:13:14</span></div>
-									<div class="tdf1">
-										<span class="c6">交易获得</span>
-									</div>
-								</div>
-								<div class="integral-item">
-									<div class="tdf3">
-										<a class="integral-item__info" href="">
-											<div class="img"><img src="images/temp/M-006.jpg" alt="" class="cover"></div>
-											<div class="name ep2">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-											<div class="type">颜色分类：深棕色 尺码：均码</div>
-										</a>
-									</div>
-									<div class="tdf2">
-										<b class="fz24 cr">-1000</b>
-									</div>
-									<div class="tdf2"><span class="c6">2017年4月12日 15:13:14</span></div>
-									<div class="tdf1">
-										<span class="c6">兑换消耗</span>
-									</div>
-								</div>
-								<div class="integral-item">
-									<div class="tdf3">
-										<a class="integral-item__info" href="">
-											<div class="img"><img src="images/temp/M-007.jpg" alt="" class="cover"></div>
-											<div class="name ep2">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-											<div class="type">颜色分类：深棕色 尺码：均码</div>
-										</a>
-									</div>
-									<div class="tdf2">
-										<b class="fz24 cr">-12450</b>
-									</div>
-									<div class="tdf2"><span class="c6">2017年4月12日 15:13:14</span></div>
-									<div class="tdf1">
-										<span class="c6">兑换消耗</span>
-									</div>
-								</div>
+								@endif
+								@endforeach
+								@endforeach
 							</div>
 							<div class="page text-right clearfix">
 								<a class="disabled">上一页</a>

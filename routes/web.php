@@ -79,6 +79,8 @@
 	Route::get('/home/userget','home\RegisterController@userget');
 	//前台积分页面
 	Route::get('/home/integral','home\UdaiController@integral');
+	//积分兑换
+	Route::get('/home/convert/{id}','home\UdaiController@convert');
 	//跳转前台用户中心
 	Route::get('/home/udai','home\RegisterController@welcome');
 	//跳转前台个人资料区
