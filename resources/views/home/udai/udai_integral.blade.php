@@ -98,7 +98,7 @@
 											@foreach($goods as $key=>$value)
 											@if($vv->cname =='积分品')
 											@if($vv->pid == $value->tid)
-												@if($value->price < $user->info[0]->desc )
+												@if($value->price <= $user->info[0]->desc )
 										<div class="integral-item">
 											<div class="tdf3">
 												<a class="integral-item__info" href="">

@@ -18,6 +18,11 @@ class AddressController extends Controller
     public function index()
     {
         //
+         $id = (session('home_user')['id']);
+         $address = DB::table('address')->where('uid', $id)->get();
+        // dd($readss);
+
+        return view('home.usershow.address',['address'=>$address]);
     }
 
     /**

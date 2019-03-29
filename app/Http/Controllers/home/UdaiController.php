@@ -38,34 +38,47 @@ class UdaiController extends Controller
         $price=$goods->price;
         //购买后的积分
         $remain = $desc-$price;
-        if($desc>$price){
-        //购买后的积分
-        $remain = $desc-$price;
-        //购买后的库存
-        $num = $goods->goodsNum-1;
-        //修改商品库存
-         $goods->goodsNum =$num;
-         $res = $goods->save();
-          //修改用户积分
-          $info = Userinfo::find($infoid);
-          $info->desc = $remain;
-          $res2 = $info->save();
-                    if($res && $res2){
-                             $integral = new Integrals;
-                             $integral->uid = $uid ;
-                             $integral->gid = $id;
-                             $integral->price = $price;
-                             $integral->oid = date('Ymdhis').rand(1000,9999);
-                             $integral->save();
-                             return '<script>alert("兑换成功");location.href="/home/integral";</script>';  
+        //查询地址是否存在
+          $addres = DB::select('select * from address where uid = ?', [$uid]);
+        if($addres){
+             $adid =0;
+                 foreach($addres as $k=>$v){
+                       if($v->status ==1){
+                             $adid = $v->id;
+                       }
+                    }
+            if($adid){
 
-                        }else {
-                            return '<script>alert("兑换失败");location.href="/home/integral";</script>';
-                             }
+                //购买后的积分
+                $remain = $desc-$price;
+                //购买后的库存
+                $num = $goods->goodsNum-1;
+                //修改商品库存
+                 $goods->goodsNum = $num;
+                 $res = $goods->save();
+                  //修改用户积分
+                  $info = Userinfo::find($infoid);
+                  $info->desc = $remain;
+                  $res2 = $info->save();
+                            if($res && $res2){
+                                     $integral = new Integrals;
+                                     $integral->uid = $uid ;
+                                     $integral->gid = $id;
+                                     $integral->price = $price;
+                                     $integral->aid = $adid;
+                                     $integral->oid = date('Ymdhis').rand(1000,9999);
+                                     $integral->save();
+                                     return '<script>alert("兑换成功");location.href="/home/integral";</script>';  
+                                }else {
+                                    return '<script>alert("兑换失败");location.href="/home/integral";</script>';
+                                      }
+                    }else {
+                         return '<script>alert("请选择地址");location.href="/home/addres";</script>';
+                    }
 
-        }else {
-            return '<script>alert("积分不够");location.href="/home/integral";</script>';
-        }
+            }else {
+               return '<script>alert("请添加地址");location.href="/home/addres";</script>'; 
+            }
 
 
       
