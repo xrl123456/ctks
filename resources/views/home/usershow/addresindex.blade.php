@@ -4,56 +4,8 @@
 
 
 <div class="pull-right">
-				<div class="user-content__box clearfix bgf">
-					<div class="title">账户信息-收货地址</div>
-					<form action="/home/addres" class="user-addr__form form-horizontal" method="POST" role="form">
-						{{ csrf_field() }}
-						<p class="fz18 cr">新增收货地址<span class="c6" style="margin-left: 20px"></span></p>
-						<div class="form-group">
-							<label for="name" class="col-sm-2 control-label">收货人姓名：</label>
-							<div class="col-sm-6">
-								<input class="form-control" id="name" name="name" placeholder="请输入收货人姓名" type="text">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="details" class="col-sm-2 control-label"><br/>收货地址：</label>
-							<div class="col-sm-10">
-								<div class="addr-linkage">
-									<!-- <select name="province"></select>
-									<select name="city"></select>
-									<select name="area"></select>
-									<select name="town"></select> -->
-								</div>
-								<input class="form-control" id="details" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码等信息" maxlength="30" type="text" name="address">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="mobile" class="col-sm-2 control-label">手机号码：</label>
-							<div class="col-sm-6">
-								<input class="form-control" id="mobile" placeholder="请输入手机号码" type="text" name="phone">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="phone" class="col-sm-2 control-label"></label>
-							<div class="col-sm-6">
-								<input class="form-control" id="phone" placeholder="" type="text" style="display:none;">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-6">
-								<div class="checkbox">
-									<label><input type="" style="display:none;"><i></i></label>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-6">
-								<input type="submit" class="but"></button>
-							</div>
-						</div>
+		
 					
-					</form>
 					<p class="fz18 cr">已保存的有效地址</p>
 
 					<div class="table-thead addr-thead">
@@ -74,7 +26,7 @@
 							<!-- <div class="tdf1">350111</div> -->
 							<div class="tdf1">{{ $value->phone }}</div>
 							<div class="tdf1 order">
-								<button class="default"><a type="submit" href="udai_address_edit.html">修改</a></button>
+								<button class="default"><a type="submit" href="/home/addres/{{ $value->id }}/edit">修改</a></button>
 								<form action="/home/addres/{{ $value->id }}"  method="post"  style="display: inline;">
 				                {{  csrf_field() }}
 				                {{ method_field('DELETE')}}

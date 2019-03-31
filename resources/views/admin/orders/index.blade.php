@@ -52,7 +52,7 @@
                 <td class="  sorting_1" style="text-align:center">
                 <b>	@if( $value->status  == 1)
                 		<font color="red">已支付<br>未发货</font>
-                	@eslseif($value->status == 2)
+                	@elseif($value->status == 2)
                 		<font color="orange">已发货<br>等待买家签收</font>
                 	@elseif($value->status == 3)
                 		<font color="#f0c">已签收<br>待评价</font>
@@ -63,8 +63,9 @@
                 </td>
                 <td class="  sorting_1" style="text-align:center">
                 <a href="/admins/order/{{$value->oid}}" class="btn btn-success">订单详情</a>
-                <a href="/admins/" class="btn btn-warning">修改物流状态</a>
-                
+                @if($value->status <= 1)
+                <a href="/admins/order/{{ $value->oid }}/edit" class="btn btn-warning">修改物流状态</a>
+                @endif
                 </td>
             </tr>
             @endforeach

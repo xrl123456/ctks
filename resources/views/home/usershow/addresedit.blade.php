@@ -6,13 +6,15 @@
 <div class="pull-right">
 				<div class="user-content__box clearfix bgf">
 					<div class="title">账户信息-收货地址</div>
-					<form action="/home/addres" class="user-addr__form form-horizontal" method="POST" role="form">
+					<form action="/home/addres/{{ $addres['id'] }}" class="user-addr__form form-horizontal" method="POST" role="form">
 						{{ csrf_field() }}
-						<p class="fz18 cr">新增收货地址<span class="c6" style="margin-left: 20px"></span></p>
+            			{{ method_field('PUT') }}
+
+						<p class="fz18 cr">修改收货地址<span class="c6" style="margin-left: 20px"></span></p>
 						<div class="form-group">
 							<label for="name" class="col-sm-2 control-label">收货人姓名：</label>
 							<div class="col-sm-6">
-								<input class="form-control" id="name" name="name" placeholder="请输入收货人姓名" type="text">
+								<input class="form-control" id="name" name="name" placeholder="请输入收货人姓名" type="text" value="{{ $addres['name'] }}">
 							</div>
 						</div>
 						<div class="form-group">
@@ -24,14 +26,14 @@
 									<select name="area"></select>
 									<select name="town"></select> -->
 								</div>
-								<input class="form-control" id="details" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码等信息" maxlength="30" type="text" name="address">
+								<input class="form-control" id="details" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码等信息" maxlength="30" type="text" name="address" value="{{ $addres['address'] }}">
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label for="mobile" class="col-sm-2 control-label">手机号码：</label>
 							<div class="col-sm-6">
-								<input class="form-control" id="mobile" placeholder="请输入手机号码" type="text" name="phone">
+								<input class="form-control" id="mobile" placeholder="请输入手机号码" maxlength="11" value="{{ $addres['phone'] }}" type="text" name="phone">
 							</div>
 						</div>
 						<div class="form-group">
@@ -54,42 +56,7 @@
 						</div>
 					
 					</form>
-					<p class="fz18 cr">已保存的有效地址</p>
-
-					<div class="table-thead addr-thead">
-						<div class="tdf1">收货人</div>
-						<!-- <div class="tdf2">所在地</div> -->
-						<div class="tdf3"><div class="tdt-a_l">详细地址</div></div>
-						<!-- <div class="tdf1">邮编</div> -->
-						<div class="tdf1">电话/手机</div>
-						<div class="tdf1">操作</div>
-						<div class="tdf1"></div>
-					</div>
-					@foreach($address as $key=>$value)
-					<div class="addr-list">
-						<div class="addr-item">
-							<div class="tdf1">{{ $value->name }}</div>
-							<div class="tdf3 tdt-a_l">{{ $value->address }}</div>
-							<!-- <div class="tdf3 tdt-a_l">浦下村74号</div> -->
-							<!-- <div class="tdf1">350111</div> -->
-							<div class="tdf1">{{ $value->phone }}</div>
-							<div class="tdf1 order">
-								<button class="default"><a type="submit" href="udai_address_edit.html">修改</a></button>
-								<form action="/home/addres/{{ $value->id }}"  method="post"  style="display: inline;">
-				                {{  csrf_field() }}
-				                {{ method_field('DELETE')}}
-				                | <input type="submit" value="删除" class="default active"  onclick="return confirm('数据无价谨慎操作')">
-				                </form>
-							</div>
-							<div class="tdf1">
-							@if($value->status == 1)
-								<a  class="default active">默认地址</a>
-								@else
-								<a href="/home/addres/status/{{ $value->id }}" class="default">设为默认地址</a>
-							@endif
-							</div>
-						</div>
-					@endforeach
+					
 					
 				</div>
 

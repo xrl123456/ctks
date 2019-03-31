@@ -76,6 +76,21 @@ class UsershowController extends Controller
     public function edit($id)
     {
         //
+        // echo $id;
+        DB::beginTransaction();
+    
+        $order = Orders::find($id);
+        $order->status += 1;
+        $res = $order->save();
+         if($res){
+            DB::commit();
+            return '<script>alert("确认签收成功");location.href="/home/udai"</script>';
+
+        }else{
+            DB::rollBack();
+            return '<script>alert("错误，请稍后尝试");location.href="/home/udai"</script>';
+
+        }
     }
 
     /**

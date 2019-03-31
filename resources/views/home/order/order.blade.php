@@ -10,24 +10,24 @@
 				<form action="/home/order" class="shopcart-form__box" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }} 
 					<div class="addr-radio">
-						<!-- <div class="radio-line radio-box active">
-							<label class="radio-label ep" title="福建省 福州市 鼓楼区 温泉街道 五四路159号世界金龙大厦20层B北 福州rpg.blue网络 （喵喵喵 收） 153****9999">
-								<input name="addr" checked="" value="0" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>
-								
-							</label>
-							<a href="javascript:;" class="default">默认地址</a>
-							<a href="udai_address_edit.html" class="edit">修改</a>
-						</div> -->
-						
 						@foreach($addres as $key => $value)
-						<div  class="radio-line radio-box ">
+						@if($value->status ==1)
+						<div class="radio-line radio-box  active">
+						@else
+						<div class="radio-line radio-box  ">
+						@endif
 							<label class="radio-label ep" title="{{ $value->address }}（{{ $value->name }}）{{ $value->phone }}">
+								@if($value->status ==1)
+								<input name="addres" value="{{ $value->id }}" autocomplete="off" type="radio" id="shopradio" checked/><i class="iconfont icon-radio"></i>
+								@else
 								<input name="addres" value="{{ $value->id }}" autocomplete="off" type="radio" id="shopradio" ><i class="iconfont icon-radio"></i>
+								@endif
+
 								{{ $value->address }}（{{ $value->name }}）{{ $value->phone }}
 								 
 							</label>
-							<a href="" class="default">设为默认地址</a>
-							<a href="" class="edit">修改</a>
+							<!-- <a href="" class="default">设为默认地址</a> -->
+							<a href="/home/addres/{{ $value->id }}/edit" class="edit">修改</a>
 						</div>
 						@endforeach
 					</div>

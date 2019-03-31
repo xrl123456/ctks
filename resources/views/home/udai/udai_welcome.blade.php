@@ -106,8 +106,11 @@
 										<td class="order">
 											@if($value->status == 3)
 												<a href="#" class="but but-link">评价</a>
-												@elseif($value->status > 0)
+												@elseif($value->status == 1 ) 
 													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@elseif($value->status == 2)		
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+													<a href="/home/usershow/{{ $value->oid }}/edit" class="but but-primary" > 确认收货 </a>
 												@else 
 													<a href="/home/shop" class="but but-primary"> 立即付款 
 												@endif
@@ -174,8 +177,11 @@
 											<td class="order">
 												@if($value->status == 3)
 												<a href="#" class="but but-link">评价</a>
-												@elseif($value->status > 0)
+												@elseif($value->status == 1 ) 
 													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@elseif($value->status == 2)		
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+													<a href="/home/usershow/{{ $value->oid }}/edit" class="but but-primary" > 确认收货 </a>
 												@else 
 													<a href="/home/shop" class="but but-primary"> 立即付款 
 												@endif
@@ -248,8 +254,11 @@
 										<td class="order">
 											@if($value->status == 3)
 												<a href="#" class="but but-link">评价</a>
-												@elseif($value->status > 0)
+												@elseif($value->status == 1 ) 
 													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@elseif($value->status == 2)		
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+													<a href="/home/usershow/{{ $value->oid }}/edit" class="but but-primary" > 确认收货 </a>
 												@else 
 													<a href="/home/shop" class="but but-primary"> 立即付款 
 												@endif
@@ -319,8 +328,11 @@
 										<td class="order">
 											@if($value->status == 3)
 												<a href="#" class="but but-link">评价</a>
-												@elseif($value->status > 0)
+												@elseif($value->status == 1 ) 
 													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@elseif($value->status == 2)		
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+													<a href="/home/usershow/{{ $value->oid }}/edit" class="but but-primary" > 确认收货 </a>
 												@else 
 													<a href="/home/shop" class="but but-primary"> 立即付款 
 												@endif
@@ -389,8 +401,11 @@
 										<td class="order">
 											@if($value->status == 3)
 												<a href="#" class="but but-link">评价</a>
-												@elseif($value->status > 0)
+												@elseif($value->status == 1 ) 
 													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+												@elseif($value->status == 2)		
+													<a href="/home/usershow/{{ $value->id }}" class="but but-primary" > 查看订单 
+													<a href="/home/usershow/{{ $value->oid }}/edit" class="but but-primary" > 确认收货 </a>
 												@else 
 													<a href="/home/shop" class="but but-primary"> 立即付款 
 												@endif

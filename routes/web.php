@@ -56,7 +56,9 @@ Route::post('/admins/super/imgup/{id}','admin\SuperController@imgup');
 Route::resource('/admins/super','admin\SuperController');
 
 // 订单管理模块
+
 Route::resource('/admins/order','admin\OrdersController');
+
 
 
 // 后台 用户管理？！
@@ -130,6 +132,7 @@ Route::post('/home/order/shoppay/{id}','home\OrdersController@shoppay');
 Route::resource('/home/shop','home\ShopController');
 
 // 收货地址 --------
+Route::get('/home/addres/status/{id}','home\AddressController@status');
 Route::resource('/home/addres','home\AddressController');
 
 
