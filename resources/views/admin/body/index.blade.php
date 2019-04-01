@@ -149,13 +149,16 @@
             <!-- Main Navigation -->
             <div id="mws-navigation">
                 <ul>
-                    <li class="active">
-                        <a href="#"><i class="icon-users"></i>用户管理</a>
+                       <li class="active">
+                        <a href="#"><i class="icon-users"></i>管理员用户管理</a>
+
+
                         <ul>
-                            <li><a href="/admins/users">用户列表</a></li>
-                         
+                            <li><a href="/admins/super">人员列表</a></li>
+                            <li><a href="/admins/super/create">人员添加</a></li>
                         </ul>
                     </li>
+                   
                     <li class="active">
                         <a href="#"><i class="icon-stats-up"></i>订单管理</a>
                         <ul>
@@ -177,6 +180,21 @@
                             <li><a href="/admins/goodsgo">商品列表</a></li>
                             <li><a href="/admins/goodsgo/create">商品添加</a></li>
                             
+                        </ul>
+                    </li>
+                     <li class="active">
+                        <a href="#"><i class="icon-users"></i>用户管理</a>
+                        <ul>
+                            <li><a href="/admins/users">用户列表</a></li>
+                         
+                        </ul>
+                    </li>
+                     <li class="active">
+                        <a href="#"><i class="icon-database"></i>积分兑换管理</a>
+                          
+                        <ul>
+                            <li><a href="/admins/integrati">订单列表</a></li>
+                           
                         </ul>
                     </li>
                     <li class="active">
@@ -201,6 +219,14 @@
                             <li><a href="/admins/lbts/create">轮播图添加</a></li>
                         </ul>
                     </li>
+                      <li class="active">
+                        <a href="#"><i class="icon-facetime-video"></i>视频管理</a>
+
+                        <ul>
+                            <li><a href="/admins/video">视频列表</a></li>
+                        <li><a href="/admins/video/create">视频添加</a></li>
+                        </ul>
+                    </li>
 
                     <li class="active">
                         <a href="#"><i class="icon-list"></i>网站管理</a>
@@ -210,23 +236,8 @@
                             <li><a href="/admins/guanli/create">网站管理添加</a></li>
                         </ul>
                     </li>
-                    <li class="active">
-                        <a href="#"><i class="icon-list"></i>用户管理</a>
-
-
-                        <ul>
-                            <li><a href="/admins/super">人员列表</a></li>
-                            <li><a href="/admins/super/create">人员添加</a></li>
-                        </ul>
-                    </li>
-                    <li class="active">
-                        <a href="#"><i class="icon-list"></i>积分兑换管理</a>
-
-                        <ul>
-                            <li><a href="/admins/integrati">订单列表</a></li>
-                           
-                        </ul>
-                    </li>
+                    
+                   
                 </ul>
             </div>
         </div>

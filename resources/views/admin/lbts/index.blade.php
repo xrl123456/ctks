@@ -7,7 +7,7 @@
                     </div>
                     <div class="mws-panel-body no-padding">
                         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-                        <form action="/admins/bbs" method="get">
+                        <form action="#" method="">
                         <div id="DataTables_Table_1_length" class="dataTables_length">
                         <label>显示
                         <select size="1" name="count" aria-controls="DataTables_Table_1">
@@ -20,7 +20,7 @@
                         </div>
                       
                         <div class="dataTables_filter" id="DataTables_Table_1_filter">
-                        <label>搜索关键字: <input type="text" aria-controls="DataTables_Table_1" name="search" value="{{ $request['search'] or ''}}"></label>
+                        <label>搜索关键字: <input type="text" aria-controls="DataTables_Table_1" name="search" value=""></label>
                         <input type="submit" value="搜索">
                         </div>
                         </form>

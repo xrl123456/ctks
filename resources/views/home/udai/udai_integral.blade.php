@@ -163,7 +163,7 @@
 										@if($vvv->status == 0)
 										<span class="c6">兑换成功</span>
 										@else 
-										<span class="c6">已发货</span>
+										<span class="c6">商家已发货</span>
 										@endif
 									</div>
 								</div>

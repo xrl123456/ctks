@@ -6,7 +6,12 @@
 		<section class="user-center inner clearfix">
 			<div class="user-content__box clearfix bgf">
 				<div class="title">购物车-确认支付 </div>
+				@if(Session::get('home_user')['name'])
 				<div class="shop-title">收货地址</div>
+				@else
+				<a href="/home/denlu"><span class="cr"><h3>添加收货地址,请登录</h3></span></a>
+				@endif
+
 				<form action="/home/order" class="shopcart-form__box" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }} 
 					<div class="addr-radio">
@@ -31,9 +36,14 @@
 						</div>
 						@endforeach
 					</div>
+					@if(Session::get('home_user')['name'])
 					<div class="add_addr"><a href="/home/addres/{{ $goods_info->id }}">添加新地址</a></div>
 					<div class="shop-title">确认订单</div>
 					<div class="shop-order__detail">
+					@else
+					
+					@endif
+					
 						<table class="table">
 							<thead>
 								<tr>
@@ -145,31 +155,31 @@
 	<div class="right-nav">
 		<ul class="r-with-gotop">
 			<li class="r-toolbar-item">
-				<a href="udai_welcome.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-user" data-badge="0"></i>
 					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_shopcart.html" class="r-item-hd">
+				<a href="/home/shop" class="r-item-hd">
 					<i class="iconfont icon-cart"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_collection.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-aixin"></i>
 					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liaotian"></i>
 					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="issues.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liuyan"></i>
 					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
 				</a>

@@ -36,7 +36,7 @@
 				
 				<a href="/home/dropOut"><span class="cr">退出</span></a>
                 <a href="/home/udai">我的U袋</a>
-				<a href="udai_order.html">我的订单</a>
+				<a href="#">我的订单</a>
 				<a href="/home/integral">积分平台</a>
 			</div>          
 			@else

@@ -53,7 +53,13 @@
                                   
                                     <td class="  ">{{ $v->goodsinfo }}</td>
                                     <td class=" ">{{ $v->goodsNum }}</td>
-                                    <td class=" "><a class="btn btn-info " href="/admins/goodsgo/{{ $v->id }}">{{ $v->status == 0 ?'上架':'下架'}}</a></td>
+                                    <td class=" ">
+                                    @if($v->status == 0)
+                                    <a class="btn btn-info " href="/admins/goodsgo/{{ $v->id }}">{{ $v->status == 0 ?'上架':'下架'}}</a>
+                                    @else
+                                    <a class="btn btn-danger" href="/admins/goodsgo/{{ $v->id }}">{{ $v->status == 0 ?'上架':'下架'}}</a>
+                                    @endif
+                                    </td>
                                     <td class=" ">
                                     <a href="/admins/goodsgo/{{ $v->id }}/edit"  class="btn btn-info">编辑</a>
                                     <form action="/admins/goodsgo/{{$v->id}}" method="post" style="display: inline;">

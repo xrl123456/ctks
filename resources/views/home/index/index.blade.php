@@ -42,12 +42,12 @@
 			</div>
 			<ul class="nva-list">
 				<a href="/"><li class="active">首页</li></a>
-				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
-				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
-				<a href="class_room.html"><li>U袋学堂</li></a>
-				<a href="enterprise_id.html"><li>企业账号</li></a>
-				<a href="udai_contract.html"><li>诚信合约</li></a>
-				<a href="item_remove.html"><li>实时下架</li></a>
+				<a href="#"><li>企业简介</li></a>
+				<a href="#"><li>新手上路</li></a>
+				<a href="/home/class_room"><li>U袋学堂</li></a>
+				<a href="#"><li>企业账号</li></a>
+				<a href="#"><li>诚信合约</li></a>
+				<a href="#"><li>实时下架</li></a>
 			</ul>
 			<div class="user-info__box">
 				<div class="login-box">
@@ -122,6 +122,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                	 });
+					// 积分操作
 					function block(){
 							var add = $("#addr").val();
 							//总积分
@@ -131,6 +132,7 @@
 							//签到后总积分
 							var stor = Number(badge) + Number(inte) 
 							$.get('/home/userget',{add:add,badge:badge,inte:inte},function(res){
+								// alert(res);
 								if(res){
 								$('#addr').attr('value',res);
 								$('#buts').html('已签到第'+res+'天');
@@ -186,7 +188,7 @@
 	<div class="content inner" style="margin-bottom: 40px;">
 	
 		<section class="scroll-floor floor-1 clearfix">
-			<div class="pull-left">
+			<div class="pull-left"style ="overflow :hidden">
 
 				<div class="floor-title">
 					<i class="iconfont icon-tuijian fz16">爆款</i> 
@@ -202,6 +204,7 @@
 					@foreach($goods as $key=>$value)
 					@foreach($v['sub'] as $kk=>$vv)
 					@if($vv->pid == $value->tid && $vv->cname = '爆款')
+					@if($value->status == 0)
 						
 						<a href="/home/item_show/{{ $value->id }}" class="floor-item">
 							<div class="item-img hot-img">
@@ -213,7 +216,7 @@
 							</div>
 							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">{{$value->gname}}</div>
 						</a>
-							
+						@endif	
 						@endif
 				@endforeach
 				@endforeach
@@ -240,25 +243,25 @@
 					
 					<div class="buts-box bgf5">
 						<div class="but-div">
-							<a href="">
+							<a href="#">
 								<i class="but-icon"></i>
 								<p>物流查询</p>
 							</a>
 						</div>
 						<div class="but-div">
-							<a href="item_sale_page.html">
+							<a href="#">
 								<i class="but-icon"></i>
 								<p>热卖专区</p>
 							</a>
 						</div>
 						<div class="but-div">
-							<a href="item_sale_page.html">
+							<a href="#">
 								<i class="but-icon"></i>
 								<p>满减专区</p>
 							</a>
 						</div>
 						<div class="but-div">
-							<a href="item_sale_page.html">
+							<a href="#">
 								<i class="but-icon"></i>
 								<p>折扣专区</p>
 							</a>
@@ -351,25 +354,25 @@
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_shopcart.html" class="r-item-hd">
+				<a href="/home/shop" class="r-item-hd">
 					<i class="iconfont icon-cart" data-badge="10"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_collection.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-aixin"></i>
 					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liaotian"></i>
 					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="issues.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liuyan"></i>
 					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
 				</a>
@@ -403,23 +406,23 @@
 		<div class="footer-links inner">
 			<dl>
 				<dt>U袋网</dt>
-				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>
-				<a href="temp_article/udai_article11.html"><dd>加入U袋</dd></a>
-				<a href="temp_article/udai_article12.html"><dd>隐私说明</dd></a>
+				<a href="#"><dd>企业简介</dd></a>
+				<a href="#"><dd>加入U袋</dd></a>
+				<a href="#"><dd>隐私说明</dd></a>
 			</dl>
 			<dl>
 				<dt>服务中心</dt>
-				<a href="temp_article/udai_article1.html"><dd>售后服务</dd></a>
-				<a href="temp_article/udai_article2.html"><dd>配送服务</dd></a>
-				<a href="temp_article/udai_article3.html"><dd>用户协议</dd></a>
-				<a href="temp_article/udai_article4.html"><dd>常见问题</dd></a>
+				<a href="#"><dd>售后服务</dd></a>
+				<a href="#"><dd>配送服务</dd></a>
+				<a href="#"><dd>用户协议</dd></a>
+				<a href="#"><dd>常见问题</dd></a>
 			</dl>
 			<dl>
 				<dt>新手上路</dt>
-				<a href="temp_article/udai_article5.html"><dd>如何成为代理商</dd></a>
-				<a href="temp_article/udai_article6.html"><dd>代销商上架教程</dd></a>
-				<a href="temp_article/udai_article7.html"><dd>分销商常见问题</dd></a>
-				<a href="temp_article/udai_article8.html"><dd>付款账户</dd></a>
+				<a href="#"><dd>如何成为代理商</dd></a>
+				<a href="#"><dd>代销商上架教程</dd></a>
+				<a href="#"><dd>分销商常见问题</dd></a>
+				<a href="#"><dd>付款账户</dd></a>
 			</dl>
 		</div>
 		<div class="copy-box clearfix">

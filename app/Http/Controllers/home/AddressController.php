@@ -82,7 +82,8 @@ class AddressController extends Controller
         // 获取数据 
         // $readss = Address::get($id);
         // dd($id);
-        $address = DB::table('address')->where('uid', $id)->get();
+         $uid = (session('home_user')['id']);
+        $address = DB::table('address')->where('uid', $uid)->get();
         // dd($readss);
 
         return view('home.usershow.address',['address'=>$address]);

@@ -46,6 +46,8 @@
 		Route::resource('/admins/goodsgo','admin\GoodsgoController');
 		//积分兑换管理
 		Route::resource('/admins/integrati','admin\IntregratiController');
+		//视频管理模块
+		Route::resource('/admins/video','admin\VideoController');
 		// 管理员模块
 		Route::post('/admins/super/status/{id}','admin\SuperController@status');
 		Route::post('/admins/super/showup/{id}','admin\SuperController@showup');
@@ -100,12 +102,17 @@
 	Route::get('/home/item_categoryl/{id}','home\GoodsController@categoryl');
 	//跳转前台广告
 	Route::get('/home/bbs/index/{id}','home\BbsController@index');
+	//前台修改登录密码
+	Route::resource('/home/modifypwd','home\modifypwdController');
 
-
-	//管理路由
-	Route::resource('/admins/guanli','admin\GuanliController');
+	Route::post('/home/udai_modifypwd_step3','home\modifypwdController@modifypwdoto');
+	//跳转前台视频页
+	Route::get('/home/class_room','home\VideoController@index');
 	//前台轮播图路由
 	Route::resource('/admins/lbts','admin\LbtsController');
+	//管理路由
+	Route::resource('/admins/guanli','admin\GuanliController');
+	
 
 
 	// 订单

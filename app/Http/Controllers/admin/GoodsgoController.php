@@ -119,10 +119,10 @@ class GoodsgoController extends Controller
                 $res = $goods->save();
                  if($res) {    
                         DB::commit();
-                        return redirect('/admins/goodsgo')->with('success','上架成功');  
+                        return redirect($_SERVER['HTTP_REFERER'])->with('success','上架成功');  
                     }else{
                         DB::rollBack();
-                        return redirect('/admins/goodsgo')->with('error','上架失败');
+                        return redirect($_SERVER['HTTP_REFERER'])->with('error','上架失败');
                     }
            }else{
                 //显示上架时
@@ -131,10 +131,10 @@ class GoodsgoController extends Controller
              $res = $goods->save();
                  if($res) {    
                         DB::commit();
-                        return redirect('/admins/goodsgo')->with('success','下架成功');  
+                        return redirect($_SERVER['HTTP_REFERER'])->with('success','下架成功');  
                     }else{
                         DB::rollBack();
-                        return redirect('/admins/goodsgo')->with('error','下架失败');
+                        return redirect($_SERVER['HTTP_REFERER'])->with('error','下架失败');
                     }
 
            }
@@ -196,10 +196,10 @@ class GoodsgoController extends Controller
             $res = $goods->save();
                 if($res){
                             DB::commit();
-                            return redirect('/admins/goodsgo/')->with('success','修改成功');
+                            return redirect('/admins/goodsgo')->with('success','修改成功');
                         }else{
                             DB::rollBack();
-                            return redirect('/admins/goodsgo/')->with('error','修改失败');
+                            return redirect('/admins/goodsgo')->with('error','修改失败');
                         }
            }else{
             //编辑图片
@@ -235,10 +235,10 @@ class GoodsgoController extends Controller
            $res = $goods->save();
            if($res){
                     DB::commit();
-                    return redirect('/admins/goodsgo/')->with('success','修改成功');
+                    return redirect('/admins/goodsgo')->with('success','修改成功');
                  }else{
                     DB::rollBack();
-                    return redirect('/admins/goodsgo/')->with('error','修改失败');
+                    return redirect('/admins/goodsgo')->with('error','修改失败');
                 }
           
         }
@@ -264,9 +264,9 @@ class GoodsgoController extends Controller
          if($res){
                //删除图片
                Storage::delete($ret);
-               return redirect('/admins/goodsgo')->with('success','删除成功'); 
+               return redirect($_SERVER['HTTP_REFERER'])->with('success','删除成功'); 
             }else{
-               return redirect('/admins/goodsgo')->with('error','删除失败');
+               return redirect($_SERVER['HTTP_REFERER'])->with('error','删除失败');
                 }
          
 

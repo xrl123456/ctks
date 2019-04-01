@@ -80,31 +80,31 @@
 	<div class="right-nav">
 		<ul class="r-with-gotop">
 			<li class="r-toolbar-item">
-				<a href="udai_welcome.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-user" data-badge="0"></i>
 					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_shopcart.html" class="r-item-hd">
+				<a href="/home/shop" class="r-item-hd">
 					<i class="iconfont icon-cart"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_collection.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-aixin"></i>
 					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liaotian"></i>
 					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="issues.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liuyan"></i>
 					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
 				</a>

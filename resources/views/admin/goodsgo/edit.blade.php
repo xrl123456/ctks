@@ -13,7 +13,7 @@
 <!-- 显示错误 信息 结束 -->
 <div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span><i class="icon-shopping-cart"></i>添加商品</span>
+                    	<span><i class="icon-shopping-cart"></i>编辑商品</span>
                     </div>
                     <div class="mws-panel-body no-padding">
                     	<form id="mws-validate"   class="mws-form"  enctype="multipart/form-data" action="/admins/goodsgo/{{ $goods->id }}" method="post" novalidate="novalidate">
@@ -85,6 +85,8 @@
                             </div>
                             <div class="mws-button-row">
                             	<input type="submit" class="btn btn-danger">
+                                 <a class="btn " href="/admins/goodsgo">返回</a>
+
                             </div>
                         </form>
                     </div>    	

@@ -163,11 +163,11 @@ class RegisterController extends Controller
 				// 个人中心首页显示 订单
 
 				
-				// $id =(Session('home_user')['id']);
-				//  $info = Users::find($id);
+				$id =(Session('home_user')['id']);
+				 $info = Users::find($id);
 				
 
-				// return view('home.udai.udai_welcome',['info'=>$info]);
+			
 
 				// 显示订单
 				$uid = (session('home_user')['id']);
@@ -184,7 +184,7 @@ class RegisterController extends Controller
 				$i = 1;
 				$or =0;
 
-				return view('home.udai.udai_welcome',['testshop'=>$testshop,'newshop'=>$newshop,'shop1'=>$shop1,'shop2'=>$shop2,'shop3'=>$shop3]);
+				return view('home.udai.udai_welcome',['info'=>$info,'testshop'=>$testshop,'newshop'=>$newshop,'shop1'=>$shop1,'shop2'=>$shop2,'shop3'=>$shop3]);
 
 			}
 			//个人资料
@@ -245,18 +245,23 @@ class RegisterController extends Controller
 				$info = new Userinfo;
 				//查询修改时间
 				 $update = $info->where('uid',$id)->get();
+
 				 //获取修改时间
 				 $at = $update[0]->birth;
+				  //  3-30
+				  
 				 //当天时间
 				 $ee = date('Y-m-d');
+				
 				 //连续签到当天的前一天
-				 $previous = date("Y-m-".(date('d')-1));
+				 $previous = (date("Y-m-d",strtotime("-1 day")));
 				 //总积分
 				 $desc =$badge+$intr;
 				 if($at>=$ee){
 				 	// 修改时间大于或者等于当天时间者不返回
 				 }else{
 				 	//判断是否是连续签到
+				 	// //  
 				 	if($at == $previous ){
 				 		//连续签到
 				 		$add+=1;

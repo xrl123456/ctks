@@ -25,7 +25,7 @@
 						<tbody>
 
 							@foreach($testshop as $key=>$value)
-								
+								@foreach($value->addersand as $k=>$v)
 							<tr>
 
 								<th scope="row" style="width:140px;height:140px;">
@@ -59,7 +59,7 @@
 								<!-- <td><a href="/home/shop/del/{{ $value->id }}"><button type="submit" style="background-color:orange;border: 1px solid red;width:60px;height:30px;border-radius:10px 10px 10px 10px; margin-top:40px;">删除</button></a></td> -->
 							 <!-- disabled="disabled" -->
 							</tr>
-							
+							@endforeach
 							@endforeach
 						</tbody>
 					</table>
@@ -196,31 +196,31 @@
 	<div class="right-nav">
 		<ul class="r-with-gotop">
 			<li class="r-toolbar-item">
-				<a href="udai_welcome.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-user" data-badge="0"></i>
 					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_shopcart.html" class="r-item-hd">
+				<a href="/home/shop" class="r-item-hd">
 					<i class="iconfont icon-cart"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_collection.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-aixin"></i>
 					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liaotian"></i>
 					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="issues.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liuyan"></i>
 					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
 				</a>

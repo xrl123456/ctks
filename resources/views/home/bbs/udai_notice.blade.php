@@ -7,13 +7,13 @@
 				<div class="title"><i class="iconfont icon-menu"></i> 全部分类</div>
 			</div>
 			<ul class="nva-list">
-				<a href="index.html"><li>首页</li></a>
-				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
-				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
-				<a href="class_room.html"><li>U袋学堂</li></a>
-				<a href="enterprise_id.html"><li>企业账号</li></a>
-				<a href="udai_contract.html"><li>诚信合约</li></a>
-				<a href="item_remove.html"><li>实时下架</li></a>
+				<a href="/"><li>首页</li></a>
+				<a href="#"><li>企业简介</li></a>
+				<a href="#"><li>新手上路</li></a>
+				<a href="/home/udai"><li>U袋学堂</li></a>
+				<a href="#"><li>企业账号</li></a>
+				<a href="#"><li>诚信合约</li></a>
+				<a href="#"><li>实时下架</li></a>
 			</ul>
 		</div>
 	</div>
@@ -49,31 +49,31 @@
 	<div class="right-nav">
 		<ul class="r-with-gotop">
 			<li class="r-toolbar-item">
-				<a href="udai_welcome.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-user" data-badge="0"></i>
 					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_shopcart.html" class="r-item-hd">
+				<a href="/home/shop" class="r-item-hd">
 					<i class="iconfont icon-cart"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_collection.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-aixin"></i>
 					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liaotian"></i>
 					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="issues.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-liuyan"></i>
 					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
 				</a>

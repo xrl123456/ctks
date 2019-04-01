@@ -26,7 +26,7 @@ class ShopController extends Controller
         $total = new Orders;
         
         // 通过用户id 和 是否已付款 查询所有
-        
+         $addres = DB::table('address')->where('uid',$uid)->get();
         $testshop = $total->where('uid','=',$uid)->where('status','=','0')->get();
 
         return view('home.cart.shopcart',['addres'=>$addres,'testshop'=>$testshop]);

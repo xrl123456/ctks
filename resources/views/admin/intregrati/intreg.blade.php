@@ -49,11 +49,17 @@
                                         <td class=" "><h4><img src="/uploads/goods/{{ $integ->goods->pic }}" style="width:100px"><br/>商品名称：<br/>{{ $integ->goods->gname }}</h4></td>
                                         <td class=" "><h4>1件</h4></td>
                                         <td><h4>{{ $integ->price }} </h4></td>
+                                        @if( $integ->status == 0 )
+                                        <td class=" "><h4>待发货</h4></td>
+                                       @else
                                         <td class=" "><h4>已发货</h4></td>
-                                       
-                                       
-                                       
+                                        @endif
                                                                 
                          </table>
+                         <div class="mws-button-row">
+                               
+                                 <a class="btn " href="/admins/integrati">返回</a>
+
+                            </div>
 
 @endsection
