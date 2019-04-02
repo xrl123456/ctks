@@ -51,6 +51,7 @@ class SeekController extends Controller
         
         // 通过这两个字段 查询出是否有这个账号
         $list = Supers::where('name','=',$name)->where('email','=',$email)->get();
+        // dd($list);
         foreach($list as $k=>$v) {
             $id = $v->id;
         }
@@ -60,7 +61,7 @@ class SeekController extends Controller
 
         // dd($token);
         if(count($list)) {
-
+            
             // 发送邮件
             Mail::send('admin.login.email', ['user' => $name,'id'=>$id,'token'=>$token], function ($m) use ($request) {
 

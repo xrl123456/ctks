@@ -70,11 +70,9 @@ class ShopController extends Controller
         }
         $money = 0;
         foreach($testshop as $key =>$value){
-            // dump($key);
-            // dump($value);
+           
             foreach($value as $k =>$v){
-                // dump($k);
-                // dump($v);
+               
                 $money += $v->oprice;
                 $shops[] =$v;
   
