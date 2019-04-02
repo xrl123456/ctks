@@ -1,14 +1,3 @@
--- 友情 链接表 
--- 友情链接表 表名 links
- 
-/*  字段名      属性              约束               备注    
-  id          int(11)         主键自增 无符号 非空 友情链接id
-  lname       varchar(255)    非空                 链接名   
-  lurl        varchcar(255)   非空                 链接地址  
-  limg        varchar(255)    空                   链接图片  
-  created_at  datetime        空                   添加时间
-  updated_at  datetime        空                   修改时间
-*/
 
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -145,3 +134,55 @@ CREATE TABLE `goods_type` (
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+
+
+-- 地址表
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE `address` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `phone` char(11) NOT NULL,
+  `address` char(255) NOT NULL,
+  `status` int(11) unsigned DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+
+
+-- 收藏表
+DROP TABLE IF EXISTS `collects`;
+CREATE TABLE `collects` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(11) unsigned NOT NULL,
+  `gid` int(11) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+-- 订单表
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `oid` char(50) NOT NULL,
+  `oprice` decimal(10,0) unsigned NOT NULL,
+  `number` int(11) unsigned NOT NULL,
+  `uid` int(11) unsigned NOT NULL,
+  `aid` int(11) unsigned NOT NULL DEFAULT '0',
+  `status` char(50) DEFAULT '0',
+  `updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+
+-- 订单详情
+DROP TABLE IF EXISTS `order_info`;
+CREATE TABLE `order_info` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `oid` char(50) NOT NULL,
+  `gid` int(11) unsigned NOT NULL,
+  `aid` int(11) unsigned NOT NULL DEFAULT '0',
+  `otime` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8;

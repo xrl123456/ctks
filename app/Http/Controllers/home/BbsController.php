@@ -13,9 +13,7 @@ class BbsController extends Controller
 {
 	public static function Bbs()
 	{
-    //$yiji_date=Bbs::all();
-    //dd($yiji_date);
-    //return $yiji_date;
+    
     $yiji_date=DB::select("select * from bbs where(status=1) ");
     	//dump($lbt);
     return $yiji_date;

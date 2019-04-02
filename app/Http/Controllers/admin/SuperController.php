@@ -19,14 +19,21 @@ class SuperController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $supers = Supers::all();
-        $i=1;
-        // dump($supers->superlist);
-        // dd($supers);
         
-        return view('admin.super.index',['supers'=>$supers,'i'=>$i]);
+        $i=1;
+        $count = $request->input('count',5);
+        $search = $request->input('search',''); 
+        // 后台订单首页 
+        // 获取所有数据
+        $orders =  new Supers;
+        // dd($count);
+        $supers = Supers::where('name','like','%'.$search.'%')->OrderBy('id', 'desc')->paginate($count);
+        $total = Supers::count();
+        // $total = count($num);
+        
+        return view('admin.super.index',['supers'=>$supers,'i'=>$i,'request'=>$request->all(),'total'=>$total]);
     }
         
     public function status($id)
@@ -205,7 +212,7 @@ class SuperController extends Controller
     public function update(SuperUpdateStoreRequest $request, $id)
     {
         // dd($_POST);
-
+        // 只需要查询别人
         DB::beginTransaction();
         $supers = Supers::find($id);
         $list = DB::table('supers')
@@ -213,15 +220,15 @@ class SuperController extends Controller
             ->where('name', 'like',$request->input('name',''))
             ->get();   
         // dd($list);
-        if(!count($list) == 1){
+        if(count($list) != 1){
 
             $supers->name = $request->input('name','');
             $new = DB::table('supers')
             ->where('name', 'like',$request->input('name',''))
             ->get();
-            if($new) {
+            if(count($new)>=1) {
                  DB::rollBack();
-                return redirect('/admins/super/'.$id.'/edit')->with('error','上传失败');    
+                return redirect('/admins/super/'.$id.'/edit')->with('error','用户名已存在');    
             }
         }
         $supers->email = $request->input('email','');

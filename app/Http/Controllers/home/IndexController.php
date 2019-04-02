@@ -105,6 +105,7 @@ class IndexController extends Controller
         //退出登录
         session()->forget('home_user');
         return '<script>alert("退出登录");location.href="/";</script>';
+
     }
 
     /**

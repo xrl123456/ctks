@@ -55,7 +55,7 @@ class ShopController extends Controller
         // 用户id
         $uid = (session('home_user')['id']);
          // $uid = (session('home_user')['id']);
-        $addres = DB::table('address')->where('uid',$uid)->get();
+        $addres = DB::table('address')->where('uid',$uid)->where('status','<','2')->get();
 
  
         foreach($demo as $key=>$value){

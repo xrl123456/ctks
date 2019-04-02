@@ -17,6 +17,8 @@
 	Route::resource('admins/login','admin\LoginController');
 
 
+
+
 	// 邮箱验证 找回密码
 	Route::get('/admins/seek/email/{id}/{token}','admin\SeekController@email');
 	Route::resource('admins/seek','admin\SeekController');
@@ -137,21 +139,35 @@ Route::group(['middleware'=>'home_login'],function(){
 	Route::post('/home/order/shoppay/{id}','home\OrdersController@shoppay');
 	Route::resource('/home/shop','home\ShopController');
 	// 收货地址 --------
+	Route::get('/home/addres/status/{id}','home\AddressController@status');
 	Route::resource('/home/addres','home\AddressController');
 	// 个人中心  
 	Route::resource('/home/usershow','home\UsershowController');
+	// 收藏 
+	Route::get('/home/collect/index','home\CollectController@index');
+	Route::get('/home/collect/add/{id}','home\CollectController@add');
+	Route::get('/home/collect/del/{id}','home\CollectController@del');
+
+
+		//测试
+	Route::get('/home/bbs/aaa','home\BbsController@aaa');
 
    });
 
-	//测试
-	Route::get('/home/bbs/aaa','home\BbsController@aaa');
+
 
 	
 
 
-// // 邮箱验证 找回密码
-// Route::get('/admins/seek/email/{id}/{token}','admin\SeekController@email');
-// Route::resource('admins/seek','admin\SeekController');
+
+
+
+
+
+
+
+
+
 
 
 

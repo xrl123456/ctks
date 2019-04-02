@@ -5,7 +5,8 @@ namespace App\Http\Controllers\home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Goodsgo;
-use App\Models\Goods;
+
+use App\Models\Collect;
 use DB;
 
 class GoodsController extends Controller
@@ -25,8 +26,11 @@ class GoodsController extends Controller
 			$shopnum = DB::table('orders')->where('uid',$uid)->where('status','0')->get();
 			$number = (count($shopnum));
 			
+			// 判断收藏表有没有
+			$collect = Collect::where('uid','=',$uid)->where('gid',$itemShow)->get();
+		
 			session(['shopcart' => $number]);
-			return view('home.udai.item_show',['itemShow'=>$itemShow]);
+			return view('home.udai.item_show',['itemShow'=>$itemShow,'collect'=>$collect]);
 
 		}	
 		//第三级商品

@@ -113,7 +113,7 @@
                     </div>
                     <ul>
                         <li><a href="/admins/seek/{{ Session::get('admin_user')['id'] }}/edit">修改密码</a></li>
-                        <li><a href="/admins/login/{{ Session::get('admin_user')['id'] }}" onclick="alert('确定要退出？')">退出</a></li>
+                        <li><a href="/admins/login/{{ Session::get('admin_user')['id'] }}" onclick="confirm('确定要退出？')">退出</a></li>
                     </ul>
                 @endif
                 </div>
@@ -230,8 +230,11 @@
                         <a href="#"><i class="icon-facetime-video"></i>视频管理</a>
 
                         <ul>
+
                             <li><a href="/admins/video">视频列表</a></li>
                         <li><a href="/admins/video/create">视频添加</a></li>
+
+                           
                         </ul>
                     </li>
 
@@ -243,7 +246,17 @@
                             <li><a href="/admins/guanli/create">网站管理添加</a></li>
                         </ul>
                     </li>
-                    
+                    <li class="active">
+                        <a href="#"><i class="icon-list"></i>管理</a>
+
+                        <ul>
+                             <li><a href="/admins/super">人员列表</a></li>
+                            @if(Session::get('admin_user')['grade'] == 1)
+                            <li><a href="/admins/super/create">人员添加</a></li>
+                            @endif
+
+                        </ul>
+                    </li>
                    
                 </ul>
             </div>
