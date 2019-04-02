@@ -8,6 +8,7 @@ use App\Models\Goods;
 use App\Models\Goodsgo;
 use App\Models\Userinfo;
 use App\Models\Users;
+use App\Models\Bbsfen;
 class IndexController extends Controller
 {
 
@@ -27,6 +28,24 @@ class IndexController extends Controller
         
         return $data;
     }
+
+
+     public static function bbsFlei($pid = 0)
+    {
+        $data = [];
+        //一级导航
+        $erji_data = Bbsfen::where('pid',$pid)->get();
+
+        //二级导航
+        foreach($erji_data as $key => $value) {
+           $temp = self::bbsFlei($value->id);
+            $value['sub'] = $temp;
+            $data[] = $value;
+        }
+        
+        return $data;
+    }
+
 
 
     /**

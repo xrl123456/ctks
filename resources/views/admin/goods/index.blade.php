@@ -32,9 +32,16 @@
                                     <td>{{ $v->pid }}</td>
                                     <td>{{ $v->path }}</td>
                                     
-                                    <td><a href="/admins/goods/create?id={{ $v->id }}" class="btn btn-info">
+                                    <td>
+                                     <form action="/admins/goods/{{ $v->id }}"  method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE')}}
+                                    <input  type="hidden" class="btn btn-danger" value="删除" >
+                                    <!-- submit -->
+                                    <a href="/admins/goods/create?id={{ $v->id }}" class="btn btn-info">
                                         添加子分类
                                         </a>
+                                        </form>
                                     </td>
                                 </tr>
                              

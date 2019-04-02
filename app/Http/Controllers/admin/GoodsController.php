@@ -150,7 +150,7 @@ class GoodsController extends Controller
     public function show($id)
     {
         //
-        //
+      
     }
 
     /**
@@ -162,6 +162,7 @@ class GoodsController extends Controller
     public function edit($id)
     {
         //
+         echo '1';
     }
 
     /**
@@ -185,5 +186,16 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         //
+       $goods = Goods::where('pid',$id)->first();
+
+        if($goods) {
+            return back()->with('error','还有子分类,不能删除');
+            
+        }
+         if(Goods::destroy($id)) {
+            return redirect('/admins/goods')->with('success','删除成功');
+        }else{
+            return back()->with('error','删除失败');
+        }
     }
 }

@@ -99,7 +99,7 @@ class VideoController extends Controller
         //
         // echo '1';
              $video = Video::find($id);
-             // return view()
+            return view('admin.video.edit',['video'=>$video]);
     }
 
     /**
@@ -111,7 +111,9 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // echo '1';
+        $pic =$request->has('pic');
+        
     }
 
     /**

@@ -2,7 +2,7 @@
 @section('content')
 <div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span><i class="icon-users"></i>积分兑换详情表</span>
+                    	<span><i class="icon-database"></i>积分兑换详情表</span>
                     </div>
                     <div class="mws-panel-body no-padding">
                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">

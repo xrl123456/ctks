@@ -205,6 +205,13 @@
                         </ul>
                     </li>
                    <li class="active">
+                        <a href="#"><i class="icon-bullhorn"></i>公告分类管理</a>
+                        <ul>
+                            <li><a href="/admins/bbsfen">公告分类列表</a></li>
+                            <li><a href="/admins/bbsfen/create">公告分类添加</a></li>
+                        </ul>
+                    </li>
+                   <li class="active">
                         <a href="#"><i class="icon-bullhorn"></i>公告管理</a>
                         <ul>
                             <li><a href="/admins/bbs">公告列表</a></li>

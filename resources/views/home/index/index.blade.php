@@ -234,9 +234,15 @@
 					<div class="notice-box bgf5">
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
+								@foreach($bbsfen as $k => $b)
+									{{ $b->cname }}
 								@foreach($Bbs as $k =>$v)
-								<a class="swiper-slide ep" href="/home/bbs/index/{{ $v->id }}">{!! $v->title !!}</a>
-								@endforeach
+								@if($b->id==$v->cates)
+								<a class="swiper-slide ep" href="/home/bbs/index/{{ $v->id }}">{{ $v->name }}</a>
+								@endif
+							@endforeach
+							@endforeach
+
 							</div>
 						</div>
 					</div>

@@ -4,10 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
 use App\Models\Bbs;
+use App\Models\Bbsfen;
 use App\Http\Requests\BbsStoreRequest;
-use App\Http\Requests\BbseditStoreRequest;
+use DB;
+use Illuminate\Support\Facades\Storage;
 
 class BbsController extends Controller
 {
@@ -20,8 +21,9 @@ class BbsController extends Controller
     {
         $count=$request->input('count',5);
         $search=$request->input('search','');
-        $bbslist=Bbs::where('title','like','%'.$search.'%')->paginate($count);
- 
+        $bbslist=Bbs::where('name','like','%'.$search.'%')->paginate($count);
+        //$cateinfo=cates::all();
+        //dump($goodslist);exit;
         return view('admin.bbs.index',['bbslist'=>$bbslist,'request'=>$request->all(),]);
     }
 
@@ -32,7 +34,8 @@ class BbsController extends Controller
      */
     public function create()
     {
-        return view('admin.bbs.create');
+        //echo'123';
+        return view('admin/bbs/create');
     }
 
     /**
@@ -43,11 +46,19 @@ class BbsController extends Controller
      */
     public function store(BbsStoreRequest $request)
     {
-        DB::beginTransaction();
-        $Bbs = new Bbs;
-        $Bbs->title=$request->input('title','');
-        $Bbs->content=$request->input('content','');
-        $res1=$Bbs->save();
+        //dump($request->all());exit;
+        
+        $bbs = new Bbs;
+
+        //$goods->pic=$name;
+        $bbs->status=$request->input('status','1');
+        $bbs->name=$request->input('name','');
+        $bbs->content=$request->input('content','');
+        $bbs->cates=$request->input('cates','');
+        //$goods->number=$request->input('number','');
+        //$goods->cates=$request->input('cates','');
+        $res1=$bbs->save();
+        //dump($res1);exit;
         
         if($res1)
         {
@@ -79,11 +90,10 @@ class BbsController extends Controller
      */
     public function edit($id)
     {
-        //
-        $bbs = Bbs::find($id);
+        //echo '111';
+         $bbs_edit = Bbs::find($id);
         //dd($user);
-        return view('admin.bbs.edit',['bbs'=>$bbs]);
-        
+        return view('admin/bbs/edit',['bbs_edit'=>$bbs_edit]);
     }
 
     /**
@@ -95,15 +105,19 @@ class BbsController extends Controller
      */
     public function update(BbsStoreRequest $request, $id)
     {
-        //dd($request->all());
-        //var_dump($request->all());
+        //dump($request->all());
         DB::beginTransaction();
-        $bbs=Bbs::find($id);
-        //$user->name=$request->input('name','');
-        $bbs->title=$request->input('title','');
-        $bbs->content=$request->input('content','');
-        $res1=$bbs->save();
-        if($res1)
+        $bbs_update = Bbs::find($id);
+
+        
+        $bbs_update->status=$request->input('status','1');
+        $bbs_update->name=$request->input('name','');
+        $bbs_update->content=$request->input('content','');
+        $bbs_update->cates=$request->input('cates','');
+            //$goodedit->status=$request->input('status','');
+            $res1=$bbs_update->save();
+        
+            if($res1)
         {
             DB::commit();
             return redirect('admins/bbs')->with('success','修改成功');
@@ -112,6 +126,7 @@ class BbsController extends Controller
             DB::rollBack();
             return back()->with('error','修改失败');
         }
+        
     }
 
     /**
@@ -123,7 +138,18 @@ class BbsController extends Controller
     public function destroy($id)
     {
         DB::beginTransaction();
+        //$bbs_del = Bbs::find($id);
+        //dd($lbts);
+        //$date=$bbs_del->pic;
+        //$res2 = Storage::delete([$date]);
+        //dd($date);
         $res1=Bbs::destroy($id);
+        //$date=$res1['pic'];
+        //dd($res1);
+        
+        //$date=$lbts['lbts'];
+        
+        
          if($res1)
         {
             DB::commit();

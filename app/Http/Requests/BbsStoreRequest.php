@@ -21,20 +21,28 @@ class BbsStoreRequest extends FormRequest
      *
      * @return array
      */
+        //$bbs->status=$request->input('status','1');
+        //$bbs->name=$request->input('name','');
+        //$bbs->content=$request->input('content','');
+        //$bbs->cates=$request->input('cates','');
    public function rules()
     {
         return [
             //
-            'title'=>'required',
+            'status'=>'required',
+            'name'=>'required',
             'content'=>'required',
+            'cates'=>'required',
 
             ];
     }
     public function messages()
     {
         return [
-            'title.required'=>'标题不能为空',
+            'status.required'=>'状态不能为空',
+            'name.required'=>'标题不能为空',
             'content.required'=>'内容不能为空',
+            'cates.required'=>'分类不能为空',
             ];
     }
 }

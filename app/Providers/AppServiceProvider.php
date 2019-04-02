@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         View::share('data',IndexController::getFlei());
-
+        View::share('bbsfen',IndexController::bbsFlei());
        
         View::share('Bbs',BbsController::Bbs());
         View::share('lbts',LbtsController::index());

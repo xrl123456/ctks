@@ -9,7 +9,7 @@ use App\Models\Users;
 use Hash;
 use DB;
 use App\Models\Goodsgo;
-
+ use App\Http\Requests\home\RegisStoreRequest;
 use App\Models\Orders;
 use App\Models\Order_info;
 use App\Models\Address;
@@ -31,6 +31,9 @@ class RegisterController extends Controller
 
 	  			 echo "<script>alert('验证码错误');location.href='/home/register?p=register';</script>";
 	  		}else{
+	  			if( session('rand_phone') != $request->phone ){
+	  				echo "<script>alert('号码不一致');location.href='/home/register?p=register';</script>";
+	  			}else{
 	  	 
 	  			if($request->has('agree')){
 	  			$user = new Users;
@@ -53,6 +56,7 @@ class RegisterController extends Controller
 	  			}else{
 	  			 echo "<script>alert('请阅读协议');location.href='/home/register?p=register';</script>";
 	  				
+	  				}
 	  			}
 	  		 }
 	  	}
@@ -64,6 +68,11 @@ class RegisterController extends Controller
 
 			  			 echo "<script>alert('验证码错误');location.href='/home/denlu';</script>";
 			  		}else{
+			  			
+			  			if(session('rand_phone') != $request->phone ){
+			  				echo "<script>alert('号码不一致');location.href='/home/denlu';</script>";
+			  				}else{
+
 			  			  $phone = $request->phone;
 			  			 $user = DB::select('select * from users where phone = ?', [$phone]);
 			  			 		// 判断是否注册过
@@ -81,6 +90,8 @@ class RegisterController extends Controller
 				  			}else{
 				  				echo "<script>alert('用户不存在');location.href='/home/register?p=register';</script>";
 			  			}
+
+			  		}
 	  			}
 	  	 
 		}
@@ -94,6 +105,8 @@ class RegisterController extends Controller
 	  		$phone = $request->phone;
 	  		$rand_cond = rand(1111,9999);
 	  		session(['rand_cond' => $rand_cond]);
+	  		session(['rand_phone' => $phone]);
+
 			$url = "http://v.juhe.cn/sms/send";
 			$params = array(
 	    	'key' => 'd869e738c09771abbeaa6e8938dfbabb', //您申请的APPKEY
