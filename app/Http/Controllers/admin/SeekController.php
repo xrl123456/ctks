@@ -51,7 +51,9 @@ class SeekController extends Controller
         
         // 通过这两个字段 查询出是否有这个账号
         $list = Supers::where('name','=',$name)->where('email','=',$email)->get();
-        // dd($list);
+
+        if(count($list)) {
+
         foreach($list as $k=>$v) {
             $id = $v->id;
         }
@@ -60,8 +62,7 @@ class SeekController extends Controller
         $token=$super->token;
 
         // dd($token);
-        if(count($list)) {
-            
+
             // 发送邮件
             Mail::send('admin.login.email', ['user' => $name,'id'=>$id,'token'=>$token], function ($m) use ($request) {
 
@@ -108,7 +109,7 @@ class SeekController extends Controller
         // 验证 token是否zhengque
         if($supers->token != $token) {
             // 展示先显示 登录 以后记得改去首页
-            return '<script>alert("记得改这个路劲去首页");location.href="/admins/login";</script>';
+            return '<script>alert("连接失效");location.href="/";</script>';
         }
 
         // 重新生成 token 

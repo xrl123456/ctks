@@ -179,6 +179,7 @@ Route::group(['middleware'=>'home_login'],function(){
 
 
 
+Route::group(['middleware'=>'home_login'],function(){
 
 
 
@@ -188,3 +189,4 @@ Route::group(['middleware'=>'home_login'],function(){
 
 
 
+});
