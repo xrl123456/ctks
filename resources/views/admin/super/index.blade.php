@@ -20,8 +20,27 @@
         <span><i class="icon-official"></i> 管理员 -- 列表</span>
     </div>
     <div class="mws-panel-body no-padding">
+         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+
+                            <form action="/admins/super" method="get">
+                                <div id="DataTables_Table_0_length" class="dataTables_length">
+                                    <label>搜索显示
+                                            <select size="1" name="count">
+                                            <option value="5"   @if(isset($request['count']) && !empty($request['count']) && $request['count']==5) selected @endif >5</option>
+                                            <option value="10"  @if(isset($request['count']) && !empty($request['count']) && $request['count']==10) selected @endif >10</option>
+                                            <option value="15"  @if(isset($request['count']) && !empty($request['count']) && $request['count']==15) selected @endif >15</option>
+                                            <option value="20"  @if(isset($request['count']) && !empty($request['count']) && $request['count']==20) selected @endif >20</option>
+                                        </select>条 
+                                    </label>
+                                </div>
+                            <div class="dataTables_filter" id="DataTables_Table_0_filter">
+                                <label>用户名： <input type="text"  name="search"  value ="{{ $request['search'] or '' }}" aria-controls="DataTables_Table_0">
+                                    <input type="submit" class="btn btn-info" value="搜索">
+                                 </label>
+                            </div>
+                        </form>
+            </div>
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-        
         <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
             <thead>
                 <tr role="row">
@@ -45,28 +64,41 @@
                     {{ ($value->grade == 0 ? '管理员' : '超级管理员') }}                    
                 </td>
                 <td class="  sorting_1" style="text-align:center">
+                @if(Session::get('admin_user')['grade'] ==1)
                 <label for="status">
-                    <img src="/uploads/face/{{ ($value->status) }}.jpg" alt="" style="width:40px;border-radius:50%"; id="img{{ $value->id }}" name="img" onclick="editstatus('{{ $value->id }}')">
+                    <img src="/uploads/face/{{ ($value->status) }}.jpg" alt="" title="可以点击修改状态" style="width:40px;border-radius:50%"; id="img{{ $value->id }}" name="img" onclick="editstatus('{{ $value->id }}')">
                 </label>
+                @else
+                    <img src="/uploads/face/{{ ($value->status) }}.jpg" alt="" style="width:40px;border-radius:50%"; name="img">
+                @endif
                 </td>
                 <td class="  sorting_1" style="text-align:center">
                 <a href="/admins/super/{{ $value->id }}" class="btn btn-success">详情</a>
-                <a href="/admins/super/{{ $value->id }}/edit" class="btn btn-warning">修改</a>
+                @if(Session::get('admin_user')['id'] == $value->id)
+                        <a href="/admins/super/{{ $value->id }}/edit" class="btn btn-warning">修改</a>
+                @endif
+                @if(Session::get('admin_user')['grade'] == 1)
+                    @if($value->grade < 1)
                 <form action="/admins/super/{{ $value->id }}" method="post"  style="display: inline;">
                 {{  csrf_field() }}
                 {{ method_field('DELETE')}}
                 <input type="submit" value="删除"  class="btn btn-danger"   onclick="return confirm('数据无价谨慎操作')">
                 </form>
+                    @endif
+                @endif
                 </td>
             </tr>
             @endforeach
 
         </tbody>
         </table>
-        <!-- <div class="dataTables_info" id="DataTables_Table_1_info">
-         - - - 1.0.0 for XDL.com
+         <div class="dataTables_info" ><h4>- - 共 {{ $total }} 条数据</h4></div>
+        
+
+            <div class="dataTables_paginate paging_full_numbers" id="page_page">
+                        {{ $supers->appends($request)->links() }}
+            </div>
         </div>
-        <div class="dataTables_paginate paging_full_numbers" id="page_page"> -->
             
         </div>
         </div>

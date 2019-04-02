@@ -13,6 +13,8 @@
         </ul>
     </div>
 @endif
+
+@if((Session::get('admin_user')['grade'] == 1) || (Session::get('admin_user')['id'] == $su['id']) )
 <meta name="csrf-token" content="{{ csrf_token() }}"> 
 <div class="mws-panel grid_4">
     <div class="mws-panel-header">
@@ -67,7 +69,7 @@
         </form>
     </div>      
 </div>
-
+@endif
 
 
     <div class="mws-panel grid_4">

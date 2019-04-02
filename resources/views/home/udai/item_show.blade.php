@@ -146,8 +146,13 @@
 										<a class="amount-but add" "></a>
 										<a class="amount-but sub" "></a>
 									</div>
+
+										
+										
 								</div>
-								<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock">{{ $itemShow->goodsNum }}</b> 件</span></div>
+								<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock">{{ $itemShow->goodsNum }}</b> 件</span>
+									
+								
 								<script>
 									$(function () {
 										$('.amount-input').onlyReg({reg: /[^0-9]/g});
@@ -199,20 +204,48 @@
 								</script>
 							</div>
 						</div>
+
 						<div class="item-action clearfix bgf5">
 							<a href="/home/order/{{ $itemShow->id }}"   rel="nofollow" data-addfastbuy="true" title="点击此按钮，到下一步确认购买信息。" role="button" class="item-action__buy">立即购买</a>
 							<a  id="shopadd" rel="nofollow"  data-addfastbuy="true" role="button" class="item-action__basket" onclick="shopping('{{ $itemShow->id }}')">
 								<i class="iconfont icon-shopcart" ></i> 加入购物车
 							</a>
-							
 						</div>
+					</div>
+					<div>
+						@if(empty($collect))
+							<a  class="item-action__basket" style="" id="goodscollect" onclick="collect({{ $itemShow->id }})">已收藏</a>
+						@else
+							<a  class="item-action__basket" style="" id="goodscollect" onclick="collect({{ $itemShow->id }})">收藏</a>
+						@endif
+					</div>
 					</div>
 				</div>
 			</div>
-            <!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> -->
+            <script type="text/javascript">
+            	
+
+				function collect(id){
+					// console.log(id);
+					$.ajax({
+                            'url': '/home/collect/add/'+id,
+                            'type': 'get',
+                            'data': '',
+                            'async': true,
+							success:function(data){
+								// console.log(data);
+								if(data == 1){
+									$('#goodscollect').text("已收藏");
+								}else{
+									$('#goodscollect').text("已收藏过该商品");
+								}
+                            }
+                           
+                        })
+				}
+            </script>
 
 			<script type="text/javascript">
-
 				function shopping(id) {
 					$.ajaxSetup({
                         headers: {

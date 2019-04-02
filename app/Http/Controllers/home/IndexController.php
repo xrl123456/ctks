@@ -73,7 +73,7 @@ class IndexController extends Controller
     {
         // 这里目前是退出的
         session()->forget('home_user');
-        return '<script>alert("退出成功,");location.href="/";</script>';
+        return '<script>alert("退 出成功,");location.href="/";</script>';
     }
 
     /**

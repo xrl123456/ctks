@@ -87,6 +87,8 @@ Route::resource('/test','home\TestController');
 
 
 //前台首页路由
+//  退出 
+Route::get('/{id}','home\IndexController@show');
 Route::resource('/','home\IndexController');
 // //前台首页路由
 // Route::resource('/home/index','home\IndexController');
@@ -96,16 +98,20 @@ Route::get('/home/register','home\RegisterController@index');
 Route::post('/home/rest','home\RegisterController@show');
 //跳转验证路由
 Route::get('/home/yanzhen','home\RegisterController@yanzhen');
-/// 前台 登录 路由
+/// 前台 登录 路由 
+
 Route::resource('/home/login','home\LoginController');
 Route::get('/home/denlu','home\RegisterController@denlu');
-
-
-
 
 // 下面的需要中间件 通过进入
 //跳转商品图片详情
 Route::get('/home/item_show/{id}','home\GoodsController@itemShow');
+
+
+
+
+
+
 //跳转前台用户中心
 Route::get('/home/udai','home\RegisterController@welcome');
 //跳转前台个人资料区
@@ -142,5 +148,10 @@ Route::resource('/home/order','home\OrdersController');
 
 // 个人中心  
 Route::resource('/home/usershow','home\UsershowController');
+
+// 收藏 
+Route::get('/home/collect/index','home\CollectController@index');
+Route::get('/home/collect/add/{id}','home\CollectController@add');
+Route::get('/home/collect/del/{id}','home\CollectController@del');
 
 

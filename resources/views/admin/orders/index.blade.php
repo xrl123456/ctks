@@ -22,6 +22,26 @@
     </div>
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
+            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+
+                            <form action="/admins/order" method="get">
+                                <div id="DataTables_Table_0_length" class="dataTables_length">
+                                    <label>搜索显示
+                                            <select size="1" name="count">
+                                            <option value="5"   @if(isset($request['count']) && !empty($request['count']) && $request['count']==5) selected @endif >5</option>
+                                            <option value="10"  @if(isset($request['count']) && !empty($request['count']) && $request['count']==10) selected @endif >10</option>
+                                            <option value="15"  @if(isset($request['count']) && !empty($request['count']) && $request['count']==15) selected @endif >15</option>
+                                            <option value="20"  @if(isset($request['count']) && !empty($request['count']) && $request['count']==20) selected @endif >20</option>
+                                        </select>条 
+                                    </label>
+                                </div>
+                            <div class="dataTables_filter" id="DataTables_Table_0_filter">
+                                <label>订单号： <input type="text"  name="search"  value ="{{ $request['search'] or '' }}" aria-controls="DataTables_Table_0">
+                                    <input type="submit" class="btn btn-info" value="搜索">
+                                 </label>
+                            </div>
+                        </form>
+            </div>
         
         <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
             <thead>
@@ -37,7 +57,7 @@
                 </tr>
             </thead>
             <tbody role="alert" aria-live="polite" aria-relevant="all">
-      		@foreach($order as $key=>$value)
+      		@foreach($orders as $key=>$value)
       		@foreach($value->addersand as $k=>$v)
             <tr class="odd">
                 <td class="  sorting_1" style="text-align:center">{{ $value->id }}</td>
@@ -73,12 +93,12 @@
 
         </tbody>
         </table>
-        <!-- <div class="dataTables_info" id="DataTables_Table_1_info">
-         - - - 1.0.0 for XDL.com
-        </div>
-        <div class="dataTables_paginate paging_full_numbers" id="page_page"> -->
-            
-        </div>
+        <div class="dataTables_info" ><h4>- - 共 {{ $total }} 条数据</h4></div>
+        
+
+            <div class="dataTables_paginate paging_full_numbers" id="page_page">
+                        {{ $orders->appends($request)->links() }}
+            </div>
         </div>
     </div>
 </div>

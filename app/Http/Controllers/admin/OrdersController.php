@@ -16,15 +16,22 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+    //
+        $count = $request->input('count',10);
+        $search = $request->input('search',''); 
         // 后台订单首页 
         // 获取所有数据
         $orders =  new Orders;
-        $order = $orders->where('status','>','0')->get();
-        // dd($order);
+        // dd($count);
+        $orders = Orders::where('oid','like','%'.$search.'%')->where('status','>','0')->OrderBy('id', 'acs')->paginate($count);
+        $num = Orders::where('status','>','0')->get();
+        $total = count($num);
+        // dd($total);
         
-        return view('admin.orders.index',['order'=>$order]);
+        return view('admin.orders.index',['count'=>$count,'request'=>$request->all(),'orders'=>$orders,'total'=>$total]);
     }
 
     /**

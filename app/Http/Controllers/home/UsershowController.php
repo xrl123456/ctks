@@ -82,7 +82,7 @@ class UsershowController extends Controller
         $order = Orders::find($id);
         $order->status += 1;
         $res = $order->save();
-         if($res){
+        if($res){
             DB::commit();
             return '<script>alert("确认签收成功");location.href="/home/udai"</script>';
 

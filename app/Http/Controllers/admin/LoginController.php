@@ -123,8 +123,8 @@ class LoginController extends Controller
     {
         //
         // dd($id);
-        // session()->forget("admin_user['id']");
-        // return '<script>alert("退出成功,");location.href="/";</script>';
+        session()->forget("admin_user");
+        return '<script>alert("退出成功,");location.href="/";</script>';
     }
 
     /**

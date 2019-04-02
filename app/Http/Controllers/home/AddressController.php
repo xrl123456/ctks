@@ -17,10 +17,12 @@ class AddressController extends Controller
      */
     public function index()
     {
-        //
+        
+
+
         $id = (session('home_user')['id']);
         
-        $address = DB::table('address')->where('uid', $id)->where('status','<',2)->get();
+        $address = DB::table('address')->where('uid', $id)->where('status','<',2)->OrderBy('id','desc')->get();
         // dd($readss);
 
         return view('home.usershow.addresindex',['address'=>$address]);
@@ -185,7 +187,7 @@ class AddressController extends Controller
 
             }
         }
-        
+
         $new = Address::find($id);
         $new->status = 1;
         $nres = $new->save();
