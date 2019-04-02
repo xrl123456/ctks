@@ -11,15 +11,25 @@
 					<div class="addr-radio">
 
 						@foreach($addres as $key => $value)
-						
-						<div class="radio-line radio-box ">
+
+						@if($value->status ==1)
+						<div class="radio-line radio-box  active">
+						@else
+						<div class="radio-line radio-box  ">
+						@endif
+
 							<label class="radio-label ep" title="{{ $value->address }}（{{ $value->name }}）{{ $value->phone }}">
-								<input name="addres" value="{{ $value->id }}" autocomplete="off" type="radio" id="shopradio"><i class="iconfont icon-radio"></i>
+								@if($value->status ==1)
+								<input name="addres" value="{{ $value->id }}" autocomplete="off" type="radio" id="shopradio" checked/><i class="iconfont icon-radio"></i>
+								@else
+								<input name="addres" value="{{ $value->id }}" autocomplete="off" type="radio" id="shopradio" ><i class="iconfont icon-radio"></i>
+								@endif
+
 								{{ $value->address }}（{{ $value->name }}）{{ $value->phone }}
 								 
 							</label>
-							<a href="" class="default">设为默认地址</a>
-							<a href="" class="edit">修改</a>
+							<!-- <a href="" class="default">设为默认地址</a> -->
+							<a href="/home/addres/{{ $value->id }}/edit" class="edit">修改</a>
 						</div>
 						@endforeach
 					</div>

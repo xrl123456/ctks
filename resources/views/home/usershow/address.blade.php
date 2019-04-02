@@ -82,7 +82,11 @@
 				                </form>
 							</div>
 							<div class="tdf1">
-								<a href="" class="default active">默认地址</a>
+							@if($value->status == 1)
+								<a  class="default active">默认地址</a>
+								@else
+								<a href="/home/addres/status/{{ $value->id }}" class="default">设为默认地址</a>
+							@endif
 							</div>
 						</div>
 					@endforeach

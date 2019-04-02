@@ -43,7 +43,9 @@ class OrdersController extends Controller
 
         // dd($request->addres);
         // dd($_POST);
-        DB::beginTransaction();         
+        DB::beginTransaction();
+
+
         
         $order = new Orders;
         // // 商品id

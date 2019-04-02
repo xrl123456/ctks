@@ -62,6 +62,10 @@ Route::group(['middleware'=>'admin_login'],function(){
 		Route::resource('/admins/lbts','admin\LbtsController');
 		//管理路由
 		Route::resource('/admins/guanli','admin\GuanliController');
+
+		// 订单管理模块
+		Route::resource('/admins/order','admin\OrdersController');
+
 		});
 		
 
@@ -136,6 +140,7 @@ Route::group(['middleware'=>'home_login'],function(){
 	Route::resource('/home/addres','home\AddressController');
 	// 个人中心  
 	Route::resource('/home/usershow','home\UsershowController');
+
    });
 
 	//测试
@@ -147,7 +152,6 @@ Route::group(['middleware'=>'home_login'],function(){
 // // 邮箱验证 找回密码
 // Route::get('/admins/seek/email/{id}/{token}','admin\SeekController@email');
 // Route::resource('admins/seek','admin\SeekController');
-
 
 
 
