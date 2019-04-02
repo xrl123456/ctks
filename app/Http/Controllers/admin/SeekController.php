@@ -107,7 +107,7 @@ class SeekController extends Controller
         // 验证 token是否zhengque
         if($supers->token != $token) {
             // 展示先显示 登录 以后记得改去首页
-            return '<script>alert("记得改这个路劲去首页");location.href="/admins/login";</script>';
+            return '<script>alert("连接失效");location.href="/";</script>';
         }
 
         // 重新生成 token 

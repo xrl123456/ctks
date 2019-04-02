@@ -109,6 +109,7 @@ Route::get('/home/item_show/{id}','home\GoodsController@itemShow');
 
 
 
+Route::group(['middleware'=>'home_login'],function(){
 
 
 
@@ -155,3 +156,4 @@ Route::get('/home/collect/add/{id}','home\CollectController@add');
 Route::get('/home/collect/del/{id}','home\CollectController@del');
 
 
+});
