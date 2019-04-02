@@ -148,13 +148,13 @@ Route::group(['middleware'=>'home_login'],function(){
 	Route::get('/home/collect/add/{id}','home\CollectController@add');
 	Route::get('/home/collect/del/{id}','home\CollectController@del');
 
-
-		//测试
+	//测试
 	Route::get('/home/bbs/aaa','home\BbsController@aaa');
 
+	
+
+
    });
-
-
 
 	
 

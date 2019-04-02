@@ -25,13 +25,13 @@
 						<tbody>
 
 							@foreach($testshop as $key=>$value)
-								@foreach($value->addersand as $k=>$v)
+								
 							<tr>
 
 								<th scope="row" style="width:140px;height:140px;">
 									 <!-- onclick="shopbox({{ $value->id }})" -->
 									<label class="checked-label"><input id="sub_btn" id="boxstatus{{ $value->id }}" type="checkbox" value="{{ $value->oprice }}" name="{{ $value->id }}"  ><i></i>
-										<div class="img" ><img src="/uploads/Goods/{{ $v->pic }}"  alt="" class="cover"></div>
+										<div class="img" ><img src="/uploads/Goods/"  alt="" class="cover"></div>
 
 									</label>
 								</th>
@@ -51,7 +51,7 @@
 									</div>
 								</div>
 
-									<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock{{ $value->id }}">{{ $v->goodsNum }}</b> 件</span></div>
+									<div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock{{ $value->id }}"></b> 件</span></div>
 
 								</td>
 								<td id="newoprice{{ $value->id }}">¥{{ $value->oprice }}</td>
@@ -59,7 +59,7 @@
 								<!-- <td><a href="/home/shop/del/{{ $value->id }}"><button type="submit" style="background-color:orange;border: 1px solid red;width:60px;height:30px;border-radius:10px 10px 10px 10px; margin-top:40px;">删除</button></a></td> -->
 							 <!-- disabled="disabled" -->
 							</tr>
-							@endforeach
+							
 							@endforeach
 						</tbody>
 					</table>

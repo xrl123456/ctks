@@ -246,17 +246,7 @@
                             <li><a href="/admins/guanli/create">网站管理添加</a></li>
                         </ul>
                     </li>
-                    <li class="active">
-                        <a href="#"><i class="icon-list"></i>管理</a>
-
-                        <ul>
-                             <li><a href="/admins/super">人员列表</a></li>
-                            @if(Session::get('admin_user')['grade'] == 1)
-                            <li><a href="/admins/super/create">人员添加</a></li>
-                            @endif
-
-                        </ul>
-                    </li>
+                   
                    
                 </ul>
             </div>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Orders extends Model
 {
     //
+    public $table ="orders";
     protected $primaryKey = 'oid';
     
 	public function addersand()
